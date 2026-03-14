@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>LAGGY WORLD</title>
+    <meta name="description" content="Laggy World - The ultimate 1.21+ Minecraft survival server. Massive world, real economy, weekly events, and premium ranks.">
+    <title>LAGGY WORLD • Minecraft Survival</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,138 +13,210 @@
 </head>
 <body class="bg-[#0a0a0a] text-white overflow-x-hidden">
 
-    <nav class="bg-black/90 backdrop-blur-xl border-b border-cyan-500/30 py-4 sm:py-5 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-0">
-            <h1 class="minecraft-font text-3xl sm:text-4xl tracking-tight text-cyan-400">LAGGY WORLD</h1>
+    <nav class="bg-black/95 backdrop-blur-2xl border-b border-cyan-500/40 py-5 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <h1 class="minecraft-font text-4xl tracking-tighter text-cyan-400 flex items-center gap-3">
+                LAGGY WORLD
+            </h1>
 
-            <div class="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-3 text-sm sm:text-base font-medium">
-                <a href="#about"    class="nav-link">ABOUT</a>
-                <a href="#features" class="nav-link">FEATURES</a>
-                <a href="#join"     class="nav-link">JOIN</a>
-                <a href="#discord"  class="nav-link">DISCORD</a>
+            <div class="hidden md:flex items-center gap-10 text-lg font-medium">
+                <a href="#ranks" class="nav-link text-cyan-300 hover:text-white">RANKS</a>
             </div>
 
-            <a href="#join" class="fun-btn text-base sm:text-lg py-3 px-7 sm:py-4 sm:px-9 mt-2 sm:mt-0">
+            <a href="#join" class="fun-btn text-lg px-10 py-4 hidden sm:flex items-center gap-2">
+                <i class="fa-solid fa-gamepad"></i>
                 JOIN SERVER
+            </a>
+
+            <a href="#join" class="sm:hidden fun-btn text-base px-6 py-3">
+                JOIN
             </a>
         </div>
     </nav>
 
-    <section class="hero-bg min-h-[85vh] sm:min-h-screen flex items-center justify-center text-center relative">
-        <div class="hero-content max-w-6xl mx-auto px-5 sm:px-6 py-20 sm:pt-28 sm:pb-24 w-full">
-
-            <div id="status-badge" class="mb-8 sm:mb-12 mx-auto inline-flex items-center gap-2 sm:gap-3 bg-black/75 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-3xl border border-cyan-400/50 shadow-xl">
-                <div id="status-dot" class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                <span id="status-text" class="text-cyan-300 text-xs sm:text-sm md:text-base tracking-widest font-medium">
-                    1.21+ SURVIVAL • <span id="player-count">0</span> PLAYING NOW
+    <section class="hero-bg flex items-center justify-center text-center relative">
+        <div class="max-w-6xl mx-auto px-6 py-20 w-full">
+            <div id="status-badge" class="mx-auto inline-flex items-center gap-3 bg-black/80 backdrop-blur-md px-8 py-4 rounded-3xl border border-cyan-400/60 shadow-2xl mb-10">
+                <div id="status-dot" class="w-4 h-4 bg-cyan-400 rounded-full status-dot"></div>
+                <span id="status-text" class="text-cyan-200 text-sm tracking-[3px] font-medium uppercase">
+                    1.21+ SURVIVAL • <span id="player-count">0</span> PLAYING
                 </span>
             </div>
 
-            <h1 class="minecraft-font text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] leading-none tracking-[-3px] mb-8 sm:mb-10 text-white drop-shadow-[0_0_50px_rgb(34,211,238)]">
+            <h1 class="minecraft-font text-7xl md:text-8xl lg:text-[9.5rem] leading-none tracking-[-6px] mb-6 text-white drop-shadow-[0_0_80px_rgb(34,211,238)]">
                 LAGGY<br>WORLD
             </h1>
 
-            <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-cyan-200 max-w-3xl mx-auto mb-10 sm:mb-14 px-2 sm:px-4">
-                Epic survival. /kits. Pure chaos.
+            <p class="text-3xl md:text-4xl text-cyan-100 max-w-2xl mx-auto mb-12">
+                Pure survival.<br>Real economy.<br>Zero lag... mostly.
             </p>
 
-            <div class="minecraft-ip-box flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-8">
-                <div class="text-center sm:text-left w-full sm:w-auto">
-                    <p class="label">SERVER IP</p>
-                    <div id="server-ip" class="minecraft-font ip-text break-all">laggyworld.serveminecraft.net</div>
+            <div class="minecraft-ip-box flex flex-col md:flex-row items-center justify-between gap-8 mx-auto max-w-xl">
+                <div>
+                    <p class="text-xs tracking-[4px] text-cyan-300 mb-2">SERVER IP</p>
+                    <div id="server-ip" class="minecraft-font ip-text text-cyan-400">laggyworld.serveminecraft.net</div>
                 </div>
-                <button onclick="copyIP()" class="copy-btn text-lg sm:text-xl md:text-2xl whitespace-nowrap">
+                <button onclick="copyIP()" class="copy-btn text-xl px-10 py-5 whitespace-nowrap w-full md:w-auto">
                     COPY IP
                 </button>
             </div>
 
-            <div class="mt-12 sm:mt-16 md:mt-20">
-                <a href="#join" class="fun-btn py-5 sm:py-6 md:py-7 px-12 sm:px-14 md:px-16 text-xl sm:text-2xl md:text-3xl block sm:inline-block">
-                    JOIN NOW
+            <div class="mt-16">
+                <a href="#join" class="fun-btn text-2xl py-7 px-16 block md:inline-block">
+                    PLAY NOW
                 </a>
             </div>
         </div>
 
-        <div class="absolute bottom-6 sm:bottom-10 left-1/2 text-cyan-400 z-10 animate-bounce">
-            <i class="fa-solid fa-chevron-down text-3xl sm:text-4xl"></i>
+        <div class="absolute bottom-12 left-1/2 text-cyan-400 animate-bounce">
+            <i class="fa-solid fa-chevron-down text-4xl"></i>
         </div>
     </section>
 
-    <section id="about" class="py-16 sm:py-20 bg-[#111111]">
-        <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center">
-            <h2 class="minecraft-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cyan-400 mb-10 sm:mb-12">WELCOME TO THE CHAOS</h2>
-            <div class="fun-card p-8 sm:p-10 md:p-14 lg:p-16">
-                <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-zinc-200">
-                    The ultimate chill survival server. Massive world, player shops, weekly events,
-                    and a community. Build, explore, and make memories (or rivals).
+    <section id="about" class="py-24 bg-[#111111]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="minecraft-font text-6xl text-cyan-400 mb-12">WELCOME TO THE CHAOS</h2>
+            <div class="fun-card p-12">
+                <p class="text-2xl leading-relaxed text-zinc-200">
+                    20,000×20,000 block world. Player shops. Weekly events. 
+                    Real economy. No pay-to-win. Just pure Minecraft with friends.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="features" class="py-16 sm:py-20 bg-black">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6">
-            <h2 class="minecraft-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center mb-12 sm:mb-16 text-cyan-400">WHAT MAKES US DIFFERENT</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+    <section id="features" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="minecraft-font text-6xl text-center text-cyan-400 mb-16">WHAT MAKES US DIFFERENT</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="feature-card">
-                    <h3 class="minecraft-font text-cyan-300 text-2xl sm:text-3xl md:text-4xl">20,000×20,000<br>WORLD</h3>
-                    <p class="text-base sm:text-lg md:text-xl text-zinc-400 mt-4">Custom terrain, deep caves, dungeons & endless exploration.</p>
+                    <h3 class="minecraft-font text-4xl text-cyan-300">20k×20k WORLD</h3>
+                    <p class="mt-6 text-xl text-zinc-400">Custom caves, dungeons, villages & endless exploration.</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="minecraft-font text-cyan-300 text-2xl sm:text-3xl md:text-4xl">REAL PLAYER ECONOMY</h3>
-                    <p class="text-base sm:text-lg md:text-xl text-zinc-400 mt-4">Shops, auctions, jobs. /kits — get rich the real way.</p>
+                    <h3 class="minecraft-font text-4xl text-cyan-300">REAL ECONOMY</h3>
+                    <p class="mt-6 text-xl text-zinc-400">Player shops, auctions, jobs & kits. Get rich the fair way.</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="minecraft-font text-cyan-300 text-2xl sm:text-3xl md:text-4xl">WEEKLY EVENTS</h3>
-                    <p class="text-base sm:text-lg md:text-xl text-zinc-400 mt-4">Spleef, parkour, PvP tournaments & treasure hunts every weekend.</p>
+                    <h3 class="minecraft-font text-4xl text-cyan-300">WEEKLY EVENTS</h3>
+                    <p class="mt-6 text-xl text-zinc-400">Spleef, parkour, PvP tournaments & treasure hunts every weekend.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="join" class="join-section py-16 sm:py-20">
-        <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center">
-            <h2 class="minecraft-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-10 sm:mb-16 text-cyan-400">HOW TO JOIN</h2>
+    <section id="ranks" class="py-24 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="minecraft-font text-6xl text-cyan-400">PREMIUM RANKS</h2>
+                <p class="text-2xl text-zinc-400 mt-4">Support the server • Unlock epic perks</p>
+            </div>
 
-            <div class="max-w-2xl mx-auto bg-[#0a1a28] border border-cyan-400/60 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12">
-                <div class="space-y-10 sm:space-y-14 text-left">
-                    <div class="flex gap-6 sm:gap-8 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="rank-card">
+                    <div class="rank-title minecraft-font text-amber-400">VIP</div>
+                    <div class="text-5xl font-bold text-cyan-300 mt-1">$4.99</div>
+                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
+                    <ul class="mt-10 space-y-4 text-left text-lg">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /fly command</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 5 extra homes</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> VIP kit every 12h</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Special chat color</li>
+                    </ul>
+                    <button onclick="fakeBuy('VIP')" class="fun-btn w-full mt-12 text-lg">GET VIP</button>
+                </div>
+
+                <div class="rank-card border-cyan-400 scale-105 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-400 text-black text-xs px-6 py-1 rounded-full font-bold tracking-widest">MOST POPULAR</div>
+                    <div class="rank-title minecraft-font text-orange-400">ELITE</div>
+                    <div class="text-5xl font-bold text-cyan-300 mt-1">$9.99</div>
+                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
+                    <ul class="mt-10 space-y-4 text-left text-lg">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All VIP perks</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 15 homes</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Elite kit every 8h</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /nick & /hat</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Priority queue</li>
+                    </ul>
+                    <button onclick="fakeBuy('ELITE')" class="fun-btn w-full mt-12 text-lg">GET ELITE</button>
+                </div>
+
+                <div class="rank-card">
+                    <div class="rank-title minecraft-font text-purple-400">LEGEND</div>
+                    <div class="text-5xl font-bold text-cyan-300 mt-1">$19.99</div>
+                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
+                    <ul class="mt-10 space-y-4 text-left text-lg">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All Elite perks</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Unlimited homes</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Legend kit every 4h</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Custom particle trails</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Staff-like commands</li>
+                    </ul>
+                    <button onclick="fakeBuy('LEGEND')" class="fun-btn w-full mt-12 text-lg">GET LEGEND</button>
+                </div>
+
+                <div class="rank-card">
+                    <div class="rank-title minecraft-font text-rose-400">GOD</div>
+                    <div class="text-5xl font-bold text-cyan-300 mt-1">$29.99</div>
+                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
+                    <ul class="mt-10 space-y-4 text-left text-lg">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All Legend perks</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> God kit every 2h</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Full creative mode</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Server-wide glow</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Exclusive Discord role</li>
+                    </ul>
+                    <button onclick="fakeBuy('GOD')" class="fun-btn w-full mt-12 text-lg">GET GOD</button>
+                </div>
+            </div>
+
+            <p class="text-center text-zinc-500 text-sm mt-12">
+                Ranks are optional • No pay-to-win • Supports server growth ❤️
+            </p>
+        </div>
+    </section>
+
+    <section id="join" class="py-24 bg-[#0a1a28]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="minecraft-font text-6xl text-cyan-400 mb-16">HOW TO JOIN</h2>
+            <div class="bg-black border-4 border-cyan-400/70 rounded-3xl p-12 max-w-2xl mx-auto">
+                <div class="space-y-12 text-left">
+                    <div class="flex gap-8 items-start">
                         <div class="step-number">1</div>
-                        <p class="text-xl sm:text-2xl md:text-3xl text-white">Launch Minecraft 1.21+</p>
+                        <div class="flex-1"><p class="text-3xl text-white">Launch Minecraft 1.21+</p></div>
                     </div>
-                    <div class="flex gap-6 sm:gap-8 items-start">
+                    <div class="flex gap-8 items-start">
                         <div class="step-number">2</div>
-                        <p class="text-xl sm:text-2xl md:text-3xl text-white">Multiplayer → Add Server</p>
+                        <div class="flex-1"><p class="text-3xl text-white">Multiplayer → Add Server</p></div>
                     </div>
-                    <div class="flex gap-6 sm:gap-8 items-start">
+                    <div class="flex gap-8 items-start">
                         <div class="step-number">3</div>
                         <div class="flex-1">
-                            <p class="text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-6 text-white">Paste the IP</p>
-                            <div class="join-ip-box">laggyworld.serveminecraft.net</div>
+                            <p class="text-3xl mb-6 text-white">Paste the IP</p>
+                            <div class="join-ip-box text-cyan-300">laggyworld.serveminecraft.net</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <button onclick="copyIP()" class="copy-btn mt-10 sm:mt-12 text-xl sm:text-2xl md:text-3xl px-12 sm:px-14 md:px-16 py-5 sm:py-6 md:py-7">
+            <button onclick="copyIP()" class="copy-btn mt-14 text-2xl px-16 py-7">
                 COPY IP TO CLIPBOARD
             </button>
         </div>
     </section>
 
-    <section id="discord" class="py-16 sm:py-20 bg-zinc-950">
-        <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center">
-            <i class="fa-brands fa-discord text-80 sm:text-[100px] md:text-[140px] text-[#5865F2] mb-8 sm:mb-10"></i>
-            <h2 class="minecraft-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 sm:mb-8">JOIN OUR DISCORD</h2>
-            <p class="text-xl sm:text-2xl md:text-3xl text-zinc-300 mb-8 sm:mb-12">Chat • Events • Memes • Support 24/7</p>
-            <a href="https://discord.gg/QUThnA4AES" target="_blank" class="fun-btn py-5 sm:py-6 md:py-7 px-10 sm:px-12 md:px-16 text-xl sm:text-2xl md:text-3xl flex items-center justify-center gap-4 sm:gap-6 mx-auto w-fit">
-                <i class="fa-brands fa-discord text-3xl sm:text-4xl"></i> JOIN DISCORD
+    <section id="discord" class="py-24 bg-zinc-950">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <i class="fa-brands fa-discord text-[140px] text-[#5865F2] mb-10"></i>
+            <h2 class="minecraft-font text-6xl mb-6">JOIN OUR DISCORD</h2>
+            <p class="text-3xl text-zinc-300 mb-12">Events • Memes • Support • Giveaways</p>
+            <a href="https://discord.gg/QUThnA4AES" target="_blank" class="fun-btn text-3xl py-7 px-14 flex items-center justify-center gap-4 mx-auto w-fit">
+                <i class="fa-brands fa-discord text-4xl"></i> JOIN DISCORD
             </a>
         </div>
     </section>
 
-    <footer class="bg-black py-10 sm:py-12 border-t border-cyan-500/30">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 text-center text-zinc-500 text-sm sm:text-base">
+    <footer class="bg-black py-12 border-t border-cyan-500/30">
+        <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500 text-sm">
             © 2026 Laggy World • Made with love and a little lag
         </div>
     </footer>
@@ -152,42 +225,60 @@
         async function checkServerStatus() {
             const ip = "laggyworld.serveminecraft.net";
             const dot = document.getElementById('status-dot');
-            const text = document.getElementById('status-text');
+            const textEl = document.getElementById('status-text');
             const countSpan = document.getElementById('player-count');
 
             try {
-                // Updated to v3 API (more reliable in 2025/2026)
                 const res = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
                 const data = await res.json();
                 if (data.online) {
                     const players = data.players?.online || 0;
-                    dot.className = "w-2.5 h-2.5 sm:w-3 sm:h-3 bg-cyan-400 rounded-full animate-pulse";
+                    dot.className = "w-4 h-4 bg-emerald-400 rounded-full status-dot";
                     countSpan.textContent = players.toLocaleString();
-                    text.innerHTML = `1.21+ SURVIVAL • <span id="player-count">${players.toLocaleString()}</span> PLAYING NOW`;
+                    textEl.innerHTML = `1.21+ SURVIVAL • <span id="player-count">${players.toLocaleString()}</span> PLAYING`;
                 } else {
-                    dot.className = "w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-500 rounded-full";
-                    text.textContent = "1.21+ SURVIVAL • OFFLINE";
+                    dot.className = "w-4 h-4 bg-red-500 rounded-full";
+                    textEl.textContent = "1.21+ SURVIVAL • OFFLINE";
                 }
             } catch {
-                dot.className = "w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-500 rounded-full";
-                text.textContent = "1.21+ SURVIVAL • OFFLINE";
+                dot.className = "w-4 h-4 bg-red-500 rounded-full";
+                textEl.textContent = "1.21+ SURVIVAL • OFFLINE";
             }
         }
 
         function copyIP() {
             const ip = "laggyworld.serveminecraft.net";
             navigator.clipboard.writeText(ip).then(() => {
-                const n = document.createElement("div");
-                n.style.cssText = "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#22d3ee;color:#111;padding:12px 32px;border-radius:9999px;font-family:'Press Start 2P';font-size:15px;border:4px solid #111;white-space:nowrap;z-index:9999;box-shadow:0 0 25px #22d3ee";
-                n.textContent = "IP COPIED!";
-                document.body.appendChild(n);
-                setTimeout(() => n.remove(), 2200);
+                const toast = document.createElement("div");
+                toast.className = "toast";
+                toast.textContent = "✅ IP COPIED!";
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.transition = "all 0.3s ease";
+                    toast.style.opacity = "0";
+                    toast.style.transform = "translateX(-50%) scale(0.8)";
+                    setTimeout(() => toast.remove(), 300);
+                }, 2200);
             });
+        }
+
+        function fakeBuy(rank) {
+            const msg = document.createElement("div");
+            msg.style.cssText = `position:fixed; top:30px; left:50%; transform:translateX(-50%); background:#111; color:#22d3ee; padding:20px 40px; border:5px solid #22d3ee; border-radius:12px; font-family:'Press Start 2P'; text-align:center; box-shadow:0 0 50px #22d3ee; z-index:99999;`;
+            msg.innerHTML = `✅ ${rank} RANK SELECTED!<br><span class="text-xs text-zinc-400">Redirecting to store...</span>`;
+            document.body.appendChild(msg);
+            setTimeout(() => { msg.remove(); alert("Store coming soon! For now, join Discord to buy ranks."); }, 1800);
         }
 
         window.onload = () => {
             checkServerStatus();
             setInterval(checkServerStatus, 30000);
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+                });
+            });
         };
     </script>
 </body>
