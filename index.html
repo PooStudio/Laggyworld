@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAGGY WORLD • Minecraft Server</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+
+    <nav class="bg-black/80 backdrop-blur-lg border-b border-cyan-500/30 py-6 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <h1 class="minecraft-font text-5xl tracking-[-2px] text-cyan-400 drop-shadow-lg">LAGGY WORLD</h1>
+            </div>
+            
+            <div class="flex gap-12 text-base font-medium">
+                <a href="#about" class="hover:text-cyan-400 transition">ABOUT</a>
+                <a href="#features" class="hover:text-cyan-400 transition">FEATURES</a>
+                <a href="#join" class="hover:text-cyan-400 transition">JOIN</a>
+                <a href="#discord" class="hover:text-cyan-400 transition">DISCORD</a>
+            </div>
+            
+            <a href="#join" class="fun-btn">JOIN SERVER</a>
+        </div>
+    </nav>
+
+    <section class="hero-bg h-screen flex items-center justify-center text-center relative">
+        <div class="max-w-6xl mx-auto px-6 relative z-20">
+            <div id="status-badge" class="mb-8 inline-flex items-center gap-4 bg-black/80 px-10 py-3 rounded-3xl border border-cyan-400/60 shadow-xl">
+                <div id="status-dot" class="w-4 h-4 bg-cyan-400 rounded-full animate-pulse"></div>
+                <span id="status-text" class="text-cyan-300 text-base tracking-widest font-medium">
+                    1.21+ SURVIVAL • <span id="player-count">0</span> PLAYING NOW
+                </span>
+            </div>
+
+            <h1 class="minecraft-font text-[120px] md:text-[160px] leading-none tracking-[-6px] mb-8 text-white drop-shadow-[0_0_40px_rgb(34,211,238)]">
+                LAGGY<br>WORLD
+            </h1>
+            
+            <p class="text-4xl text-cyan-200 max-w-3xl mx-auto mb-16 font-light tracking-wide">
+                Epic survival. Zero pay-to-win. Pure chaos.
+            </p>
+
+            <div class="inline-flex items-center gap-10 bg-zinc-950/95 border-4 border-cyan-400 p-10 rounded-3xl shadow-2xl backdrop-blur">
+                <div>
+                    <p class="text-cyan-400 text-xs tracking-[3px] mb-2">SERVER IP</p>
+                    <span id="server-ip" class="minecraft-font text-7xl font-bold text-white">3.144.255.235</span>
+                </div>
+                <button onclick="copyIP()" class="fun-btn text-2xl px-14 py-6">COPY IP</button>
+            </div>
+
+            <div class="mt-20">
+                <a href="#join" class="fun-btn text-4xl px-24 py-9">JOIN NOW</a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-16 left-1/2 flex flex-col items-center text-cyan-400">
+            <i class="fa-solid fa-chevron-down text-5xl animate-bounce"></i>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 bg-[#111111]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="minecraft-font text-7xl text-cyan-400 mb-12">WELCOME TO THE CHAOS</h2>
+            <div class="bg-zinc-900/90 border border-cyan-500/40 p-16 rounded-3xl max-w-3xl mx-auto">
+                <p class="text-3xl leading-relaxed text-zinc-200">
+                    The ultimate chill survival server. Massive world, player shops, weekly events, 
+                    and a zero-toxicity community. Build, explore, and make memories (or rivals).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-32 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="minecraft-font text-7xl text-center mb-24 text-cyan-400">WHAT MAKES US DIFFERENT</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="fun-card">
+                    <h3 class="minecraft-font text-4xl mb-6">20,000×20,000 WORLD</h3>
+                    <p class="text-zinc-400 text-lg">Custom terrain, deep caves, dungeons & endless exploration.</p>
+                </div>
+                <div class="fun-card">
+                    <h3 class="minecraft-font text-4xl mb-6">REAL PLAYER ECONOMY</h3>
+                    <p class="text-zinc-400 text-lg">Shops, auctions, jobs. No pay-to-win — get rich the real way.</p>
+                </div>
+                <div class="fun-card">
+                    <h3 class="minecraft-font text-4xl mb-6">WEEKLY EVENTS</h3>
+                    <p class="text-zinc-400 text-lg">Spleef, parkour, PvP tournaments & treasure hunts every weekend.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="join" class="py-32 bg-cyan-950/70">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="minecraft-font text-7xl mb-20 text-cyan-400">HOW TO JOIN</h2>
+            
+            <div class="bg-zinc-900 border border-cyan-400/30 p-16 rounded-3xl max-w-2xl mx-auto">
+                <div class="space-y-14 text-left">
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-cyan-400 text-black font-bold text-4xl flex items-center justify-center rounded-2xl">1</div>
+                        <div><p class="text-3xl">Launch Minecraft 1.21+</p></div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-cyan-400 text-black font-bold text-4xl flex items-center justify-center rounded-2xl">2</div>
+                        <div><p class="text-3xl">Multiplayer → Add Server</p></div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-cyan-400 text-black font-bold text-4xl flex items-center justify-center rounded-2xl">3</div>
+                        <div>
+                            <p class="text-3xl mb-4">Paste the IP</p>
+                            <div class="bg-black border-4 border-cyan-400 p-8 rounded-2xl text-5xl minecraft-font text-cyan-400" id="join-ip">3.144.255.235</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="copyIP()" class="fun-btn mt-16 text-3xl px-24 py-8">COPY IP TO CLIPBOARD</button>
+        </div>
+    </section>
+
+    <section id="discord" class="py-32 bg-zinc-950">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <i class="fa-brands fa-discord text-[140px] text-[#5865F2] mb-10"></i>
+            <h2 class="minecraft-font text-7xl mb-10">JOIN OUR DISCORD</h2>
+            <p class="text-3xl text-zinc-300 mb-14">Chat • Events • Memes • Support 24/7</p>
+            <a href="https://discord.gg/your-discord-link-here" target="_blank" class="fun-btn text-3xl px-20 py-8 flex items-center gap-6 mx-auto w-fit">
+                <i class="fa-brands fa-discord text-5xl"></i> JOIN DISCORD
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-black py-20 border-t border-cyan-500/30">
+        <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500 text-sm">
+            © 2026 Laggy World • Made with love and a little lag
+        </div>
+    </footer>
+
+    <script>
+        async function checkServerStatus() {
+            const ip = "3.144.255.235";
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+            const countSpan = document.getElementById('player-count');
+
+            try {
+                const res = await fetch(`https://api.mcsrvstat.us/2/${ip}`);
+                const data = await res.json();
+
+                if (data.online) {
+                    const players = data.players?.online || 0;
+                    dot.className = "w-4 h-4 bg-cyan-400 rounded-full animate-pulse";
+                    text.className = "text-cyan-300 text-base tracking-widest font-medium";
+                    countSpan.textContent = players.toLocaleString();
+                    text.innerHTML = `1.21+ SURVIVAL • <span id="player-count">${players.toLocaleString()}</span> PLAYING NOW`;
+                } else {
+                    dot.className = "w-4 h-4 bg-red-500 rounded-full";
+                    text.className = "text-red-400 text-base tracking-widest font-medium";
+                    text.textContent = "1.21+ SURVIVAL • OFFLINE";
+                }
+            } catch (err) {
+                dot.className = "w-4 h-4 bg-red-500 rounded-full";
+                text.className = "text-red-400 text-base tracking-widest font-medium";
+                text.textContent = "1.21+ SURVIVAL • OFFLINE";
+            }
+        }
+
+        function copyIP() {
+            navigator.clipboard.writeText("3.144.255.235").then(() => {
+                const n = document.createElement("div");
+                n.style.cssText = "position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#22d3ee;color:#111;padding:18px 50px;border-radius:9999px;font-family:'Press Start 2P';font-size:19px;border:5px solid #111;white-space:nowrap;z-index:9999;box-shadow:0 0 30px #22d3ee";
+                n.textContent = "IP COPIED!";
+                document.body.appendChild(n);
+                setTimeout(() => n.remove(), 2400);
+            });
+        }
+
+        window.onload = () => {
+            checkServerStatus();
+            setInterval(checkServerStatus, 25000);
+        };
+    </script>
+</body>
+</html>
