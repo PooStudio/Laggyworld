@@ -43,14 +43,13 @@
             <h1 class="minecraft-font text-7xl md:text-8xl text-cyan-400 mb-6 drop-shadow-[0_0_40px_#22d3ee]">PREMIUM RANKS</h1>
             <p class="text-3xl text-zinc-400 max-w-xl mx-auto">Support the server forever • Unlock epic perks instantly • No subscriptions • No pay-to-win</p>
         </div>
-        
-        <!-- subtle background particles -->
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#22d3ee10_0%,transparent_70%)] pointer-events-none"></div>
     </section>
 
     <section class="py-24 bg-[#0a0a0a]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
                 <div class="rank-card group">
                     <div class="rank-title minecraft-font text-amber-400">LAG</div>
                     <div class="text-5xl font-bold text-cyan-300 mt-1">$4.99</div>
@@ -61,23 +60,22 @@
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> VIP kit every 12h</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Special chat color</li>
                     </ul>
-                    <button onclick="buyRank('VIP')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET VIP • ONE-TIME</button>
+                    <button onclick="buyRank('LAG')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAG • ONE-TIME</button>
                 </div>
 
-                <!-- ELITE (popular) -->
                 <div class="rank-card border-cyan-400 scale-105 relative group">
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-400 text-black text-xs px-8 py-1.5 rounded-full font-bold tracking-widest shadow-xl">MOST POPULAR</div>
                     <div class="rank-title minecraft-font text-orange-400">LAGG</div>
                     <div class="text-5xl font-bold text-cyan-300 mt-1">$9.99</div>
                     <div class="text-xs uppercase tracking-widest text-emerald-400 mt-1 font-medium">ONE-TIME ONLY</div>
                     <ul class="mt-10 space-y-4 text-left text-lg">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All VIP perks</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All LAG perks</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 15 homes</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Elite kit every 8h</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /nick &amp; /hat</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Priority queue</li>
                     </ul>
-                    <button onclick="buyRank('ELITE')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET ELITE • ONE-TIME</button>
+                    <button onclick="buyRank('LAGG')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAGG • ONE-TIME</button>
                 </div>
 
                 <div class="rank-card group">
@@ -85,15 +83,29 @@
                     <div class="text-5xl font-bold text-cyan-300 mt-1">$19.99</div>
                     <div class="text-xs uppercase tracking-widest text-emerald-400 mt-1 font-medium">ONE-TIME ONLY</div>
                     <ul class="mt-10 space-y-4 text-left text-lg">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All Elite perks</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All LAGG perks</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Unlimited homes</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Legend kit every 4h</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Custom particle trails</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Staff-like commands</li>
                     </ul>
-                    <button onclick="buyRank('LEGEND')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LEGEND • ONE-TIME</button>
+                    <button onclick="buyRank('LAGGY')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAGGY • ONE-TIME</button>
                 </div>
 
+                <div class="rank-card group">
+                    <div class="rank-title minecraft-font text-rose-400">LAGGOD</div>
+                    <div class="text-5xl font-bold text-cyan-300 mt-1">$29.99</div>
+                    <div class="text-xs uppercase tracking-widest text-emerald-400 mt-1 font-medium">ONE-TIME ONLY</div>
+                    <ul class="mt-10 space-y-4 text-left text-lg">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All LAGGY perks</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> God kit every 2h</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Full creative mode</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Server-wide glow</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Exclusive Discord role</li>
+                    </ul>
+                    <button onclick="buyRank('LAGGOD')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAGGOD • ONE-TIME</button>
+                </div>
+            </div>
 
             <div class="text-center mt-16 max-w-md mx-auto">
                 <p class="text-zinc-400 text-sm leading-relaxed">
@@ -104,7 +116,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-black py-12 border-t border-cyan-500/30">
         <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500 text-sm">
             © 2026 Laggy World • Made with love and a little lag
@@ -113,23 +124,59 @@
 
     <script>
         function buyRank(rank) {
-            const msg = document.createElement("div");
-            msg.style.cssText = `position:fixed; top:30px; left:50%; transform:translateX(-50%); background:#111; color:#22d3ee; padding:24px 48px; border:5px solid #22d3ee; border-radius:12px; font-family:'Press Start 2P'; text-align:center; box-shadow:0 0 60px #22d3ee; z-index:99999; animation:popIn 0.4s;`;
-            msg.innerHTML = `✅ ${rank} RANK PURCHASED!<br><span class="text-xs text-emerald-400 block mt-3">ONE-TIME PAYMENT • LIFETIME ACCESS</span>`;
-            document.body.appendChild(msg);
-            
+            const toast = document.createElement("div");
+            toast.style.cssText = `position:fixed; top:30px; left:50%; transform:translateX(-50%); background:#111; color:#22d3ee; padding:24px 48px; border:5px solid #22d3ee; border-radius:12px; font-family:'Press Start 2P'; text-align:center; box-shadow:0 0 60px #22d3ee; z-index:99999; animation:popIn 0.4s;`;
+            toast.innerHTML = `✅ ${rank} RANK PURCHASED!<br><span class="text-xs text-emerald-400 block mt-3">ONE-TIME PAYMENT • LIFETIME ACCESS</span>`;
+            document.body.appendChild(toast);
+
             setTimeout(() => {
-                msg.style.transition = "all 0.4s ease";
-                msg.style.opacity = "0";
-                msg.style.transform = "translateX(-50%) scale(0.8)";
-                setTimeout(() => {
-                    msg.remove();
-                    alert("🎉 Store is LIVE soon!\n\nFor now, join Discord to complete your one-time rank purchase.");
-                }, 400);
+                toast.style.transition = "all 0.4s ease";
+                toast.style.opacity = "0";
+                toast.style.transform = "translateX(-50%) scale(0.8)";
+                setTimeout(() => toast.remove(), 400);
+
+                showCustomStoreModal(rank);
             }, 2200);
         }
-        
-        // subtle entrance animation for cards
+
+        function showCustomStoreModal(rank) {
+            const overlay = document.createElement("div");
+            overlay.style.cssText = `position:fixed; inset:0; background:rgba(10,10,10,0.95); z-index:999999; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px);`;
+
+            const modal = document.createElement("div");
+            modal.style.cssText = `background:#111; border:6px solid #22d3ee; border-radius:20px; max-width:460px; width:92%; padding:40px 32px; text-align:center; font-family:'Press Start 2P'; box-shadow:0 0 100px #22d3ee; position:relative;`;
+
+            modal.innerHTML = `
+                <div class="text-6xl mb-6">🎉</div>
+                <h2 class="text-cyan-400 text-4xl tracking-widest mb-6">STORE IS LIVE SOON!</h2>
+                <p class="text-zinc-300 text-xl leading-relaxed mb-10">
+                    For now, join Discord to complete your<br>
+                    <span class="text-emerald-400 font-bold">${rank}</span> one-time rank purchase.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                    <button onclick="this.closest('.modal-overlay').remove()" 
+                            class="fun-btn px-14 py-5 text-xl">OK</button>
+                    <a href="https://discord.gg/QUThnA4AES" target="_blank"
+                       class="fun-btn px-14 py-5 text-xl bg-[#5865F2] border-[#5865F2] text-white flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-discord text-3xl"></i>
+                        JOIN DISCORD
+                    </a>
+                </div>
+                <div onclick="this.closest('.modal-overlay').remove()" 
+                     class="absolute -top-4 -right-4 bg-black text-cyan-400 w-10 h-10 flex items-center justify-center rounded-full border-4 border-cyan-400 cursor-pointer hover:scale-110 transition-transform">✕</div>
+            `;
+
+            overlay.classList.add('modal-overlay');
+            overlay.appendChild(modal);
+            document.body.appendChild(overlay);
+
+            // Click outside to close
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) overlay.remove();
+            });
+        }
+
+        // Card entrance animation
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.rank-card');
             cards.forEach((card, i) => {
