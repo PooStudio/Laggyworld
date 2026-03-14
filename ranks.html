@@ -32,10 +32,10 @@
 
     <section class="py-32 bg-[#0a0a0a] text-center border-b border-cyan-500/30 relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <h1 class="minecraft-font text-7xl md:text-8xl text-cyan-400 mb-6 drop-shadow-[0_0_60px_#22d3ee]">PREMIUM RANKS</h1>
+            <h1 class="minecraft-font text-7xl md:text-8xl text-cyan-400 mb-6 drop-shadow-[0_0_60px_#22d3ee]">OPTIONAL PERKS</h1>
             <p class="text-3xl text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-                One-time payment. Lifetime perks.<br>
-                Pure Minecraft fun.
+                One-time payment • Lifetime fun<br>
+                Helps keep the server running ❤️
             </p>
         </div>
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#22d3ee15_0%,transparent_70%)] pointer-events-none"></div>
@@ -44,6 +44,10 @@
 
     <section class="py-16 bg-[#0a0a0a]">
         <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-emerald-300 text-lg">These are completely optional • No pay-to-win • Just extra Minecraft fun for supporters</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="rank-card group">
                     <div class="rank-title minecraft-font text-amber-400 flex items-center justify-center gap-3">
@@ -57,7 +61,7 @@
                         <li class="flex items-center gap-3"><i class="fa-solid fa-gift text-emerald-400"></i> VIP kit every 12h</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-comment-dots text-emerald-400"></i> Cool chat color</li>
                     </ul>
-                    <button onclick="buyRank('LAG')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">CLAIM LAG RANK NOW!</button>
+                    <button onclick="buyRank('LAG')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAG</button>
                 </div>
                 <div class="rank-card border-cyan-400 scale-105 relative group">
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-400 text-black text-xs px-8 py-1.5 rounded-full font-bold tracking-widest shadow-xl flex items-center gap-2">
@@ -76,7 +80,7 @@
                         <li class="flex items-center gap-3"><i class="fa-solid fa-user-secret text-emerald-400"></i> /nick &amp; /hat</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-emerald-400"></i> Priority queue (skip the wait!)</li>
                     </ul>
-                    <button onclick="buyRank('LAGG')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">CLAIM LAGG RANK NOW!</button>
+                    <button onclick="buyRank('LAGG')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAGG</button>
                 </div>
                 <div class="rank-card group">
                     <div class="rank-title minecraft-font text-purple-400 flex items-center justify-center gap-3">
@@ -92,7 +96,7 @@
                         <li class="flex items-center gap-3"><i class="fa-solid fa-sparkles text-emerald-400"></i> Custom particle trails</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-emerald-400"></i> Staff-like commands</li>
                     </ul>
-                    <button onclick="buyRank('LAGGY')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">CLAIM LAGGY RANK NOW!</button>
+                    <button onclick="buyRank('LAGGY')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAGGY</button>
                 </div>
                 <div class="rank-card group">
                     <div class="rank-title minecraft-font text-rose-400 flex items-center justify-center gap-3">
@@ -108,11 +112,12 @@
                         <li class="flex items-center gap-3"><i class="fa-solid fa-sun text-emerald-400"></i> Server-wide glow</li>
                         <li class="flex items-center gap-3"><i class="fa-brands fa-discord text-emerald-400"></i> Exclusive Discord role</li>
                     </ul>
-                    <button onclick="buyRank('LAGGOD')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">CLAIM LAGGOD RANK NOW!</button>
+                    <button onclick="buyRank('LAGGOD')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LAGGOD</button>
                 </div>
             </div>
+
             <div class="text-center mt-20">
-                <p class="text-emerald-300 text-sm tracking-widest">❤️ ONE-TIME ONLY • YOU BELONG HERE ❤️</p>
+                <p class="text-emerald-300 text-sm tracking-widest">❤️ Optional • Helps the server • You belong here ❤️</p>
             </div>
         </div>
     </section>
@@ -127,7 +132,7 @@
         function buyRank(rank) {
             const toast = document.createElement("div");
             toast.style.cssText = `position:fixed; top:30px; left:50%; transform:translateX(-50%); background:#111; color:#22d3ee; padding:24px 48px; border:5px solid #22d3ee; border-radius:12px; font-family:'Press Start 2P'; text-align:center; box-shadow:0 0 60px #22d3ee; z-index:99999; animation:popIn 0.4s;`;
-            toast.innerHTML = `🎉 ${rank} RANK UNLOCKED!<br><span class="text-xs text-emerald-400 block mt-3">ONE-TIME • LIFETIME • WELCOME TO THE SQUAD!</span>`;
+            toast.innerHTML = `🎉 ${rank} UNLOCKED!<br><span class="text-xs text-emerald-400 block mt-3">ONE-TIME • LIFETIME • THANKS FOR THE SUPPORT!</span>`;
             document.body.appendChild(toast);
             setTimeout(() => {
                 toast.style.transition = "all 0.4s ease";
@@ -144,11 +149,11 @@
             modal.style.cssText = `background:#111; border:8px solid #22d3ee; border-radius:24px; max-width:480px; width:92%; padding:48px 36px; text-align:center; font-family:'Press Start 2P'; box-shadow:0 0 120px #22d3ee; position:relative;`;
             modal.innerHTML = `
                 <div class="text-7xl mb-6 animate-bounce">🎮</div>
-                <h2 class="text-cyan-400 text-5xl tracking-widest mb-4">BOOM! RANK UNLOCKED!</h2>
-                <p class="text-emerald-400 text-2xl mb-8">Welcome to the Laggy Family, ${rank} adventurer! ❤️</p>
+                <h2 class="text-cyan-400 text-5xl tracking-widest mb-4">THANKS FOR THE SUPPORT!</h2>
+                <p class="text-emerald-400 text-2xl mb-8">${rank} perks unlocked forever ❤️</p>
                 <p class="text-zinc-300 text-xl leading-relaxed mb-12">
                     Store is LIVE soon!<br>
-                    For now, hop in Discord to grab your rank instantly.<br>
+                    For now, hop in Discord to grab your rank.<br>
                     <span class="text-emerald-400">100% one-time only</span>
                 </p>
                 <div class="flex flex-col sm:flex-row gap-5 justify-center">
