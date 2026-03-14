@@ -15,14 +15,12 @@
     <nav class="bg-black/90 backdrop-blur-xl border-b border-cyan-500/30 py-5 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
             <h1 class="minecraft-font text-4xl tracking-[-2px] text-cyan-400">LAGGY WORLD</h1>
-            
             <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm md:text-base font-medium w-full md:w-auto">
                 <a href="#about" class="nav-link hover:text-cyan-400 transition">ABOUT</a>
                 <a href="#features" class="nav-link hover:text-cyan-400 transition">FEATURES</a>
                 <a href="#join" class="nav-link hover:text-cyan-400 transition">JOIN</a>
                 <a href="#discord" class="nav-link hover:text-cyan-400 transition">DISCORD</a>
             </div>
-            
             <a href="#join" class="fun-btn text-base md:text-lg py-4 px-9">JOIN SERVER</a>
         </div>
     </nav>
@@ -45,12 +43,12 @@
                 Epic survival. /kits. Pure chaos.
             </p>
 
-            <div class="flex flex-col md:flex-row items-center gap-8 bg-zinc-950/95 border-4 border-cyan-400 p-8 md:p-12 rounded-3xl shadow-2xl mx-auto max-w-md md:max-w-none">
-                <div class="text-center md:text-left w-full">
-                    <p class="text-cyan-400 text-xs tracking-[3px] mb-3">SERVER IP</p>
-                    <span id="server-ip" class="minecraft-font text-5xl md:text-7xl font-bold text-white">laggyworld.serveminecraft.net</span>
+            <div class="minecraft-ip-box flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
+                <div>
+                    <p class="label">SERVER IP</p>
+                    <div id="server-ip" class="minecraft-font ip-text">laggyworld.serveminecraft.net</div>
                 </div>
-                <button onclick="copyIP()" class="fun-btn py-6 px-12 text-xl md:text-2xl w-full md:w-auto">COPY IP</button>
+                <button onclick="copyIP()" class="copy-btn text-xl md:text-2xl">COPY IP</button>
             </div>
 
             <div class="mt-20">
@@ -79,45 +77,47 @@
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="minecraft-font text-5xl md:text-7xl text-center mb-16 text-cyan-400">WHAT MAKES US DIFFERENT</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="fun-card p-10 md:p-16">
-                    <h3 class="minecraft-font text-3xl md:text-4xl mb-8">20,000×20,000 WORLD</h3>
+                <div class="feature-card">
+                    <h3 class="minecraft-font text-cyan-300">20,000×20,000<br>WORLD</h3>
                     <p class="text-zinc-400 text-lg">Custom terrain, deep caves, dungeons & endless exploration.</p>
                 </div>
-                <div class="fun-card p-10 md:p-16">
-                    <h3 class="minecraft-font text-3xl md:text-4xl mb-8">REAL PLAYER ECONOMY</h3>
+                <div class="feature-card">
+                    <h3 class="minecraft-font text-cyan-300">REAL PLAYER ECONOMY</h3>
                     <p class="text-zinc-400 text-lg">Shops, auctions, jobs. /kits — get rich the real way.</p>
                 </div>
-                <div class="fun-card p-10 md:p-16">
-                    <h3 class="minecraft-font text-3xl md:text-4xl mb-8">WEEKLY EVENTS</h3>
+                <div class="feature-card">
+                    <h3 class="minecraft-font text-cyan-300">WEEKLY EVENTS</h3>
                     <p class="text-zinc-400 text-lg">Spleef, parkour, PvP tournaments & treasure hunts every weekend.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="join" class="py-20 bg-cyan-950/70">
+    <section id="join" class="join-section py-20">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="minecraft-font text-5xl md:text-7xl mb-16 text-cyan-400">HOW TO JOIN</h2>
-            <div class="fun-card p-10 md:p-16 max-w-2xl mx-auto">
+            
+            <div class="max-w-2xl mx-auto bg-[#0a1a28] border border-cyan-400/70 rounded-3xl p-12">
                 <div class="space-y-14 text-left">
                     <div class="flex gap-8 items-start">
-                        <div class="w-12 h-12 flex-shrink-0 bg-cyan-400 text-black font-bold text-3xl flex items-center justify-center rounded-2xl">1</div>
-                        <p class="text-2xl md:text-3xl">Launch Minecraft 1.21+</p>
+                        <div class="step-number">1</div>
+                        <p class="text-2xl md:text-3xl text-white">Launch Minecraft 1.21+</p>
                     </div>
                     <div class="flex gap-8 items-start">
-                        <div class="w-12 h-12 flex-shrink-0 bg-cyan-400 text-black font-bold text-3xl flex items-center justify-center rounded-2xl">2</div>
-                        <p class="text-2xl md:text-3xl">Multiplayer → Add Server</p>
+                        <div class="step-number">2</div>
+                        <p class="text-2xl md:text-3xl text-white">Multiplayer → Add Server</p>
                     </div>
                     <div class="flex gap-8 items-start">
-                        <div class="w-12 h-12 flex-shrink-0 bg-cyan-400 text-black font-bold text-3xl flex items-center justify-center rounded-2xl">3</div>
-                        <div>
-                            <p class="text-2xl md:text-3xl mb-4">Paste the IP</p>
-                            <div class="bg-black border-4 border-cyan-400 p-8 rounded-2xl text-4xl md:text-5xl minecraft-font text-cyan-400" id="join-ip">laggyworld.serveminecraft.net</div>
+                        <div class="step-number">3</div>
+                        <div class="flex-1">
+                            <p class="text-2xl md:text-3xl mb-6 text-white">Paste the IP</p>
+                            <div class="join-ip-box">laggyworld.serveminecraft.net</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button onclick="copyIP()" class="fun-btn mt-12 py-7 px-16 text-2xl md:text-3xl w-full md:w-auto">COPY IP TO CLIPBOARD</button>
+
+            <button onclick="copyIP()" class="copy-btn mt-12 text-2xl md:text-3xl px-16 py-7">COPY IP TO CLIPBOARD</button>
         </div>
     </section>
 
@@ -148,7 +148,6 @@
             try {
                 const res = await fetch(`https://api.mcsrvstat.us/2/${ip}`);
                 const data = await res.json();
-
                 if (data.online) {
                     const players = data.players?.online || 0;
                     dot.className = "w-3 h-3 bg-cyan-400 rounded-full animate-pulse";
