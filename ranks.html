@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Laggy World - Premium one-time ranks. Unlock epic perks forever. No subscriptions. Pure fun.">
     <title>LAGGY WORLD • Premium Ranks</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,10 +13,9 @@
 </head>
 <body class="bg-[#0a0a0a] text-white overflow-x-hidden">
 
-    <!-- NAV - ONLY RANKS TAB -->
     <nav class="bg-black/95 backdrop-blur-2xl border-b border-cyan-500/40 py-5 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <a href="index.html" class="minecraft-font text-4xl tracking-tighter text-cyan-400 flex items-center gap-3">
+            <a href="index.html" class="minecraft-font text-4xl tracking-tighter text-cyan-400 flex items-center gap-3 hover:scale-105 transition-transform">
                 LAGGY WORLD
             </a>
 
@@ -23,7 +23,7 @@
                 <a href="ranks.html" class="nav-link text-white">RANKS</a>
             </div>
 
-            <a href="index.html#join" class="fun-btn text-lg px-10 py-4 hidden sm:flex items-center gap-2">
+            <a href="index.html#join" class="fun-btn text-lg px-10 py-4 hidden sm:flex items-center gap-2 hover:scale-110 transition-all">
                 <i class="fa-solid fa-gamepad"></i>
                 JOIN SERVER
             </a>
@@ -34,53 +34,56 @@
         </div>
     </nav>
 
-    <!-- RANKS PAGE HERO -->
-    <section class="py-32 bg-[#0a0a0a] text-center border-b border-cyan-500/30">
-        <div class="max-w-4xl mx-auto px-6">
-            <h1 class="minecraft-font text-7xl md:text-8xl text-cyan-400 mb-6">PREMIUM RANKS</h1>
-            <p class="text-3xl text-zinc-400">Support the server • Unlock epic perks • No pay-to-win</p>
+    <section class="py-32 bg-[#0a0a0a] text-center border-b border-cyan-500/30 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="inline-flex items-center gap-3 bg-black/70 px-8 py-3 rounded-3xl border border-cyan-400/50 mb-8">
+                <i class="fa-solid fa-crown text-amber-400"></i>
+                <span class="text-xs uppercase tracking-[4px] text-cyan-300 font-medium">ONE-TIME PURCHASE • LIFETIME PERKS</span>
+            </div>
+            <h1 class="minecraft-font text-7xl md:text-8xl text-cyan-400 mb-6 drop-shadow-[0_0_40px_#22d3ee]">PREMIUM RANKS</h1>
+            <p class="text-3xl text-zinc-400 max-w-xl mx-auto">Support the server forever • Unlock epic perks instantly • No subscriptions • No pay-to-win</p>
         </div>
+        
+        <!-- subtle background particles -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#22d3ee10_0%,transparent_70%)] pointer-events-none"></div>
     </section>
 
-    <!-- RANKS GRID -->
     <section class="py-24 bg-[#0a0a0a]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- VIP -->
-                <div class="rank-card">
-                    <div class="rank-title minecraft-font text-amber-400">VIP</div>
+                <div class="rank-card group">
+                    <div class="rank-title minecraft-font text-amber-400">LAG</div>
                     <div class="text-5xl font-bold text-cyan-300 mt-1">$4.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
+                    <div class="text-xs uppercase tracking-widest text-emerald-400 mt-1 font-medium">ONE-TIME ONLY</div>
                     <ul class="mt-10 space-y-4 text-left text-lg">
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /fly command</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 5 extra homes</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> VIP kit every 12h</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Special chat color</li>
                     </ul>
-                    <button onclick="fakeBuy('VIP')" class="fun-btn w-full mt-12 text-lg">GET VIP</button>
+                    <button onclick="buyRank('VIP')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET VIP • ONE-TIME</button>
                 </div>
 
                 <!-- ELITE (popular) -->
-                <div class="rank-card border-cyan-400 scale-105 relative">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-400 text-black text-xs px-6 py-1 rounded-full font-bold tracking-widest">MOST POPULAR</div>
-                    <div class="rank-title minecraft-font text-orange-400">ELITE</div>
+                <div class="rank-card border-cyan-400 scale-105 relative group">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-400 text-black text-xs px-8 py-1.5 rounded-full font-bold tracking-widest shadow-xl">MOST POPULAR</div>
+                    <div class="rank-title minecraft-font text-orange-400">LAGG</div>
                     <div class="text-5xl font-bold text-cyan-300 mt-1">$9.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
+                    <div class="text-xs uppercase tracking-widest text-emerald-400 mt-1 font-medium">ONE-TIME ONLY</div>
                     <ul class="mt-10 space-y-4 text-left text-lg">
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All VIP perks</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 15 homes</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Elite kit every 8h</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /nick & /hat</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /nick &amp; /hat</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Priority queue</li>
                     </ul>
-                    <button onclick="fakeBuy('ELITE')" class="fun-btn w-full mt-12 text-lg">GET ELITE</button>
+                    <button onclick="buyRank('ELITE')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET ELITE • ONE-TIME</button>
                 </div>
 
-                <!-- LEGEND -->
-                <div class="rank-card">
-                    <div class="rank-title minecraft-font text-purple-400">LEGEND</div>
+                <div class="rank-card group">
+                    <div class="rank-title minecraft-font text-purple-400">LAGGY</div>
                     <div class="text-5xl font-bold text-cyan-300 mt-1">$19.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
+                    <div class="text-xs uppercase tracking-widest text-emerald-400 mt-1 font-medium">ONE-TIME ONLY</div>
                     <ul class="mt-10 space-y-4 text-left text-lg">
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All Elite perks</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Unlimited homes</li>
@@ -88,28 +91,16 @@
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Custom particle trails</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Staff-like commands</li>
                     </ul>
-                    <button onclick="fakeBuy('LEGEND')" class="fun-btn w-full mt-12 text-lg">GET LEGEND</button>
+                    <button onclick="buyRank('LEGEND')" class="fun-btn w-full mt-12 text-lg group-hover:scale-105 transition-transform">GET LEGEND • ONE-TIME</button>
                 </div>
 
-                <!-- GOD -->
-                <div class="rank-card">
-                    <div class="rank-title minecraft-font text-rose-400">GOD</div>
-                    <div class="text-5xl font-bold text-cyan-300 mt-1">$29.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
-                    <ul class="mt-10 space-y-4 text-left text-lg">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All Legend perks</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> God kit every 2h</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Full creative mode</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Server-wide glow</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Exclusive Discord role</li>
-                    </ul>
-                    <button onclick="fakeBuy('GOD')" class="fun-btn w-full mt-12 text-lg">GET GOD</button>
-                </div>
+
+            <div class="text-center mt-16 max-w-md mx-auto">
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    All ranks are <span class="text-emerald-400 font-medium">ONE-TIME PAYMENTS</span>.<br>
+                    No monthly fees. No pay-to-win. Just pure Laggy love ❤️
+                </p>
             </div>
-
-            <p class="text-center text-zinc-500 text-sm mt-16">
-                Ranks are completely optional • No pay-to-win • Helps keep the server alive ❤️
-            </p>
         </div>
     </section>
 
@@ -121,13 +112,36 @@
     </footer>
 
     <script>
-        function fakeBuy(rank) {
+        function buyRank(rank) {
             const msg = document.createElement("div");
-            msg.style.cssText = `position:fixed; top:30px; left:50%; transform:translateX(-50%); background:#111; color:#22d3ee; padding:20px 40px; border:5px solid #22d3ee; border-radius:12px; font-family:'Press Start 2P'; text-align:center; box-shadow:0 0 50px #22d3ee; z-index:99999;`;
-            msg.innerHTML = `✅ ${rank} RANK SELECTED!<br><span class="text-xs text-zinc-400">Redirecting to store...</span>`;
+            msg.style.cssText = `position:fixed; top:30px; left:50%; transform:translateX(-50%); background:#111; color:#22d3ee; padding:24px 48px; border:5px solid #22d3ee; border-radius:12px; font-family:'Press Start 2P'; text-align:center; box-shadow:0 0 60px #22d3ee; z-index:99999; animation:popIn 0.4s;`;
+            msg.innerHTML = `✅ ${rank} RANK PURCHASED!<br><span class="text-xs text-emerald-400 block mt-3">ONE-TIME PAYMENT • LIFETIME ACCESS</span>`;
             document.body.appendChild(msg);
-            setTimeout(() => { msg.remove(); alert("Store coming soon! For now, join Discord to buy ranks."); }, 1800);
+            
+            setTimeout(() => {
+                msg.style.transition = "all 0.4s ease";
+                msg.style.opacity = "0";
+                msg.style.transform = "translateX(-50%) scale(0.8)";
+                setTimeout(() => {
+                    msg.remove();
+                    alert("🎉 Store is LIVE soon!\n\nFor now, join Discord to complete your one-time rank purchase.");
+                }, 400);
+            }, 2200);
         }
+        
+        // subtle entrance animation for cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.rank-card');
+            cards.forEach((card, i) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(40px)';
+                setTimeout(() => {
+                    card.style.transition = `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 80}ms`;
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
     </script>
 </body>
 </html>
