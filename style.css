@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.2;
 }
 
 .minecraft-font {
@@ -10,7 +11,7 @@ body {
 }
 
 .hero-bg {
-    background: linear-gradient(rgba(8, 47, 73, 0.85), rgba(8, 47, 73, 0.95)),
+    background: linear-gradient(rgba(8, 47, 73, 0.88), rgba(8, 47, 73, 0.96)),
                 url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat fixed;
 }
 
@@ -19,17 +20,18 @@ body {
     color: #111;
     font-family: 'Press Start 2P';
     font-weight: 700;
+    padding: 18px 36px;
     transition: all 0.25s ease;
-    box-shadow: 0 0 35px #22d3ee;
+    box-shadow: 0 0 40px #22d3ee;
     border: 6px solid #111;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 }
 
 .fun-btn:hover {
     background: #67e8f9;
-    transform: scale(1.08) rotate(1deg);
-    box-shadow: 0 0 70px #22d3ee;
+    transform: scale(1.09) rotate(1deg);
+    box-shadow: 0 0 80px #22d3ee;
 }
 
 .fun-card {
@@ -45,6 +47,7 @@ body {
     box-shadow: 0 40px 80px rgba(34, 211, 238, 0.35);
 }
 
+/* Extra safety */
 section {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 90px;
 }
