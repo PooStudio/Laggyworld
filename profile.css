@@ -1,33 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap');
 
 body {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
 .minecraft-font {
     font-family: 'Press Start 2P', system-ui;
-    text-shadow: 3px 3px 0 #000;
+    text-shadow: 4px 4px 0 #000;
 }
 
 .hero-bg {
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-                url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
+    background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)),
+                url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat fixed;
 }
 
-.card-hover {
+/* MODERN BUTTON */
+.modern-btn {
+    background: #10b981;
+    color: black;
+    font-family: 'Press Start 2P';
+    font-weight: 700;
+    padding: 16px 32px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
 }
 
-.card-hover:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 0 30px #10b981;
+.modern-btn:hover {
+    background: #34d399;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.8);
 }
 
-.pixel-btn {
-    transition: all 0.2s ease;
+/* MODERN CARDS */
+.modern-card {
+    background: rgba(255,255,255,0.03);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    padding: 40px 30px;
+    transition: all 0.4s ease;
+    border-radius: 20px;
 }
 
-.pixel-btn:hover {
-    background-color: #10b981;
-    transform: scale(1.05);
+.modern-card:hover {
+    border-color: #10b981;
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+}
+
+/* Extra polish */
+section {
+    scroll-margin-top: 80px;
 }
