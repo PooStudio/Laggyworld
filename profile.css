@@ -14,6 +14,7 @@ body {
                 url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat fixed;
 }
 
+/* === 2000s RETRO FUN BUTTONS === */
 .fun-btn {
     background: #a3e635;
     color: #111;
@@ -33,6 +34,7 @@ body {
     box-shadow: 0 0 60px #facc15;
 }
 
+/* === 2000s FUN CARDS === */
 .fun-card {
     background: rgba(255,255,255,0.05);
     border: 6px solid #a3e635;
@@ -47,20 +49,7 @@ body {
     box-shadow: 0 30px 60px rgba(163, 230, 53, 0.4);
 }
 
-.floating-emoji {
-    position: absolute;
-    animation: float 6s ease-in-out infinite;
-    opacity: 0.9;
-    font-size: 2.5rem;
-    z-index: 10;
-    pointer-events: none;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-40px) rotate(15deg); }
-}
-
+/* Extra polish */
 section {
     scroll-margin-top: 100px;
 }
