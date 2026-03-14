@@ -3,215 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laggy World • Minecraft Server</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>LAGGY WORLD • mess hacker edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#0f0f0f] text-white overflow-x-hidden">
+<body>
 
-    <!-- FUN NAV -->
-    <nav class="bg-black/90 backdrop-blur-xl border-b-4 border-lime-400 py-6 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <span class="text-5xl animate-bounce">⛏️</span>
-                <h1 class="minecraft-font text-5xl tracking-widest text-lime-400 drop-shadow-[0_0_15px_#a3e635]">LAGGY WORLD</h1>
-            </div>
-            
-            <div class="flex gap-9 text-base font-medium">
-                <a href="#about" class="hover:text-yellow-300 transition flex items-center gap-2">ABOUT 😎</a>
-                <a href="#features" class="hover:text-yellow-300 transition flex items-center gap-2">FEATURES 🔥</a>
-                <a href="#join" class="hover:text-yellow-300 transition flex items-center gap-2">JOIN NOW</a>
-                <a href="#discord" class="hover:text-yellow-300 transition flex items-center gap-2">DISCORD 🎉</a>
-            </div>
-            
-            <a href="#join" class="fun-btn text-xl">JOIN SERVER</a>
-        </div>
-    </nav>
+    <!-- OVERLAYS (noise + scanlines + glitch layer) -->
+    <div id="noise" class="scanlines"></div>
+    <div class="glitch-overlay"></div>
 
-    <!-- SUPER FUN HERO -->
-    <section class="hero-bg h-screen flex items-center justify-center text-center relative overflow-hidden">
-        <!-- floating fun elements -->
-        <div class="absolute inset-0 pointer-events-none">
-            <span class="floating-emoji text-6xl left-[10%] top-[20%]">⛏️</span>
-            <span class="floating-emoji text-6xl right-[15%] top-[35%]">🌈</span>
-            <span class="floating-emoji text-6xl left-[25%] bottom-[25%]">😂</span>
-            <span class="floating-emoji text-6xl right-[20%] bottom-[40%]">🔥</span>
-        </div>
+    <!-- NAV -->
+    <header>
+        <div class="logo glitch" data-text="⛏️ LAGGY WORLD">⛏️ LAGGY WORLD</div>
+        <nav>
+            <a href="#about">ABOUT</a>
+            <a href="#features">FEATURES</a>
+            <a href="#join">JOIN</a>
+            <a href="#discord">DISCORD</a>
+        </nav>
+        <button onclick="copyIP()" class="btn-primary">JOIN SERVER</button>
+    </header>
 
-        <div class="max-w-6xl mx-auto px-6 z-10">
-            <div class="mb-6 inline-flex items-center gap-4 bg-black/70 px-10 py-3 rounded-3xl border-4 border-yellow-300">
-                <div class="w-4 h-4 bg-lime-400 rounded-full animate-ping"></div>
-                <span class="minecraft-font text-yellow-300 text-xl tracking-widest">1.21+ • 2,341 PLAYERS GOING CRAZY RIGHT NOW</span>
-            </div>
+    <!-- HERO -->
+    <section class="hero-bg">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="glitch aero-glow" data-text="LAGGY WORLD" style="font-size: 6.5rem; line-height: 1; margin-bottom: 1rem;">
+                    LAGGY WORLD
+                </h1>
+                <p class="aero-glow" style="font-size: 1.8rem; color: var(--aero-aqua); margin-bottom: 2rem;">
+                    1.21+ SURVIVAL • CHAOTIC • NO PAY-TO-WIN • MAX LAG
+                </p>
 
-            <h1 class="minecraft-font text-[120px] md:text-[160px] leading-none tracking-[-6px] mb-4 text-lime-300 drop-shadow-[0_0_30px_#a3e635]">
-                LAGGY<br>WORLD
-            </h1>
-            
-            <p class="text-4xl text-yellow-200 max-w-2xl mx-auto mb-10">
-                The FUNNIEST &amp; most chaotic survival server ever made 😂<br>
-                <span class="text-lime-400">Zero pay-to-win • Max vibes • Lots of lag</span>
-            </p>
-
-            <!-- FUN IP BOX -->
-            <div class="inline-flex items-center gap-8 bg-zinc-950/95 border-8 border-yellow-300 p-10 rounded-3xl shadow-[0_0_60px_#a3e635]">
-                <div>
-                    <p class="text-yellow-300 text-sm tracking-[6px] mb-2">SERVER IP →</p>
-                    <span id="server-ip" class="minecraft-font text-7xl font-black text-white">play.laggyworld.mc</span>
+                <!-- GLASS IP BOX -->
+                <div class="glass" style="max-width: 520px; margin: 0 auto; padding: 2.5rem; text-align: center;">
+                    <p style="color: var(--y2k-lime); font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 0.5rem;">SERVER IP</p>
+                    <span id="server-ip" class="minecraft-font glitch" data-text="play.laggyworld.mc" 
+                          style="font-size: 3.2rem; display: block; color: var(--y2k-cyan);">
+                        play.laggyworld.mc
+                    </span>
+                    <button onclick="copyIP()" class="btn-primary" style="margin-top: 1.5rem; width: 100%;">
+                        COPY IP →
+                    </button>
                 </div>
-                <button onclick="copyIPWithConfetti()" class="fun-btn text-2xl px-16 py-7">COPY IP</button>
-            </div>
-
-            <div class="mt-16">
-                <a href="#join" class="fun-btn text-4xl px-28 py-10">LET'S GET LAGGY ⛏️😂</a>
             </div>
         </div>
-
-        <div class="absolute bottom-12 left-1/2 text-yellow-300 text-5xl animate-bounce">↓</div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-28 bg-[#111111]">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="minecraft-font text-7xl text-yellow-300 mb-12">YO WELCOME TO THE MADNESS 😂</h2>
-            <div class="bg-zinc-900 border-4 border-lime-400 p-16 rounded-3xl">
-                <p class="text-3xl leading-relaxed text-zinc-100">
-                    A super fun survival server where you can build epic bases, 
-                    troll your friends (safely), trade in player shops, and join 
-                    crazy weekly events! No toxic vibes, just good times and laggy memes.
-                </p>
-            </div>
+    <section id="about" class="container">
+        <div class="glass profile-card" style="max-width: 800px; margin: 0 auto;">
+            <h2 class="aero-glow glitch" data-text="WELCOME TO THE CHAOS" style="font-size: 2.8rem; margin-bottom: 1.5rem;">
+                WELCOME TO THE CHAOS
+            </h2>
+            <p style="font-size: 1.3rem; line-height: 1.8; color: var(--aero-white);">
+                Huge custom world. Player shops. Weekly events. Zero rules, zero pay-to-win.<br>
+                Just pure laggy hacker vibes and good times. Join the mess.
+            </p>
         </div>
     </section>
 
     <!-- FEATURES -->
-    <section id="features" class="py-28 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="minecraft-font text-7xl text-center mb-20 text-lime-400">WHY THIS SERVER SLAPS 🔥</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="fun-card">
-                    <div class="text-8xl mb-8">🌎</div>
-                    <h3 class="minecraft-font text-4xl mb-4">MASSIVE CUSTOM WORLD</h3>
-                    <p class="text-xl">20k × 20k blocks of pure chaos. Custom caves, dungeons, and secret loot!</p>
-                </div>
-                <div class="fun-card">
-                    <div class="text-8xl mb-8">🛒</div>
-                    <h3 class="minecraft-font text-4xl mb-4">PLAYER SHOPS &amp; ECONOMY</h3>
-                    <p class="text-xl">Buy &amp; sell anything. Auctions. Jobs. Get rich and flex on your friends!</p>
-                </div>
-                <div class="fun-card">
-                    <div class="text-8xl mb-8">🎉</div>
-                    <h3 class="minecraft-font text-4xl mb-4">WEEKLY INSANE EVENTS</h3>
-                    <p class="text-xl">Spleef tournaments, parkour races, PvP battles, treasure hunts... every weekend!</p>
-                </div>
+    <section id="features" class="container">
+        <h2 class="aero-glow glitch text-center" data-text="WHY THIS SERVER HITS DIFFERENT" style="font-size: 3rem; margin-bottom: 3rem;">
+            WHY THIS SERVER HITS DIFFERENT
+        </h2>
+        <div class="details-grid">
+            <div class="glass detail-item">
+                <span class="aero-glow" style="font-size: 3rem; display: block; margin-bottom: 1rem;">🌍</span>
+                <h3 style="color: var(--y2k-lime);">20k×20k CUSTOM WORLD</h3>
+                <p style="color: var(--aero-aqua);">Endless exploration, secret dungeons, and laggy caves.</p>
+            </div>
+            <div class="glass detail-item">
+                <span class="aero-glow" style="font-size: 3rem; display: block; margin-bottom: 1rem;">🛒</span>
+                <h3 style="color: var(--y2k-lime);">PLAYER ECONOMY</h3>
+                <p style="color: var(--aero-aqua);">Shops, auctions, jobs. Get rich the chaotic way.</p>
+            </div>
+            <div class="glass detail-item">
+                <span class="aero-glow" style="font-size: 3rem; display: block; margin-bottom: 1rem;">🎉</span>
+                <h3 style="color: var(--y2k-lime);">WEEKLY EVENTS</h3>
+                <p style="color: var(--aero-aqua);">Spleef, parkour, PvP tournaments — pure mess every weekend.</p>
             </div>
         </div>
     </section>
 
-    <!-- JOIN -->
-    <section id="join" class="py-28 bg-gradient-to-b from-lime-950 to-black">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="minecraft-font text-7xl mb-16 text-yellow-300">HOW TO JOIN (SUPER EASY)</h2>
-            
-            <div class="bg-zinc-900 border-8 border-yellow-300 p-20 rounded-3xl max-w-2xl mx-auto">
-                <div class="space-y-16 text-left">
-                    <div class="flex gap-10 items-start">
-                        <div class="w-16 h-16 bg-lime-400 text-black font-black text-5xl flex items-center justify-center rounded-2xl">1</div>
-                        <p class="text-4xl">Open Minecraft 1.21+</p>
-                    </div>
-                    <div class="flex gap-10 items-start">
-                        <div class="w-16 h-16 bg-lime-400 text-black font-black text-5xl flex items-center justify-center rounded-2xl">2</div>
-                        <p class="text-4xl">Multiplayer → Add Server</p>
-                    </div>
-                    <div class="flex gap-10 items-start">
-                        <div class="w-16 h-16 bg-lime-400 text-black font-black text-5xl flex items-center justify-center rounded-2xl">3</div>
-                        <div>
-                            <p class="text-4xl mb-6">Paste this IP:</p>
-                            <div class="bg-black border-8 border-lime-400 p-10 rounded-3xl text-6xl minecraft-font text-yellow-300" id="join-ip">play.laggyworld.mc</div>
+    <!-- HOW TO JOIN -->
+    <section id="join" class="container">
+        <div class="glass" style="max-width: 700px; margin: 0 auto; padding: 3rem;">
+            <h2 class="aero-glow glitch text-center" data-text="HOW TO JOIN" style="font-size: 2.8rem; margin-bottom: 2rem;">
+                HOW TO JOIN
+            </h2>
+            <div class="space-y-8">
+                <div class="flex gap-6">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(var(--aero-blue), var(--aero-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;">1</div>
+                    <div style="flex: 1;"><p style="font-size: 1.4rem;">Open Minecraft 1.21+</p></div>
+                </div>
+                <div class="flex gap-6">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(var(--aero-blue), var(--aero-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;">2</div>
+                    <div style="flex: 1;"><p style="font-size: 1.4rem;">Multiplayer → Add Server</p></div>
+                </div>
+                <div class="flex gap-6">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(var(--aero-blue), var(--aero-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;">3</div>
+                    <div style="flex: 1;">
+                        <p style="font-size: 1.4rem; margin-bottom: 1rem;">Paste the IP:</p>
+                        <div class="glass" style="padding: 1.5rem; font-size: 2.2rem; text-align: center; color: var(--y2k-cyan);" id="join-ip">
+                            play.laggyworld.mc
                         </div>
                     </div>
                 </div>
             </div>
-
-            <button onclick="copyIPWithConfetti()" class="fun-btn mt-16 text-4xl px-24 py-9">COPY IP + GET CONFETTI 🎉</button>
+            <button onclick="copyIP()" class="btn-primary" style="width: 100%; margin-top: 2rem;">COPY IP + GLITCH MODE</button>
         </div>
     </section>
 
     <!-- DISCORD -->
-    <section id="discord" class="py-28 bg-zinc-950">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <i class="fa-brands fa-discord text-[140px] text-[#5865F2] mb-8 animate-pulse"></i>
-            <h2 class="minecraft-font text-7xl mb-8 text-yellow-300">JOIN THE DISCORD GANG</h2>
-            <p class="text-4xl text-zinc-300 mb-12">Memes, events, voice chat, and free diamonds 😂</p>
-            <a href="https://discord.gg/your-discord-link-here" target="_blank" 
-               class="fun-btn text-4xl px-20 py-10 flex items-center gap-8 mx-auto w-fit">
-                <i class="fa-brands fa-discord text-6xl"></i> 
-                JOIN DISCORD RIGHT NOW
-            </a>
-        </div>
+    <section id="discord" class="container text-center">
+        <i class="fa-brands fa-discord" style="font-size: 6rem; color: #5865F2; margin-bottom: 1rem; filter: drop-shadow(0 0 30px #5865F2);"></i>
+        <h2 class="aero-glow glitch" data-text="JOIN THE DISCORD GANG" style="font-size: 3rem;">
+            JOIN THE DISCORD GANG
+        </h2>
+        <p style="font-size: 1.6rem; color: var(--aero-aqua); margin: 1.5rem 0;">Memes, voice chat, events, and free chaos 24/7</p>
+        <a href="https://discord.gg/your-discord-link-here" target="_blank" class="btn-primary" style="font-size: 1.5rem; padding: 1rem 3rem;">
+            JOIN DISCORD →
+        </a>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-16 border-t-8 border-lime-400">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex justify-center gap-12 text-6xl mb-8">
-                ⛏️ 🌍 🔥 😂
+    <footer class="site-footer">
+        <div class="footer-inner glass">
+            <div class="footer-logo glitch" data-text="LAGGY WORLD">LAGGY WORLD</div>
+            <div class="footer-copy">
+                © 2026 • MADE IN THE MATRIX • ZERO SERIOUSNESS
             </div>
-            <p class="text-zinc-400 text-xl">© 2026 Laggy World • Made with 100% chaos and zero seriousness</p>
         </div>
     </footer>
 
     <script>
-        // Simple confetti function for extra FUN
-        function launchConfetti() {
-            const colors = ['#a3e635', '#facc15', '#22c55e', '#eab308'];
-            for (let i = 0; i < 150; i++) {
-                const confetti = document.createElement('div');
-                confetti.style.position = 'fixed';
-                confetti.style.zIndex = '99999';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-20px';
-                confetti.style.fontSize = '20px';
-                confetti.textContent = ['⛏️','😂','🔥','🌈','⭐'][Math.floor(Math.random()*5)];
-                confetti.style.transform = `rotate(${Math.random()*360}deg)`;
-                document.body.appendChild(confetti);
-                
-                const duration = Math.random() * 3000 + 2000;
-                confetti.animate([
-                    { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
-                    { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random()*720}deg)`, opacity: 0 }
-                ], {
-                    duration: duration,
-                    easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
-                });
-                
-                setTimeout(() => confetti.remove(), duration);
-            }
-        }
-
-        function copyIPWithConfetti() {
+        function copyIP() {
             navigator.clipboard.writeText("play.laggyworld.mc").then(() => {
                 const notif = document.createElement("div");
                 notif.style.cssText = `
-                    position:fixed; bottom:40px; left:50%; transform:translateX(-50%);
-                    background:#a3e635; color:#111; padding:18px 40px; font-family:'Press Start 2P';
-                    font-size:22px; border:6px solid #111; border-radius:9999px; z-index:99999;
-                    box-shadow:0 0 40px #a3e635;
+                    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+                    background: rgba(0,255,127,0.9); color: #000; padding: 18px 36px;
+                    font-family: 'Press Start 2P'; font-size: 1.1rem; border: 4px solid #00ffff;
+                    box-shadow: 0 0 40px #00ffff; z-index: 99999; white-space: nowrap;
                 `;
-                notif.textContent = "✅ IP COPIED! ENJOY THE CHAOS!";
+                notif.textContent = "✅ IP COPIED • GLITCH ACTIVATED";
                 document.body.appendChild(notif);
-                
-                launchConfetti();
-                
-                setTimeout(() => {
-                    notif.style.transition = "all 0.5s";
-                    notif.style.opacity = "0";
-                    setTimeout(() => notif.remove(), 500);
-                }, 2200);
+
+                // Quick glitch flash on title
+                document.querySelectorAll('.glitch').forEach(el => {
+                    el.style.animation = 'glitchAnim 0.6s linear 3';
+                    setTimeout(() => el.style.animation = '', 2000);
+                });
+
+                setTimeout(() => notif.remove(), 2200);
             });
         }
     </script>
