@@ -10,11 +10,9 @@
 </head>
 <body>
 
-    <!-- OVERLAYS (noise + scanlines + glitch layer) -->
     <div id="noise" class="scanlines"></div>
     <div class="glitch-overlay"></div>
 
-    <!-- NAV -->
     <header>
         <div class="logo glitch" data-text="⛏️ LAGGY WORLD">⛏️ LAGGY WORLD</div>
         <nav>
@@ -26,7 +24,6 @@
         <button onclick="copyIP()" class="btn-primary">JOIN SERVER</button>
     </header>
 
-    <!-- HERO -->
     <section class="hero-bg">
         <div class="container">
             <div class="text-center">
@@ -37,7 +34,6 @@
                     1.21+ SURVIVAL • CHAOTIC • NO PAY-TO-WIN • MAX LAG
                 </p>
 
-                <!-- GLASS IP BOX -->
                 <div class="glass" style="max-width: 520px; margin: 0 auto; padding: 2.5rem; text-align: center;">
                     <p style="color: var(--y2k-lime); font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 0.5rem;">SERVER IP</p>
                     <span id="server-ip" class="minecraft-font glitch" data-text="play.laggyworld.mc" 
@@ -52,7 +48,6 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="container">
         <div class="glass profile-card" style="max-width: 800px; margin: 0 auto;">
             <h2 class="aero-glow glitch" data-text="WELCOME TO THE CHAOS" style="font-size: 2.8rem; margin-bottom: 1.5rem;">
@@ -65,7 +60,6 @@
         </div>
     </section>
 
-    <!-- FEATURES -->
     <section id="features" class="container">
         <h2 class="aero-glow glitch text-center" data-text="WHY THIS SERVER HITS DIFFERENT" style="font-size: 3rem; margin-bottom: 3rem;">
             WHY THIS SERVER HITS DIFFERENT
@@ -89,7 +83,6 @@
         </div>
     </section>
 
-    <!-- HOW TO JOIN -->
     <section id="join" class="container">
         <div class="glass" style="max-width: 700px; margin: 0 auto; padding: 3rem;">
             <h2 class="aero-glow glitch text-center" data-text="HOW TO JOIN" style="font-size: 2.8rem; margin-bottom: 2rem;">
@@ -118,7 +111,6 @@
         </div>
     </section>
 
-    <!-- DISCORD -->
     <section id="discord" class="container text-center">
         <i class="fa-brands fa-discord" style="font-size: 6rem; color: #5865F2; margin-bottom: 1rem; filter: drop-shadow(0 0 30px #5865F2);"></i>
         <h2 class="aero-glow glitch" data-text="JOIN THE DISCORD GANG" style="font-size: 3rem;">
@@ -130,7 +122,6 @@
         </a>
     </section>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-inner glass">
             <div class="footer-logo glitch" data-text="LAGGY WORLD">LAGGY WORLD</div>
@@ -152,13 +143,10 @@
                 `;
                 notif.textContent = "✅ IP COPIED • GLITCH ACTIVATED";
                 document.body.appendChild(notif);
-
-                // Quick glitch flash on title
                 document.querySelectorAll('.glitch').forEach(el => {
                     el.style.animation = 'glitchAnim 0.6s linear 3';
                     setTimeout(() => el.style.animation = '', 2000);
                 });
-
                 setTimeout(() => notif.remove(), 2200);
             });
         }
