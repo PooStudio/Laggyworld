@@ -14,12 +14,13 @@ body {
                 url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat fixed;
 }
 
+/* === RESPONSIVE BLUE BUTTONS === */
 .fun-btn {
     background: #22d3ee;
     color: #111;
     font-family: 'Press Start 2P';
     font-weight: 700;
-    padding: 18px 36px;
+    padding: 16px 28px;
     transition: all 0.25s ease;
     box-shadow: 0 0 35px #22d3ee;
     border: 6px solid #111;
@@ -33,11 +34,11 @@ body {
     box-shadow: 0 0 70px #22d3ee;
 }
 
-/* === IMPROVED CARDS === */
+/* === RESPONSIVE CARDS === */
 .fun-card {
     background: rgba(255,255,255,0.04);
     border: 6px solid #22d3ee;
-    padding: 60px 40px;
+    padding: 40px 25px;
     transition: all 0.35s ease;
     border-radius: 28px;
 }
@@ -48,7 +49,6 @@ body {
     box-shadow: 0 40px 80px rgba(34, 211, 238, 0.35);
 }
 
-/* Extra polish */
 section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 80px;
 }
