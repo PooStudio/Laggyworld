@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.minecraft-font {
+    font-family: 'Press Start 2P', system-ui;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.hero-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+                url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 30px #10b981;
+}
+
+.pixel-btn {
+    transition: all 0.2s ease;
+}
+
+.pixel-btn:hover {
+    background-color: #10b981;
+    transform: scale(1.05);
+}

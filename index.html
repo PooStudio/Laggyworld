@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laggy World • Minecraft Server</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Font (Press Start 2P) -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- YOUR CUSTOM CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#111111] text-white overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="bg-black border-b-4 border-emerald-600 py-5 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-4xl">⛏️</span>
+                <h1 class="minecraft-font text-3xl tracking-widest text-emerald-400">LAGGY WORLD</h1>
+            </div>
+            
+            <div class="flex gap-8 text-sm font-medium">
+                <a href="#about" class="hover:text-emerald-400 transition">ABOUT</a>
+                <a href="#features" class="hover:text-emerald-400 transition">FEATURES</a>
+                <a href="#join" class="hover:text-emerald-400 transition">JOIN</a>
+                <a href="#discord" class="hover:text-emerald-400 transition">DISCORD</a>
+            </div>
+            
+            <a href="#join" class="bg-emerald-500 hover:bg-emerald-600 text-black font-bold px-6 py-2 rounded-none text-sm tracking-widest pixel-btn">
+               JOIN SERVER
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg h-screen flex items-center justify-center text-center relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="mb-8">
+                <span class="inline-block bg-black/80 text-emerald-400 px-8 py-3 text-xl tracking-[4px] border-4 border-emerald-500 mb-6">
+                    SURVIVAL • 1.21+
+                </span>
+            </div>
+            
+            <h1 class="minecraft-font text-8xl md:text-[110px] leading-none tracking-widest mb-4">
+                LAGGY<br>WORLD
+            </h1>
+            
+            <p class="text-2xl text-emerald-300 mb-12 max-w-2xl mx-auto">
+                The most fun (and slightly laggy) Minecraft server you'll ever join!
+            </p>
+
+            <div class="inline-block bg-black/90 border-4 border-emerald-500 p-8 rounded-none shadow-2xl">
+                <p class="text-emerald-400 text-sm tracking-widest mb-2">SERVER IP</p>
+                <div class="flex items-center gap-6">
+                    <span id="server-ip" class="minecraft-font text-5xl font-bold text-white tracking-widest select-all">
+                        play.laggyworld.mc
+                    </span>
+                    <button onclick="copyIP()" class="pixel-btn bg-emerald-500 hover:bg-white hover:text-black text-black font-bold px-10 py-4 text-lg rounded-none border-4 border-black">
+                        COPY
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <a href="#join" class="inline-block bg-white text-black font-bold text-2xl px-16 py-6 minecraft-font tracking-widest hover:bg-emerald-400 transition">
+                    JOIN NOW ⛏️
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center text-emerald-400">
+            <p class="text-xs tracking-widest mb-2">SCROLL FOR MORE</p>
+            <i class="fa-solid fa-chevron-down text-3xl animate-bounce"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-[#1a1a1a]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="minecraft-font text-6xl text-emerald-400 mb-12">WELCOME TO THE CHAOS</h2>
+            
+            <div class="bg-zinc-950 border-4 border-emerald-600 p-12">
+                <p class="text-xl leading-relaxed text-zinc-300">
+                    Laggy World is a chill survival server with a huge custom world, 
+                    player shops, weekly events, and zero pay-to-win. 
+                    We have a friendly community and lots of memes. 
+                    Come build your dream base... or grief your friends (jk, we have protection).
+                </p>
+            </div>
+            
+            <p class="mt-10 text-sm text-emerald-500">Version 1.21 • Java Edition • No whitelist</p>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="minecraft-font text-6xl text-center mb-16 text-emerald-400">SERVER FEATURES</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover bg-zinc-950 border-4 border-emerald-500 p-10 text-center">
+                    <div class="text-7xl mb-8">🌲</div>
+                    <h3 class="minecraft-font text-3xl mb-4">CUSTOM WORLD</h3>
+                    <p class="text-zinc-400">Huge 20k x 20k world with custom biomes, dungeons, and structures. Never run out of space!</p>
+                </div>
+                
+                <div class="card-hover bg-zinc-950 border-4 border-emerald-500 p-10 text-center">
+                    <div class="text-7xl mb-8">💰</div>
+                    <h3 class="minecraft-font text-3xl mb-4">PLAYER ECONOMY</h3>
+                    <p class="text-zinc-400">Shops, auctions, jobs, and a real player-run economy. Get rich or die trying.</p>
+                </div>
+                
+                <div class="card-hover bg-zinc-950 border-4 border-emerald-500 p-10 text-center">
+                    <div class="text-7xl mb-8">🎉</div>
+                    <h3 class="minecraft-font text-3xl mb-4">WEEKLY EVENTS</h3>
+                    <p class="text-zinc-400">Spleef, parkour, PvP tournaments, treasure hunts, and more every weekend!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO JOIN -->
+    <section id="join" class="py-24 bg-emerald-950">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="minecraft-font text-6xl mb-12">HOW TO JOIN</h2>
+            
+            <div class="bg-black border-4 border-white p-16 max-w-2xl mx-auto">
+                <div class="space-y-10">
+                    <div class="flex gap-6 items-start">
+                        <div class="w-12 h-12 bg-emerald-500 text-black flex items-center justify-center text-3xl font-bold">1</div>
+                        <div class="text-left">
+                            <p class="text-2xl">Open Minecraft Java Edition</p>
+                            <p class="text-zinc-400">Make sure you're on 1.21+</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-6 items-start">
+                        <div class="w-12 h-12 bg-emerald-500 text-black flex items-center justify-center text-3xl font-bold">2</div>
+                        <div class="text-left">
+                            <p class="text-2xl">Go to Multiplayer → Add Server</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-6 items-start">
+                        <div class="w-12 h-12 bg-emerald-500 text-black flex items-center justify-center text-3xl font-bold">3</div>
+                        <div class="text-left">
+                            <p class="text-2xl">Paste the IP:</p>
+                            <div class="bg-zinc-900 border-4 border-emerald-400 p-6 mt-4">
+                                <span class="minecraft-font text-4xl text-emerald-400" id="join-ip">play.laggyworld.mc</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="copyIP()" class="mt-12 mx-auto block bg-white text-black px-16 py-6 text-2xl font-bold minecraft-font pixel-btn">
+                COPY IP TO CLIPBOARD
+            </button>
+        </div>
+    </section>
+
+    <!-- DISCORD -->
+    <section id="discord" class="py-24 bg-zinc-950">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <i class="fa-brands fa-discord text-8xl text-[#5865F2] mb-8"></i>
+            <h2 class="minecraft-font text-6xl mb-6">JOIN THE DISCORD</h2>
+            <p class="text-2xl text-zinc-300 mb-12 max-w-md mx-auto">
+                Chat with other players, get help, see announcements, and join events!
+            </p>
+            
+            <a href="https://discord.gg/your-discord-link-here" target="_blank"
+               class="inline-flex items-center gap-4 bg-[#5865F2] hover:bg-[#4752c4] text-white font-bold text-2xl px-16 py-8 minecraft-font transition">
+                <i class="fa-brands fa-discord text-4xl"></i>
+                JOIN DISCORD NOW
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t-4 border-emerald-600">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-8 text-2xl mb-8">
+                <span>⛏️</span>
+                <span>🌍</span>
+                <span>🏠</span>
+            </div>
+            <p class="text-zinc-500 text-sm">
+                © 2026 Laggy World • Not affiliated with Mojang Studios<br>
+                Made with ❤️ and lots of lag for the boys
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function copyIP() {
+            const ip = "play.laggyworld.mc";
+            navigator.clipboard.writeText(ip).then(() => {
+                const notif = document.createElement("div");
+                notif.style.position = "fixed";
+                notif.style.bottom = "30px";
+                notif.style.left = "50%";
+                notif.style.transform = "translateX(-50%)";
+                notif.style.background = "#10b981";
+                notif.style.color = "black";
+                notif.style.padding = "16px 32px";
+                notif.style.borderRadius = "0";
+                notif.style.fontFamily = "'Press Start 2P'";
+                notif.style.fontSize = "18px";
+                notif.style.border = "4px solid black";
+                notif.textContent = "IP COPIED! ✅";
+                document.body.appendChild(notif);
+                
+                setTimeout(() => {
+                    notif.style.transition = "all 0.4s";
+                    notif.style.opacity = "0";
+                    setTimeout(() => notif.remove(), 400);
+                }, 1800);
+            });
+        }
+    </script>
+</body>
+</html>
