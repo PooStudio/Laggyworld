@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Laggy World - The ultimate 1.21+ Minecraft survival server. Massive world, real economy, weekly events, and premium ranks.">
+    <meta name="description" content="Laggy World - The ultimate 1.21+ Minecraft survival server.">
     <title>LAGGY WORLD • Minecraft Survival</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,12 +15,12 @@
 
     <nav class="bg-black/95 backdrop-blur-2xl border-b border-cyan-500/40 py-5 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <h1 class="minecraft-font text-4xl tracking-tighter text-cyan-400 flex items-center gap-3">
+            <a href="index.html" class="minecraft-font text-4xl tracking-tighter text-cyan-400 flex items-center gap-3">
                 LAGGY WORLD
-            </h1>
+            </a>
 
             <div class="hidden md:flex items-center gap-10 text-lg font-medium">
-                <a href="#ranks" class="nav-link text-cyan-300 hover:text-white">RANKS</a>
+                <a href="ranks.html" class="nav-link text-cyan-300 hover:text-white">RANKS</a>
             </div>
 
             <a href="#join" class="fun-btn text-lg px-10 py-4 hidden sm:flex items-center gap-2">
@@ -102,77 +102,6 @@
                     <p class="mt-6 text-xl text-zinc-400">Spleef, parkour, PvP tournaments & treasure hunts every weekend.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="ranks" class="py-24 bg-[#0a0a0a]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="minecraft-font text-6xl text-cyan-400">PREMIUM RANKS</h2>
-                <p class="text-2xl text-zinc-400 mt-4">Support the server • Unlock epic perks</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="rank-card">
-                    <div class="rank-title minecraft-font text-amber-400">VIP</div>
-                    <div class="text-5xl font-bold text-cyan-300 mt-1">$4.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
-                    <ul class="mt-10 space-y-4 text-left text-lg">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /fly command</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 5 extra homes</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> VIP kit every 12h</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Special chat color</li>
-                    </ul>
-                    <button onclick="fakeBuy('VIP')" class="fun-btn w-full mt-12 text-lg">GET VIP</button>
-                </div>
-
-                <div class="rank-card border-cyan-400 scale-105 relative">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-400 text-black text-xs px-6 py-1 rounded-full font-bold tracking-widest">MOST POPULAR</div>
-                    <div class="rank-title minecraft-font text-orange-400">ELITE</div>
-                    <div class="text-5xl font-bold text-cyan-300 mt-1">$9.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
-                    <ul class="mt-10 space-y-4 text-left text-lg">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All VIP perks</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 15 homes</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Elite kit every 8h</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> /nick & /hat</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Priority queue</li>
-                    </ul>
-                    <button onclick="fakeBuy('ELITE')" class="fun-btn w-full mt-12 text-lg">GET ELITE</button>
-                </div>
-
-                <div class="rank-card">
-                    <div class="rank-title minecraft-font text-purple-400">LEGEND</div>
-                    <div class="text-5xl font-bold text-cyan-300 mt-1">$19.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
-                    <ul class="mt-10 space-y-4 text-left text-lg">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All Elite perks</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Unlimited homes</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Legend kit every 4h</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Custom particle trails</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Staff-like commands</li>
-                    </ul>
-                    <button onclick="fakeBuy('LEGEND')" class="fun-btn w-full mt-12 text-lg">GET LEGEND</button>
-                </div>
-
-                <div class="rank-card">
-                    <div class="rank-title minecraft-font text-rose-400">GOD</div>
-                    <div class="text-5xl font-bold text-cyan-300 mt-1">$29.99</div>
-                    <div class="text-xs uppercase tracking-widest text-zinc-500 mt-1">per month</div>
-                    <ul class="mt-10 space-y-4 text-left text-lg">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> All Legend perks</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> God kit every 2h</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Full creative mode</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Server-wide glow</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Exclusive Discord role</li>
-                    </ul>
-                    <button onclick="fakeBuy('GOD')" class="fun-btn w-full mt-12 text-lg">GET GOD</button>
-                </div>
-            </div>
-
-            <p class="text-center text-zinc-500 text-sm mt-12">
-                Ranks are optional • No pay-to-win • Supports server growth ❤️
-            </p>
         </div>
     </section>
 
@@ -262,23 +191,9 @@
             });
         }
 
-        function fakeBuy(rank) {
-            const msg = document.createElement("div");
-            msg.style.cssText = `position:fixed; top:30px; left:50%; transform:translateX(-50%); background:#111; color:#22d3ee; padding:20px 40px; border:5px solid #22d3ee; border-radius:12px; font-family:'Press Start 2P'; text-align:center; box-shadow:0 0 50px #22d3ee; z-index:99999;`;
-            msg.innerHTML = `✅ ${rank} RANK SELECTED!<br><span class="text-xs text-zinc-400">Redirecting to store...</span>`;
-            document.body.appendChild(msg);
-            setTimeout(() => { msg.remove(); alert("Store coming soon! For now, join Discord to buy ranks."); }, 1800);
-        }
-
         window.onload = () => {
             checkServerStatus();
             setInterval(checkServerStatus, 30000);
-            document.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener('click', e => {
-                    const target = document.querySelector(a.getAttribute('href'));
-                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-                });
-            });
         };
     </script>
 </body>
