@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --glitch-color: #22c55e;
+    --glitch-color: #22d3ee;     
+    --accent: #3b82f6;           
+    --accent-light: #67e8f9;     
 }
 
 body {
     font-family: 'Press Start 2P', system-ui;
+    background: #000;
+    color: white;
+    overflow-x: hidden;
 }
 
-/* GLITCH TITLE */
 .glitch {
     position: relative;
     color: white;
@@ -29,7 +33,7 @@ body {
 
 .glitch::before {
     animation: glitch-anim 2s infinite linear alternate-reverse;
-    color: #22c55e;
+    color: var(--glitch-color);
     left: 2px;
     text-shadow: -2px 0 #ff00c1;
     clip: rect(0, 900px, 0, 0);
@@ -37,7 +41,7 @@ body {
 
 .glitch::after {
     animation: glitch-anim2 1.5s infinite linear alternate-reverse;
-    color: #22c55e;
+    color: var(--glitch-color);
     left: -2px;
     text-shadow: 2px 0 #00ffff;
     clip: rect(0, 900px, 0, 0);
@@ -66,18 +70,23 @@ body {
     30% { transform: skew(3deg); }
 }
 
-/* MINECRAFT CARDS */
 .minecraft-card {
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .minecraft-card:hover {
     transform: translateY(-8px) rotate(1deg);
-    box-shadow: 0 0 30px #22c55e;
+    box-shadow: 0 0 30px var(--accent);
 }
 
 .server-ip {
     font-family: monospace;
+    transition: all 0.2s ease;
+}
+
+.server-ip:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px var(--glitch-color);
 }
 
 .status-dot {
@@ -90,5 +99,31 @@ body {
 }
 
 .step-number {
-    background: linear-gradient(45deg, #22c55e, #15803d);
+    background: linear-gradient(45deg, var(--accent), #1e40af);
+    box-shadow: 0 0 20px var(--glitch-color);
+}
+
+#progress {
+    background: linear-gradient(to right, #3b82f6, #22d3ee);
+}
+
+.accent-cyan { color: var(--glitch-color); }
+.accent-blue { color: var(--accent); }
+.border-blue { border-color: var(--accent); }
+.bg-blue { background-color: var(--accent); }
+
+.hero-bg {
+    filter: blur(6px);
+}
+
+.footer-card {
+    background: linear-gradient(135deg, #0a2540, #051c2e);
+}
+
+button, a {
+    transition: all 0.2s ease;
+}
+
+button:hover, a:hover {
+    transform: scale(1.02);
 }
