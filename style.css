@@ -12,9 +12,24 @@ body {
     color: white;
 }
 .server-ip {
-  text-shadow: 0 0 10px cyan;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Desktop only hover */
+@media (hover: hover) and (pointer: fine) {
+    .server-ip:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 25px var(--glitch-color);
+    }
+}
+
+/* Mobile / touch devices */
+@media (hover: none) {
+    .server-ip {
+        transform: none;
+        box-shadow: 0 0 10px var(--glitch-color);
+    }
+}
 .glitch {
     position: relative;
     color: white;
