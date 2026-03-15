@@ -20,7 +20,7 @@ body {
     text-align: center;
     font-family: monospace;
 
-    font-size: clamp(16px, 3vw, 36px); /* responsive text */
+    font-size: clamp(10px, 3vw, 36px); /* responsive text */
     word-break: break-word; /* allows long IP to wrap */
     overflow-wrap: break-word;
 
