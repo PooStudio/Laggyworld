@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service • Laggy World</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+    <div id="loader" class="fixed inset-0 bg-black z-[99999] flex items-center justify-center transition-opacity duration-1000">
+        <div class="text-center">
+            <div class="w-24 h-24 mx-auto bg-blue-500 text-black text-7xl flex items-center justify-center rounded-2xl shadow-[0_0_60px_#22d3ee] animate-spin mb-8">⛏️</div>
+            <h1 data-text="LAGGY WORLD" class="glitch text-5xl font-black tracking-tighter mb-2">LAGGY WORLD</h1>
+            <p class="text-cyan-400 text-sm tracking-[6px] animate-pulse">LOADING LEGAL CHAOS...</p>
+            <div class="w-80 h-1.5 bg-neutral-900 mx-auto mt-8 rounded-full overflow-hidden">
+                <div id="progress" class="h-full bg-gradient-to-r from-blue-400 to-cyan-400 w-0 transition-all"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-xl border-b border-cyan-500/20 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-blue-500 text-black flex items-center justify-center text-2xl rotate-12 rounded-lg">⛏️</div>
+                <span class="text-2xl font-black tracking-widest text-cyan-400">LAGGY WORLD</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-medium">
+                <a href="index.html" class="hover:text-cyan-400 transition">HOME</a>
+                <a href="about.html" class="hover:text-cyan-400 transition">ABOUT</a>
+                <a href="privacy.html" class="hover:text-cyan-400 transition">PRIVACY</a>
+                <a href="terms.html" class="text-cyan-400">TERMS</a>
+                <a href="bug.html" class="hover:text-cyan-400 transition">BUG REPORTS</a>
+            </div>
+            <a href="https://discord.gg/QUThnA4AES" target="_blank" 
+               class="bg-blue-500 hover:bg-blue-600 text-black px-7 py-2.5 rounded-xl text-sm font-bold transition">JOIN DISCORD</a>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center relative bg-[radial-gradient(#111_0%,#000_80%)]">
+        <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover opacity-10 hero-bg"></div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+            <div class="text-[26rem] text-cyan-400 blur-[70px] rotate-12">⛏️</div>
+        </div>
+        <div class="max-w-4xl mx-auto text-center px-6 relative z-10 pt-20">
+            <div class="inline-block px-8 py-2 bg-black border border-cyan-400 text-cyan-400 text-xs tracking-[4px] mb-6">LEGAL • CHAOS MODE</div>
+            <h1 data-text="TERMS OF SERVICE" class="glitch text-[5.5rem] font-black leading-none tracking-[-3px]">TERMS OF SERVICE</h1>
+        </div>
+    </section>
+
+    <section class="py-20 bg-neutral-950">
+        <div class="max-w-3xl mx-auto px-6 text-neutral-300 leading-relaxed">
+            <p class="mb-8">Have fun. Don't be a jerk. If you grief too hard we'll laugh at you before banning you.</p>
+            <h3 class="text-cyan-400 font-bold text-xl mt-12 mb-4">The Rules (lol)</h3>
+            <ul class="list-disc pl-6 space-y-3 mb-12">
+                <li>Explosions, lag, and chaos are encouraged</li>
+                <li>No real-life threats or doxxing</li>
+                <li>If the server crashes because of you — congratulations, you're a legend</li>
+                <li>We reserve the right to turn your base into a crater for entertainment</li>
+            </ul>
+            <p class="mt-12 text-sm text-neutral-400 italic">Last updated: March 2026 • Breaking these terms may result in you becoming part of the next destruction event.</p>
+        </div>
+    </section>
+
+    <div class="max-w-md mx-auto my-16 px-6">
+        <div onclick="copyIP()" class="cursor-pointer bg-[#0a1f2e] border border-cyan-400 rounded-3xl p-10 text-center shadow-2xl hover:scale-105 transition">
+            <div class="text-xs text-neutral-400 tracking-[2px] mb-3 font-medium">READY TO JOIN?</div>
+            <div class="font-mono text-3xl text-cyan-400">laggyworld.serveminecraft.net</div>
+        </div>
+    </div>
+
+    <footer class="footer-card py-12 border-t border-cyan-500/30">
+        <div class="max-w-6xl mx-auto px-6 text-center text-xs text-neutral-400">
+            © 2026 Laggy World • All chaos reserved<br>
+            <a href="https://discord.gg/QUThnA4AES" target="_blank" class="hover:text-cyan-400">Discord</a>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            let width = 0;
+            const progress = document.getElementById('progress');
+            const loader = document.getElementById('loader');
+            const int = setInterval(() => {
+                width += Math.random() * 28 + 12;
+                if (width > 100) width = 100;
+                progress.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(int);
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.style.display = 'none', 600);
+                }
+            }, 65);
+        });
+
+        function copyIP() {
+            navigator.clipboard.writeText("laggyworld.serveminecraft.net").then(() => alert("✅ IP COPIED"));
+        }
+    </script>
+</body>
+</html>
