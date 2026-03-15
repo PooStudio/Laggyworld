@@ -11,6 +11,9 @@ body {
     background: #000;
     color: white;
 }
+.server-ip {
+  text-shadow: 0 0 10px cyan;
+}
 
 .glitch {
     position: relative;
