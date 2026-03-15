@@ -1,167 +1,94 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --glitch-color: #22c55e;
 }
+
 body {
-    font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.45;
-    background: #0a0a0a;
+    font-family: 'Press Start 2P', system-ui;
+}
+
+/* GLITCH TITLE */
+.glitch {
+    position: relative;
     color: white;
-    overflow-x: hidden;
+    font-size: 4.5rem;
+    letter-spacing: 0.1em;
+    animation: glitch-skew 4s infinite linear alternate-reverse;
 }
-.minecraft-font {
-    font-family: 'Press Start 2P', cursive;
-    text-shadow: 4px 4px 0 #000;
-}
-.hero-bg {
-    background:
-        linear-gradient(rgba(8, 47, 73, 0.92), rgba(8, 47, 73, 0.95)),
-        url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat fixed;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-.nav-link {
-    position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-.nav-link::after {
-    content: '';
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
     position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -4px;
+    top: 0;
     left: 0;
-    background: linear-gradient(to right, #22d3ee, #67e8f9);
-    transition: width 0.4s ease;
-}
-.nav-link:hover::after,
-.nav-link:focus::after {
     width: 100%;
+    height: 100%;
 }
-.copy-btn,
-.fun-btn {
-    font-family: 'Press Start 2P';
-    font-weight: 700;
-    background: #22d3ee;
-    color: #111;
-    border: 5px solid #111;
-    border-radius: 12px;
-    padding: 1rem 2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 58px;
+
+.glitch::before {
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+    color: #22c55e;
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(0, 900px, 0, 0);
 }
-.copy-btn:hover,
-.fun-btn:hover {
-    background: #67e8f9;
-    transform: scale(1.08) rotate(3deg);
-    box-shadow: 0 0 70px #22d3ee;
+
+.glitch::after {
+    animation: glitch-anim2 1.5s infinite linear alternate-reverse;
+    color: #22c55e;
+    left: -2px;
+    text-shadow: 2px 0 #00ffff;
+    clip: rect(0, 900px, 0, 0);
 }
-.minecraft-ip-box {
-    background: #0a0a0a;
-    border: 5px solid #22d3ee;
-    border-radius: 16px;
-    box-shadow: 0 0 40px rgba(34, 211, 238, 0.5);
-    padding: 1.8rem 2.2rem;
+
+@keyframes glitch-anim {
+    0% { clip: rect(20px, 9999px, 40px, 0); }
+    5% { clip: rect(70px, 9999px, 90px, 0); }
+    10% { clip: rect(30px, 9999px, 60px, 0); }
+    15% { clip: rect(80px, 9999px, 100px, 0); }
+    20% { clip: rect(10px, 9999px, 50px, 0); }
 }
-.ip-text {
-    font-size: clamp(1.5rem, 6vw, 2.8rem);
-    line-height: 1.05;
-    word-break: break-all;
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(60px, 9999px, 80px, 0); }
+    5% { clip: rect(30px, 9999px, 50px, 0); }
+    10% { clip: rect(90px, 9999px, 110px, 0); }
+    15% { clip: rect(40px, 9999px, 70px, 0); }
+    20% { clip: rect(20px, 9999px, 40px, 0); }
 }
-.feature-card,
-.rank-card {
-    background: #000;
-    border: 5px solid #22d3ee;
-    border-radius: 18px;
-    padding: 2.2rem;
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+@keyframes glitch-skew {
+    0% { transform: skew(0deg); }
+    10% { transform: skew(5deg); }
+    20% { transform: skew(-5deg); }
+    30% { transform: skew(3deg); }
 }
-.feature-card:hover,
-.rank-card:hover {
-    border-color: #67e8f9;
-    box-shadow: 0 0 80px rgba(34, 211, 238, 0.8);
-    transform: translateY(-16px) scale(1.04);
+
+/* MINECRAFT CARDS */
+.minecraft-card {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.rank-card .rank-title {
-    font-size: 2.35rem;
+
+.minecraft-card:hover {
+    transform: translateY(-8px) rotate(1deg);
+    box-shadow: 0 0 30px #22c55e;
 }
-.step-number {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    background: #22d3ee;
-    color: #111;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Press Start 2P';
-    font-size: 1.75rem;
-    box-shadow: 0 0 20px #22d3ee;
+
+.server-ip {
+    font-family: monospace;
 }
-.join-ip-box {
-    font-size: clamp(1.3rem, 5vw, 2.3rem);
-    padding: 1.1rem 1.6rem;
-    background: #000;
-    border: 5px solid #22d3ee;
-    border-radius: 14px;
-    box-shadow: 0 0 30px #22d3ee;
-}
-.fun-card {
-    background: #000;
-    border: 5px solid #22d3ee;
-    border-radius: 18px;
-    box-shadow: 0 0 40px rgba(34, 211, 238, 0.4);
-}
+
 .status-dot {
     animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
 }
-.toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #22d3ee;
-    color: #111;
-    padding: 16px 40px;
-    border-radius: 9999px;
-    font-family: 'Press Start 2P';
-    font-size: 15px;
-    border: 5px solid #111;
-    box-shadow: 0 0 30px #22d3ee;
-    z-index: 9999;
-    animation: toastPop 0.4s ease;
-}
-@keyframes toastPop {
-    0% { transform: translateX(-50%) scale(0.6); opacity: 0; }
-    100% { transform: translateX(-50%) scale(1); opacity: 1; }
-}
-@keyframes bounce-slow {
-    0%,100% { transform:translateY(0); }
-    50% { transform:translateY(-12px); }
-}
-.animate-bounce-slow {
-    animation: bounce-slow 3s infinite ease-in-out;
-}
-@keyframes popIn {
-    0% { transform:translateX(-50%) scale(0.5) rotate(-8deg); opacity:0; }
-    100% { transform:translateX(-50%) scale(1) rotate(0deg); opacity:1; }
+
+.step-number {
+    background: linear-gradient(45deg, #22c55e, #15803d);
 }

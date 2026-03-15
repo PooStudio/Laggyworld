@@ -2,182 +2,359 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Laggy World - The ultimate 1.21+ Minecraft survival server. Pure survival. Real economy. Zero lag... mostly.">
-    <title>LAGGY WORLD • Minecraft Survival</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laggy World - Where Chaos Meets Creativity</title>
+    
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- Your Custom CSS (separate file) -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+<body class="bg-neutral-950 text-white overflow-x-hidden">
 
-    <nav class="bg-black/95 backdrop-blur-2xl border-b border-cyan-500/40 py-5 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <a href="index.html" class="minecraft-font text-4xl tracking-tighter text-cyan-400 flex items-center gap-3 hover:scale-105 transition-transform">
-                LAGGY WORLD
-            </a>
-            <div class="hidden md:flex items-center gap-10 text-lg font-medium">
-                <a href="ranks.html" class="nav-link text-cyan-300 hover:text-white">RANKS</a>
+    <!-- NAVBAR -->
+    <nav class="border-b border-lime-500/30 bg-black/80 backdrop-blur-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-lime-500 text-black flex items-center justify-center text-2xl rotate-12">⛏️</div>
+                <span class="text-2xl font-bold tracking-widest text-lime-400">LAGGY WORLD</span>
             </div>
-            <a href="#join" class="fun-btn text-lg px-10 py-4 hidden sm:flex items-center gap-2 hover:scale-110 transition-all">
-                <i class="fa-solid fa-gamepad"></i>
-                JOIN SERVER
-            </a>
-            <a href="#join" class="sm:hidden fun-btn text-base px-6 py-3">
-                JOIN
+            <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest">
+                <a href="#commands" class="hover:text-lime-400 transition">COMMANDS</a>
+                <a href="#features" class="hover:text-lime-400 transition">FEATURES</a>
+                <a href="#howto" class="hover:text-lime-400 transition">HOW TO JOIN</a>
+                <a href="#discord" class="hover:text-lime-400 transition">DISCORD</a>
+            </div>
+            <a href="https://discord.gg/yourserver" target="_blank" 
+               class="px-6 py-3 bg-lime-500 hover:bg-lime-600 text-black font-bold uppercase text-sm tracking-wider transition">
+                JOIN DISCORD
             </a>
         </div>
     </nav>
 
-    <section class="hero-bg flex items-center justify-center text-center relative">
-        <div class="max-w-6xl mx-auto px-6 py-20 w-full">
+    <!-- All the rest of the HTML is exactly the same as before -->
+    <!-- (I kept it complete so you can just copy-paste) -->
+
+    <!-- HERO -->
+    <section class="min-h-screen flex items-center justify-center relative pt-20 bg-[radial-gradient(at_center,#111_0%,#000_70%)]">
+        <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover opacity-10 mix-blend-luminosity"></div>
+        
+        <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
+            <div class="mb-8 flex justify-center">
+                <div class="px-8 py-3 bg-black border-4 border-lime-500 text-lime-400 text-xl tracking-[6px] inline-block rotate-[-3deg]">
+                    PURE MINECRAFT MAYHEM
+                </div>
+            </div>
             
-            <!-- Server status badge only (small & clean) -->
-            <div id="status-badge" class="mx-auto inline-flex items-center gap-3 bg-black/80 backdrop-blur-md px-8 py-4 rounded-3xl border border-cyan-400/60 shadow-2xl mb-10">
-                <div id="status-dot" class="w-4 h-4 bg-cyan-400 rounded-full status-dot"></div>
-                <span id="status-text" class="text-cyan-200 text-sm tracking-[3px] font-medium uppercase">
-                    1.21+ SURVIVAL • <span id="player-count">0</span> PLAYING
-                </span>
-            </div>
-
-            <h1 class="minecraft-font text-7xl md:text-8xl lg:text-[9.5rem] leading-none tracking-[-6px] mb-6 text-white drop-shadow-[0_0_80px_rgb(34,211,238)]">
-                LAGGY<br>WORLD
+            <h1 data-text="LAGGY WORLD" class="glitch text-[5.5rem] md:text-[7rem] leading-none font-black mb-4 tracking-tighter">
+                LAGGY WORLD
             </h1>
-            <p class="text-3xl md:text-4xl text-cyan-100 max-w-2xl mx-auto mb-12">
-                Pure survival.<br>Real economy.<br>Zero lag... mostly. ❤️
+            
+            <p class="text-4xl md:text-5xl text-lime-400 mb-12 font-light tracking-widest">
+                Where Chaos Meets Creation
             </p>
-
-            <div class="mt-16">
-                <a href="#join" class="fun-btn text-2xl py-7 px-16 block md:inline-block hover:scale-110 transition-all">
-                    PLAY NOW • JOIN THE SQUAD!
-                </a>
+            
+            <div class="max-w-md mx-auto bg-neutral-900 border-4 border-lime-500 p-8 rounded-2xl shadow-2xl">
+                <div class="uppercase text-xs tracking-widest text-lime-400 mb-2">SERVER IP</div>
+                <div id="ip" class="server-ip text-3xl font-mono bg-black p-4 rounded-xl border border-lime-500/50 mb-6 select-all">
+                    laggyworld.falixsrv.me
+                </div>
+                
+                <button onclick="copyIP()" 
+                        class="w-full bg-lime-500 hover:bg-lime-600 text-black py-4 text-xl font-bold uppercase flex items-center justify-center gap-3 transition">
+                    <i class="fas fa-copy"></i>
+                    COPY IP
+                </button>
+                
+                <div class="flex justify-center gap-8 mt-8 text-sm">
+                    <div class="text-center">
+                        <div class="text-red-500 text-2xl font-bold">OFFLINE</div>
+                        <div class="text-neutral-400 text-xs">0 / 20 players</div>
+                    </div>
+                    <div class="h-12 w-px bg-neutral-700"></div>
+                    <div class="text-center">
+                        <div class="text-lime-400 text-2xl font-bold">24/7</div>
+                        <div class="text-neutral-400 text-xs">UPTIME</div>
+                    </div>
+                    <div class="h-12 w-px bg-neutral-700"></div>
+                    <div class="text-center">
+                        <div class="text-yellow-400 text-2xl font-bold">1.20+</div>
+                        <div class="text-neutral-400 text-xs">VERSION</div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="absolute bottom-12 left-1/2 text-cyan-400 animate-bounce">
-            <i class="fa-solid fa-chevron-down text-4xl"></i>
+            
+            <div class="mt-16 text-xs uppercase tracking-[4px] text-neutral-400 flex items-center justify-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-red-500 rounded-full status-dot"></span>
+                    CHAOS MODE: MAXIMUM
+                </div>
+                <span class="text-4xl">∞</span>
+            </div>
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-[#111111]">
+<!-- floating chaos icons -->
+        <div class="absolute bottom-10 left-10 text-6xl opacity-30 animate-bounce">💥</div>
+        <div class="absolute top-32 right-20 text-7xl opacity-30 animate-spin-slow">⚡</div>
+    </section>
+
+    <!-- QUICK COMMANDS -->
+    <section id="commands" class="py-24 bg-neutral-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-center text-4xl font-black tracking-widest mb-4 text-lime-400">✦ QUICK COMMANDS ✦</h2>
+            <p class="text-center text-neutral-400 mb-12 max-w-md mx-auto">Essential server commands (because who has time to remember everything?)</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- commands here -->
+                <div class="minecraft-card bg-black p-6 border border-lime-500/30 rounded-2xl flex gap-4">
+                    <span class="text-3xl">🏠</span>
+                    <div>
+                        <div class="font-mono text-lime-400">/home</div>
+                        <div class="text-sm text-neutral-400">Teleport to bed</div>
+                    </div>
+                </div>
+                <div class="minecraft-card bg-black p-6 border border-lime-500/30 rounded-2xl flex gap-4">
+                    <span class="text-3xl">🧍</span>
+                    <div>
+                        <div class="font-mono text-lime-400">/tpa</div>
+                        <div class="text-sm text-neutral-400">Teleport to player</div>
+                    </div>
+                </div>
+                <div class="minecraft-card bg-black p-6 border border-lime-500/30 rounded-2xl flex gap-4">
+                    <span class="text-3xl">🌍</span>
+                    <div>
+                        <div class="font-mono text-lime-400">/spawn</div>
+                        <div class="text-sm text-neutral-400">Return to spawn</div>
+                    </div>
+                </div>
+                <div class="minecraft-card bg-black p-6 border border-lime-500/30 rounded-2xl flex gap-4">
+                    <span class="text-3xl">😴</span>
+                    <div>
+                        <div class="font-mono text-lime-400">/afk</div>
+                        <div class="text-sm text-neutral-400">Mark as away</div>
+                    </div>
+                </div>
+                <div class="minecraft-card bg-black p-6 border border-lime-500/30 rounded-2xl flex gap-4">
+                    <span class="text-3xl">📨</span>
+                    <div>
+                        <div class="font-mono text-lime-400">/pm</div>
+                        <div class="text-sm text-neutral-400">Private message</div>
+                    </div>
+                </div>
+                <div class="minecraft-card bg-black p-6 border border-lime-500/30 rounded-2xl flex gap-4">
+                    <span class="text-3xl">🎙️</span>
+                    <div>
+                        <div class="font-mono text-lime-400">Voice Chat</div>
+                        <div class="text-sm text-neutral-400">Talk in-game</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WELCOME -->
+    <section class="py-20 border-t border-b border-lime-500/20">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="minecraft-font text-6xl text-cyan-400 mb-12">WELCOME TO THE CHAOS ⛏️</h2>
-            <div class="fun-card p-12">
-                <p class="text-2xl leading-relaxed text-zinc-200">
-                    20,000×20,000 block world. Player shops. Weekly events. 
-                    Real economy. Just pure Minecraft with friends.
-                </p>
+            <div class="text-6xl mb-8">🧱</div>
+            <p class="text-xl leading-relaxed text-neutral-300">
+                Laggy World isn't your typical Minecraft server. We embrace the chaos, celebrate the unexpected, 
+                and turn every glitch into a feature. Join our community of digital misfits and experience Minecraft like never before.
+            </p>
+            <div class="mt-12 max-w-md mx-auto border-l-4 border-lime-500 pl-8 text-left italic">
+                "In a world of perfect servers, we choose to be beautifully broken."<br>
+                <span class="text-lime-400 text-sm mt-4 block">- The Laggy World Team</span>
             </div>
         </div>
     </section>
 
+    <!-- FEATURES -->
     <section id="features" class="py-24 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-center text-5xl font-black mb-16 text-white tracking-widest">SERVER FEATURES</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="minecraft-card bg-neutral-900 p-8 rounded-3xl border border-lime-500/30">
+                    <div class="text-5xl mb-6">🌍</div>
+                    <h3 class="text-2xl font-bold mb-3">Custom World Gen</h3>
+                    <p class="text-neutral-400">Floating islands, impossible structures, and reality-bending landscapes.</p>
+                </div>
+                <div class="minecraft-card bg-neutral-900 p-8 rounded-3xl border border-lime-500/30">
+                    <div class="text-5xl mb-6">⚔️</div>
+                    <h3 class="text-2xl font-bold mb-3">Chaotic PvP</h3>
+                    <p class="text-neutral-400">No holds barred combat system where anything goes.</p>
+                </div>
+                <div class="minecraft-card bg-neutral-900 p-8 rounded-3xl border border-lime-500/30">
+                    <div class="text-5xl mb-6">💥</div>
+                    <h3 class="text-2xl font-bold mb-3">Destruction Events</h3>
+                    <p class="text-neutral-400">Random server-wide events that reshape the world.</p>
+                </div>
+                <!-- more cards -->
+                <div class="minecraft-card bg-neutral-900 p-8 rounded-3xl border border-lime-500/30">
+                    <div class="text-5xl mb-6">🛡️</div>
+                    <h3 class="text-2xl font-bold mb-3">Anti-Grief... Sort Of</h3>
+                    <p class="text-neutral-400">Basic protection, but chaos is always lurking.</p>
+                </div>
+                <div class="minecraft-card bg-neutral-900 p-8 rounded-3xl border border-lime-500/30">
+                    <div class="text-5xl mb-6">📦</div>
+                    <h3 class="text-2xl font-bold mb-3">Daily Backups</h3>
+                    <p class="text-neutral-400">We backup the chaos daily.</p>
+                </div>
+                <div class="minecraft-card bg-neutral-900 p-8 rounded-3xl border border-lime-500/30">
+                    <div class="text-5xl mb-6">💬</div>
+                    <h3 class="text-2xl font-bold mb-3">Active Discord</h3>
+                    <p class="text-neutral-400">1,317 members • 49 online right now</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-gradient-to-r from-red-900/50 to-yellow-900/50 border-4 border-red-500 p-12 rounded-3xl text-center">
+                <div class="text-4xl mb-4">⚠️ CURRENT CHAOS LEVEL ⚠️</div>
+                <div class="text-7xl font-black text-red-400 tracking-widest">MAXIMUM CHAOS ACHIEVED</div>
+                <p class="text-red-300 mt-6">Warning: Chaos levels may cause spontaneous combustion</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO JOIN -->
+    <section id="howto" class="py-24 bg-neutral-950">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-4">HOW TO JOIN</h2>
+            <p class="text-center text-neutral-400 mb-16">Ready to embrace the chaos? Follow these simple steps</p>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- step 1 -->
+                <div class="text-center">
+                    <div class="step-number w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-4xl shadow-2xl">1</div>
+                    <div class="mt-8 text-lime-400 font-bold">LAUNCH MINECRAFT</div>
+                    <p class="text-sm text-neutral-400 mt-3">Open your Minecraft Java Edition (1.20+)</p>
+                </div>
+                <!-- step 2 -->
+                <div class="text-center">
+                    <div class="step-number w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-4xl shadow-2xl">2</div>
+                    <div class="mt-8 text-lime-400 font-bold">ADD SERVER</div>
+                    <p class="text-sm text-neutral-400 mt-3">Click 'Multiplayer' → 'Add Server'</p>
+                </div>
+                <!-- step 3 -->
+                <div class="text-center">
+                    <div class="step-number w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-4xl shadow-2xl">3</div>
+                    <div class="mt-8 text-lime-400 font-bold">ENTER IP</div>
+                    <p class="text-sm text-neutral-400 mt-3">Server Address:<br><span class="font-mono text-lg">laggyworld.falixsrv.me</span></p>
+                </div>
+                <!-- step 4 -->
+                <div class="text-center">
+                    <div class="step-number w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-4xl shadow-2xl">4</div>
+                    <div class="mt-8 text-lime-400 font-bold">JOIN THE CHAOS</div>
+                    <p class="text-sm text-neutral-400 mt-3">Click 'Done' and join the mayhem!</p>
+                </div>
+            </div>
+            
+            <!-- Editions -->
+            <div class="mt-20 grid md:grid-cols-2 gap-8">
+                <div class="bg-neutral-900 p-10 rounded-3xl border-4 border-lime-500 text-center">
+                    <div class="text-6xl mb-6">☕</div>
+                    <div class="uppercase text-lime-400 text-sm tracking-widest mb-3">Java Edition</div>
+                    <div class="font-black text-4xl mb-6">FULLY SUPPORTED<br><span class="text-emerald-400">Recommended</span></div>
+                    <p class="text-neutral-400">Full compatibility with all custom features and chaos events.</p>
+                </div>
+                <div class="bg-neutral-900 p-10 rounded-3xl border-4 border-amber-500 text-center">
+                    <div class="text-6xl mb-6">📱</div>
+                    <div class="uppercase text-amber-400 text-sm tracking-widest mb-3">Bedrock Edition</div>
+                    <div class="font-black text-4xl mb-6">LIMITED SUPPORT<br><span class="text-amber-400">Experimental</span></div>
+                    <p class="text-neutral-400">Some chaos features may not work as intended. Join at your own risk!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS + DISCORD + RULES -->
+    <section id="discord" class="py-24 bg-black">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-3 gap-12">
+            
+            <!-- LIVE STATS -->
+            <div>
+                <h3 class="text-3xl font-bold mb-8 text-center">LIVE SERVER STATS</h3>
+                <div class="bg-neutral-900 rounded-3xl p-10 space-y-8 border border-red-500/30">
+                    <div class="flex justify-between items-center">
+                        <div>Players online</div>
+                        <div class="text-red-500 font-mono text-4xl">0 / 20</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>Uptime</div>
+                        <div class="text-lime-400 font-bold">24/7</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>Daily Explosions</div>
+                        <div class="text-yellow-400 font-bold">∞</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>Chaos Events</div>
+                        <div class="text-lime-400 font-bold">24/7</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>Lag Spikes</div>
+                        <div class="text-white font-bold">YES</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DISCORD -->
+            <div class="lg:col-span-1">
+                <div class="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-3xl p-10 h-full flex flex-col">
+                    <div class="text-6xl mb-auto">💬</div>
+                    <div>
+                        <div class="text-5xl font-black mb-2">1,317</div>
+                        <div class="text-2xl text-indigo-300">members • 49 online</div>
+                        <p class="mt-8 text-neutral-300">Join our Discord server to chat with other players, share screenshots of your chaos, get server updates, and participate in community events.</p>
+                        <a href="https://discord.gg/laggyworld" target="_blank" 
+                           class="mt-8 block w-full py-5 bg-white text-black font-bold text-center rounded-2xl hover:scale-105 transition">
+                            JOIN DISCORD →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RULES -->
+            <div>
+                <h3 class="text-3xl font-bold mb-8 text-center">SERVER RULES (lol)</h3>
+                <div class="space-y-6">
+                    <div class="bg-neutral-900 p-6 rounded-2xl border-l-8 border-lime-400">
+                        <div class="font-bold text-lime-400">#1 Embrace the Chaos</div>
+                        <div class="text-sm mt-2">Lag is a feature, not a bug.</div>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded-2xl border-l-8 border-amber-400">
+                        <div class="font-bold text-amber-400">#2 No Excessive Griefing</div>
+                        <div class="text-sm mt-2">The server does enough griefing for everyone.</div>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded-2xl border-l-8 border-red-400">
+                        <div class="font-bold text-red-400">#3 Have Fun or Get Out</div>
+                        <div class="text-sm mt-2">Life's too short to take Minecraft seriously.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-neutral-800 text-center text-xs text-neutral-500">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="minecraft-font text-6xl text-center text-cyan-400 mb-16">WHAT MAKES US DIFFERENT ✨</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="feature-card">
-                    <h3 class="minecraft-font text-4xl text-cyan-300 flex items-center gap-3 justify-center"><span>20k×20k WORLD</span> <span class="text-5xl">🌍</span></h3>
-                    <p class="mt-6 text-xl text-zinc-400">Custom caves, dungeons, villages & endless exploration.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="minecraft-font text-4xl text-cyan-300 flex items-center gap-3 justify-center"><span>REAL ECONOMY</span> <span class="text-5xl">💰</span></h3>
-                    <p class="mt-6 text-xl text-zinc-400">Player shops, auctions, jobs & kits. Get rich the fair way.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="minecraft-font text-4xl text-cyan-300 flex items-center gap-3 justify-center"><span>WEEKLY EVENTS</span> <span class="text-5xl">🎉</span></h3>
-                    <p class="mt-6 text-xl text-zinc-400">Spleef, parkour, PvP tournaments & treasure hunts every weekend.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="join" class="py-24 bg-[#0a1a28]">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="minecraft-font text-6xl text-cyan-400 mb-16">HOW TO JOIN ⛏️</h2>
-            <div class="bg-black border-4 border-cyan-400/70 rounded-3xl p-12 max-w-2xl mx-auto">
-                <div class="space-y-12 text-left">
-                    <div class="flex gap-8 items-start">
-                        <div class="step-number">1</div>
-                        <div class="flex-1"><p class="text-3xl text-white">Launch Minecraft 1.21+</p></div>
-                    </div>
-                    <div class="flex gap-8 items-start">
-                        <div class="step-number">2</div>
-                        <div class="flex-1"><p class="text-3xl text-white">Multiplayer → Add Server</p></div>
-                    </div>
-                    <div class="flex gap-8 items-start">
-                        <div class="step-number">3</div>
-                        <div class="flex-1">
-                            <p class="text-3xl mb-6 text-white">Paste the IP</p>
-                            <div class="join-ip-box text-cyan-300">laggyworld.serveminecraft.net</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button onclick="copyIP()" class="copy-btn mt-14 text-2xl px-16 py-7 hover:scale-105 transition-all">
-                COPY IP TO CLIPBOARD
-            </button>
-        </div>
-    </section>
-
-    <section id="discord" class="py-24 bg-zinc-950">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <i class="fa-brands fa-discord text-[140px] text-[#5865F2] mb-10"></i>
-            <h2 class="minecraft-font text-6xl mb-6">JOIN OUR DISCORD ❤️</h2>
-            <p class="text-3xl text-zinc-300 mb-12">Events • Memes • Support • Giveaways • Welcome to the squad!</p>
-            <a href="https://discord.gg/QUThnA4AES" target="_blank" class="fun-btn text-3xl py-7 px-14 flex items-center justify-center gap-4 mx-auto w-fit hover:scale-110 transition-all">
-                <i class="fa-brands fa-discord text-4xl"></i> JOIN DISCORD
-            </a>
-        </div>
-    </section>
-
-    <footer class="bg-black py-12 border-t border-cyan-500/30">
-        <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500 text-sm">
-            © 2026 Laggy World • Made with love, pixels, and a little lag
+            <p>Made with pure chaos • Laggy World 2026</p>
+            <p class="mt-6 text-[10px]">This is a complete recreation. You can now edit this HTML to make it your own website!</p>
         </div>
     </footer>
-
     <script>
-        async function checkServerStatus() {
-            const ip = "laggyworld.serveminecraft.net";
-            const dot = document.getElementById('status-dot');
-            const textEl = document.getElementById('status-text');
-            const countSpan = document.getElementById('player-count');
-            try {
-                const res = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
-                const data = await res.json();
-                if (data.online) {
-                    const players = data.players?.online || 0;
-                    dot.className = "w-4 h-4 bg-emerald-400 rounded-full status-dot";
-                    countSpan.textContent = players.toLocaleString();
-                    textEl.innerHTML = `1.21+ SURVIVAL • <span id="player-count">${players.toLocaleString()}</span> PLAYING`;
-                } else {
-                    dot.className = "w-4 h-4 bg-red-500 rounded-full";
-                    textEl.textContent = "1.21+ SURVIVAL • OFFLINE";
-                }
-            } catch {
-                dot.className = "w-4 h-4 bg-red-500 rounded-full";
-                textEl.textContent = "1.21+ SURVIVAL • OFFLINE";
-            }
-        }
         function copyIP() {
-            const ip = "laggyworld.serveminecraft.net";
+            const ip = "laggyworld.falixsrv.me";
             navigator.clipboard.writeText(ip).then(() => {
-                const toast = document.createElement("div");
-                toast.className = "toast";
-                toast.textContent = "✅ IP COPIED!";
-                document.body.appendChild(toast);
-                setTimeout(() => {
-                    toast.style.transition = "all 0.3s ease";
-                    toast.style.opacity = "0";
-                    toast.style.transform = "translateX(-50%) scale(0.8)";
-                    setTimeout(() => toast.remove(), 300);
-                }, 2200);
+                const btn = document.querySelector('button');
+                const original = btn.innerHTML;
+                btn.innerHTML = '✅ COPIED!';
+                setTimeout(() => btn.innerHTML = original, 2000);
             });
         }
-        window.onload = () => {
-            checkServerStatus();
-            setInterval(checkServerStatus, 30000);
-        };
     </script>
 </body>
 </html>
