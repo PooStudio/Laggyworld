@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Agreement | LaggyWorld</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: #020617;
+        }
+    </style>
+</head>
+<body class="text-white font-mono">
+
+<div class="min-h-screen flex items-center justify-center p-6">
+
+    <div class="max-w-2xl w-full bg-slate-900 border border-cyan-500 rounded-2xl shadow-lg p-6">
+
+        <h1 class="text-3xl text-cyan-400 mb-4 text-center">
+            Staff Agreement Form
+        </h1>
+
+        <p class="text-gray-300 mb-4">
+            Before becoming staff on LaggyWorld, you must agree to the rules below.
+            Abuse of power will result in punishment or permanent ban.
+            There are NO appeals for staff abuse.
+        </p>
+
+        <ul class="list-disc ml-6 text-gray-300 space-y-2 mb-6">
+            <li>I will not abuse commands</li>
+            <li>I will not give items to players</li>
+            <li>I will not use creative for survival advantage</li>
+            <li>I understand I can be banned for misuse</li>
+            <li>I understand there are NO appeals</li>
+        </ul>
+
+        <form class="space-y-4">
+
+            <input
+                type="text"
+                placeholder="Minecraft Username"
+                class="w-full p-3 rounded bg-slate-800 border border-cyan-500"
+                required
+            >
+
+            <input
+                type="text"
+                placeholder="Discord Username"
+                class="w-full p-3 rounded bg-slate-800 border border-cyan-500"
+                required
+            >
+
+            <label class="flex items-center gap-2">
+                <input type="checkbox" required>
+                <span>I agree to all rules above</span>
+            </label>
+
+            <button
+                type="submit"
+                class="w-full bg-cyan-500 hover:bg-cyan-400 text-black p-3 rounded font-bold"
+            >
+                Submit Agreement
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
