@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
+    <header class="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-xl border-b border-white/10">
         <div class="container flex items-center justify-between py-4">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
@@ -63,10 +63,35 @@
 
     <main class="pt-24">
         <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover bg-center hero-bg"></div>
+            <div class="absolute inset-0 bg-cover bg-center hero-bg" style="background-image: url('background.png');"></div>
+            <div class="absolute inset-0 bg-black/40"></div>
             <div class="hero-flares pointer-events-none" aria-hidden="true"></div>
 
             <div class="container relative z-10 pt-16">
+                <div class="server-info-panel">
+                    <div class="server-info-row">
+                        <div class="server-info-title">Server Information</div>
+                        <div class="server-info-values">
+                            <div class="server-info-item">
+                                <span class="info-label">IP</span>
+                                <span class="info-value">laggyworld.serveminecraft.net</span>
+                            </div>
+                            <div class="server-info-item">
+                                <span class="info-label">Status</span>
+                                <span id="serverStatus" class="info-value info-offline">Checking…</span>
+                            </div>
+                            <div class="server-info-item">
+                                <span class="info-label">Players</span>
+                                <span id="playerCount" class="info-value">—</span>
+                            </div>
+                            <div class="server-info-item">
+                                <span class="info-label">Version</span>
+                                <span id="serverVersion" class="info-value">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="flex flex-col items-center text-center gap-6">
                     <p class="text-sm font-semibold tracking-widest text-white/60">PURE MAYHEM SINCE 2024</p>
                     <h1 class="minecraft-title">
@@ -87,9 +112,6 @@
                         </a>
                     </div>
 
-                    <div class="mt-6">
-                        <div class="server-ip">laggyworld.serveminecraft.net</div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -219,6 +241,7 @@
 
         const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
         const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
+        const SERVER_STATUS_URL = 'https://api.mcsrvstat.us/2/laggyworld.serveminecraft.net';
 
         function updateLoaderProgress(percent) {
             const bar = document.getElementById('loadingProgressBar');
@@ -242,6 +265,49 @@
         function runCloudflareCheck() {
             // Silent check: fetch a Cloudflare endpoint without user-visible output.
             return fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' });
+        }
+
+        function setServerStatus({ online, players, max, version }) {
+            const statusEl = document.getElementById('serverStatus');
+            const countEl = document.getElementById('playerCount');
+            const versionEl = document.getElementById('serverVersion');
+
+            if (!statusEl || !countEl || !versionEl) return;
+
+            if (online) {
+                statusEl.textContent = 'Online';
+                statusEl.classList.remove('info-offline');
+                statusEl.classList.add('info-online');
+                countEl.textContent = `${players ?? 0}/${max ?? '??'}`;
+                versionEl.textContent = version || 'Unknown';
+            } else {
+                statusEl.textContent = 'Offline';
+                statusEl.classList.remove('info-online');
+                statusEl.classList.add('info-offline');
+                countEl.textContent = '—';
+                versionEl.textContent = '—';
+            }
+        }
+
+        async function fetchServerStatus() {
+            try {
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 8000);
+                const res = await fetch(SERVER_STATUS_URL, { signal: controller.signal });
+                clearTimeout(timeout);
+
+                if (!res.ok) throw new Error('Network error');
+                const data = await res.json();
+
+                setServerStatus({
+                    online: data.online,
+                    players: data.players?.online,
+                    max: data.players?.max,
+                    version: data.version,
+                });
+            } catch (error) {
+                setServerStatus({ online: false });
+            }
         }
 
         function startLoadingSequence() {
@@ -272,13 +338,14 @@
 
             if (!overlay) return;
 
-            if (!isFirstVisit) {
+            if (isFirstVisit) {
+                startLoadingSequence();
+                localStorage.setItem(FIRST_VISIT_KEY, '1');
+            } else {
                 overlay.remove();
-                return;
             }
 
-            startLoadingSequence();
-            localStorage.setItem(FIRST_VISIT_KEY, '1');
+            fetchServerStatus();
         });
     </script>
 </body>
