@@ -15,8 +15,8 @@
         <div class="loading-card">
             <div class="loader" aria-hidden="true"></div>
             <div class="loading-text">
-                <strong>Checking your browser</strong>
-                <span>Preparing a secure connection to Laggy World…</span>
+                <strong>Loading Privacy Policy</strong>
+                <span>Preparing secure connection to Laggy World…</span>
             </div>
             <div class="loading-progress" aria-hidden="true">
                 <div id="loadingProgressBar" class="loading-progress-bar"></div>
@@ -188,7 +188,7 @@
         }
 
         function startLoadingSequence() {
-            updateLoaderStatus('Preparing secure channel…');
+            updateLoaderStatus('Loading content…');
             let progress = 0;
             const tick = () => {
                 progress = Math.min(98, progress + (Math.random() * 10 + 6));
@@ -204,7 +204,7 @@
                 .finally(() => {
                     clearInterval(progressInterval);
                     updateLoaderProgress(100);
-                    updateLoaderStatus('Verification complete');
+                    updateLoaderStatus('Privacy Policy loaded');
                     setTimeout(hideLoadingOverlay, 420);
                 });
         }
