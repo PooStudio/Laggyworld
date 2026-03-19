@@ -1,0 +1,74 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Earth -->
+  <circle cx="200" cy="100" r="70" fill="#4a90e2"/>
+  <path d="M 140 80 Q 150 70 170 75 T 200 70 T 230 75 T 260 70 Q 270 80 270 100" fill="#2ecc71"/>
+  <path d="M 150 100 Q 160 95 180 105 T 220 105" fill="#2ecc71"/>
+  <path d="M 170 120 Q 185 130 200 125 Q 215 130 230 120" fill="#2ecc71"/>
+  
+  <!-- LAGGY WORLD Text in Minecraft style -->
+  <g id="minecraft-text">
+    <!-- L -->
+    <rect x="50" y="170" width="20" height="80" fill="#d4af37"/>
+    <rect x="50" y="230" width="50" height="20" fill="#d4af37"/>
+    
+    <!-- A -->
+    <rect x="110" y="210" width="20" height="40" fill="#d4af37"/>
+    <rect x="130" y="210" width="20" height="40" fill="#d4af37"/>
+    <rect x="110" y="190" width="40" height="20" fill="#d4af37"/>
+    <rect x="110" y="210" width="40" height="20" fill="#d4af37"/>
+    
+    <!-- G -->
+    <rect x="169" y="170" width="20" height="80" fill="#d4af37"/>
+    <rect x="169" y="170" width="50" height="20" fill="#d4af37"/>
+    <rect x="169" y="230" width="50" height="20" fill="#d4af37"/>
+    <rect x="200" y="210" width="20" height="40" fill="#d4af37"/>
+    
+    <!-- G (second) -->
+    <rect x="229" y="170" width="20" height="80" fill="#d4af37"/>
+    <rect x="229" y="170" width="50" height="20" fill="#d4af37"/>
+    <rect x="229" y="230" width="50" height="20" fill="#d4af37"/>
+    <rect x="260" y="210" width="20" height="40" fill="#d4af37"/>
+    
+    <!-- Y -->
+    <rect x="289" y="170" width="20" height="40" fill="#d4af37"/>
+    <rect x="309" y="170" width="20" height="40" fill="#d4af37"/>
+    <rect x="304" y="210" width="10" height="40" fill="#d4af37"/>
+  </g>
+  
+  <!-- WORLD text below -->
+  <g id="world-text">
+    <!-- W -->
+    <rect x="60" y="280" width="15" height="60" fill="#d4af37"/>
+    <rect x="75" y="290" width="15" height="50" fill="#d4af37"/>
+    <rect x="90" y="280" width="15" height="60" fill="#d4af37"/>
+    
+    <!-- O -->
+    <rect x="115" y="280" width="15" height="60" fill="#d4af37"/>
+    <rect x="130" y="280" width="15" height="60" fill="#d4af37"/>
+    <rect x="115" y="280" width="30" height="15" fill="#d4af37"/>
+    <rect x="115" y="325" width="30" height="15" fill="#d4af37"/>
+    
+    <!-- R -->
+    <rect x="155" y="280" width="15" height="60" fill="#d4af37"/>
+    <rect x="170" y="280" width="30" height="15" fill="#d4af37"/>
+    <rect x="185" y="295" width="15" height="15" fill="#d4af37"/>
+    <rect x="155" y="310" width="30" height="15" fill="#d4af37"/>
+    <rect x="170" y="325" width="30" height="15" fill="#d4af37"/>
+    
+    <!-- L -->
+    <rect x="205" y="280" width="15" height="60" fill="#d4af37"/>
+    <rect x="205" y="325" width="40" height="15" fill="#d4af37"/>
+    
+    <!-- D -->
+    <rect x="255" y="280" width="15" height="60" fill="#d4af37"/>
+    <rect x="270" y="280" width="25" height="15" fill="#d4af37"/>
+    <rect x="270" y="325" width="25" height="15" fill="#d4af37"/>
+    <rect x="295" y="295" width="15" height="30" fill="#d4af37"/>
+  </g>
+  
+  <!-- Shadows for 3D effect -->
+  <g opacity="0.3">
+    <rect x="52" y="172" width="20" height="80" fill="#000"/>
+    <rect x="115" y="282" width="15" height="60" fill="#000"/>
+  </g>
+</svg>

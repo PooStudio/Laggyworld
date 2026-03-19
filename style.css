@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
 
 :root {
-    --bg: #05060c;
-    --surface: rgba(255,255,255,0.06);
-    --surface-strong: rgba(255,255,255,0.12);
-    --text: rgba(255,255,255,0.92);
-    --muted: rgba(255,255,255,0.65);
-
-    --brand: #22d3ee;
-    --brand-2: #60a5fa;
-    --brand-soft: rgba(34,211,238,0.5);
-    --shadow: rgba(0,0,0,0.45);
+    --primary: #0066ff;
+    --secondary: #00ccff;
+    --accent: #0033cc;
+    --dark: #0a0a0a;
+    --darker: #050505;
+    --text: #ffffff;
+    --text-muted: #888888;
+    --glass: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -23,16 +24,21 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #0b1220 0%, #03050a 55%, #000 100%);
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
     color: var(--text);
     min-height: 100vh;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
 
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
 ::selection {
-    background: rgba(34, 211, 238, 0.25);
+    background: rgba(0, 102, 255, 0.25);
 }
 
 a {
@@ -41,7 +47,7 @@ a {
 }
 
 a:hover {
-    color: var(--brand);
+    color: var(--primary);
 }
 
 .container {
@@ -66,14 +72,14 @@ a:hover {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--brand), var(--brand-2));
-    color: #0b0d14;
-    box-shadow: 0 14px 35px rgba(34, 211, 238, 0.22);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--dark);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 45px rgba(34, 211, 238, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
 }
 
 .btn-secondary {
@@ -101,7 +107,7 @@ a:hover {
     bottom: -0.25rem;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--brand), var(--brand-2));
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
     opacity: 0;
     transform: translateY(3px);
     transition: opacity 0.2s ease, transform 0.2s ease;
@@ -117,23 +123,38 @@ a:hover {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 1.5rem;
-    backdrop-filter: blur(18px);
-    padding: 2.2rem;
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 12px 40px rgba(0, 255, 255, 0.2);
 }
 
 .section-title {
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
+}
+
+.minecraft-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 3rem;
+    font-weight: normal;
+    color: var(--primary);
+    text-shadow: 2px 2px 0px #000, 4px 4px 0px var(--accent);
+    letter-spacing: 2px;
 }
 
 .section-subtitle {
@@ -147,20 +168,22 @@ a:hover {
     max-width: 90vw;
     padding: 1.35rem 1.6rem;
     border-radius: 1.25rem;
-    border: 2px solid rgba(34, 211, 238, 0.6);
+    border: 2px solid var(--primary);
     text-align: center;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     font-size: clamp(0.95rem, 2vw, 1.8rem);
     word-break: break-word;
     overflow-wrap: break-word;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    background: rgba(0, 0, 0, 0.35);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .server-ip:hover {
         transform: scale(1.02);
-        box-shadow: 0 0 24px var(--brand-soft);
+        box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
     }
 }
 
@@ -183,7 +206,7 @@ a:hover {
 
 .glitch::before {
     animation: glitch-anim 2.2s infinite linear alternate-reverse;
-    color: var(--brand);
+    color: var(--primary);
     left: 2px;
     text-shadow: -2px 0 #ff00c1;
     clip: rect(0, 9999px, 0, 0);
@@ -191,7 +214,7 @@ a:hover {
 
 .glitch::after {
     animation: glitch-anim2 2.7s infinite linear alternate-reverse;
-    color: var(--brand-2);
+    color: var(--secondary);
     left: -2px;
     text-shadow: 2px 0 #00ffff;
     clip: rect(0, 9999px, 0, 0);
@@ -302,9 +325,9 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -2;
-    background: radial-gradient(circle at top, rgba(34, 211, 238, 0.22), transparent 55%),
-                radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.16), transparent 55%),
-                radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.14), transparent 55%);
+    background: radial-gradient(circle at top, rgba(0, 102, 255, 0.22), transparent 55%),
+                radial-gradient(circle at 30% 30%, rgba(0, 204, 255, 0.16), transparent 55%),
+                radial-gradient(circle at 70% 80%, rgba(0, 51, 204, 0.14), transparent 55%);
     opacity: 0.75;
     filter: blur(30px);
     animation: hueRotate 18s ease-in-out infinite;
@@ -366,7 +389,7 @@ body::after {
     height: 3.5rem;
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.18);
-    border-top-color: var(--brand);
+    border-top-color: var(--primary);
     animation: spin 1.2s linear infinite;
     margin: 0 auto 1.2rem;
 }
@@ -383,8 +406,8 @@ body::after {
 .loading-progress-bar {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(34, 211, 238, 0.9), rgba(96, 165, 250, 0.9));
-    box-shadow: 0 0 14px rgba(34, 211, 238, 0.5);
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    box-shadow: 0 0 14px rgba(0, 102, 255, 0.5);
     transition: width 0.25s ease;
 }
 
@@ -438,7 +461,7 @@ body::after {
     content: '';
     position: absolute;
     inset: -35%;
-    background: radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.18), transparent 55%);
+    background: radial-gradient(circle at 30% 30%, rgba(0, 102, 255, 0.18), transparent 55%);
     opacity: 0;
     transform: scale(0.85);
     transition: opacity 0.35s ease, transform 0.35s ease;
@@ -458,9 +481,9 @@ body::after {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.22), transparent 40%),
-                radial-gradient(circle at 80% 30%, rgba(99, 102, 241, 0.18), transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.18), transparent 45%);
+    background: radial-gradient(circle at 20% 20%, rgba(0, 102, 255, 0.22), transparent 40%),
+                radial-gradient(circle at 80% 30%, rgba(0, 204, 255, 0.18), transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(0, 51, 204, 0.18), transparent 45%);
     opacity: 0.8;
     mix-blend-mode: screen;
     animation: pulse 9s ease-in-out infinite;
@@ -475,4 +498,450 @@ body::after {
 @keyframes pulse {
     0%, 100% { opacity: 0.7; transform: translateY(0); }
     50% { opacity: 0.85; transform: translateY(-6px); }
+}
+
+/* ========== CARTOONY MINECRAFT STYLING ========== */
+
+/* Cartoony font for titles */
+.cartoony-title {
+    font-family: 'Fredoka', system-ui;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--mc-gold);
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5),
+                 0 0 20px rgba(212, 175, 55, 0.4);
+    transform: perspective(600px) rotateX(0deg);
+}
+
+.cartoony-title:hover {
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5),
+                 0 0 30px rgba(212, 175, 55, 0.8),
+                 0 0 60px rgba(212, 175, 55, 0.4);
+}
+
+/* Minecraft-style button */
+.btn-minecraft {
+    background: linear-gradient(180deg, #8B4513 0%, #654321 100%);
+    color: #fff;
+    border: 3px solid #5a2d0c;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 4px 0 #3d1f07;
+    transition: all 0.1s ease;
+    transform: translateY(0);
+}
+
+.btn-minecraft:hover {
+    background: linear-gradient(180deg, #a0522d 0%, #8B4513 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 6px 0 #3d1f07;
+    transform: translateY(-2px);
+}
+
+.btn-minecraft:active {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 2px 0 #3d1f07;
+    transform: translateY(2px);
+}
+
+/* Cartoony card styling */
+.cartoony-card {
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.1) 0%, 
+        rgba(85, 255, 85, 0.05) 100%);
+    border: 4px solid var(--mc-gold);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1),
+                0 4px 10px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.2);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.cartoony-card:hover {
+    transform: translateY(-8px) perspective(1000px) rotateY(2deg);
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.2),
+                0 8px 20px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.4);
+    border-color: var(--mc-yellow);
+}
+
+/* Blocky animations */
+@keyframes minecraft-bob {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.minecraft-bob {
+    animation: minecraft-bob 2s ease-in-out infinite;
+}
+
+/* Logo styling */
+.logo-minecraft {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--mc-gold), #c9a227);
+    border: 2px solid #8B4513;
+    border-radius: 4px;
+    filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.3));
+    transition: all 0.2s ease;
+}
+
+.logo-minecraft:hover {
+    filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.3)) brightness(1.1);
+}
+
+/* Enhanced section styling */
+.section-minecraft {
+    background: linear-gradient(180deg, 
+        rgba(10, 10, 20, 0.8) 0%,
+        rgba(20, 15, 30, 0.6) 50%,
+        rgba(10, 10, 20, 0.8) 100%);
+    border-top: 4px solid var(--mc-gold);
+    border-bottom: 4px solid var(--mc-gold);
+    position: relative;
+}
+
+.section-minecraft::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, 
+        rgba(212, 175, 55, 0.08), transparent 60%),
+                radial-gradient(circle at 80% 50%, 
+        rgba(85, 255, 85, 0.05), transparent 60%);
+    pointer-events: none;
+}
+
+/* Vote card enhancement */
+.vote-card {
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.15) 0%, 
+        rgba(85, 255, 85, 0.08) 100%);
+    border: 3px solid var(--mc-gold);
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+    cursor: pointer;
+}
+
+.vote-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--mc-yellow);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3),
+                inset 0 0 15px rgba(212, 175, 55, 0.2);
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.25) 0%, 
+        rgba(85, 255, 85, 0.15) 100%);
+}
+
+.vote-emoji {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.vote-card:hover .vote-emoji {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+}
+
+/* Rules card styling */
+.rule-card {
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.12) 0%, 
+        rgba(85, 255, 85, 0.06) 100%);
+    border: 3px solid var(--mc-gold);
+    border-radius: 6px;
+    padding: 1.8rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rule-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--mc-yellow);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3),
+                inset 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+.rule-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--mc-gold);
+    font-family: 'Fredoka', system-ui;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.rule-emoji {
+    font-size: 2.5rem;
+    text-align: right;
+    transition: all 0.3s ease;
+}
+
+.rule-card:hover .rule-emoji {
+    font-size: 3.5rem;
+    transform: rotate(20deg) scale(1.2);
+}
+
+.rule-title {
+    font-family: 'Fredoka', system-ui;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--mc-gold);
+    margin: 0.8rem 0;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Minecraft fire effect background */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 100, 0, 0.15), transparent 25%),
+        radial-gradient(circle at 20% 15%, rgba(255, 150, 0, 0.12), transparent 30%),
+        radial-gradient(circle at 15% 25%, rgba(255, 200, 0, 0.08), transparent 35%),
+        radial-gradient(circle at 30% 10%, rgba(255, 80, 0, 0.12), transparent 28%),
+        radial-gradient(circle at 5% 35%, rgba(255, 120, 0, 0.14), transparent 32%),
+        radial-gradient(circle at 25% 30%, rgba(255, 180, 0, 0.1), transparent 33%),
+        radial-gradient(circle at 70% 20%, rgba(255, 100, 0, 0.12), transparent 26%),
+        radial-gradient(circle at 80% 15%, rgba(255, 150, 0, 0.1), transparent 29%),
+        radial-gradient(circle at 75% 28%, rgba(255, 80, 0, 0.11), transparent 31%);
+    pointer-events: none;
+    opacity: 0.25;
+    animation: minecraft-fire 2.5s ease-in-out infinite;
+}
+
+@keyframes minecraft-fire {
+    0%, 100% {
+        opacity: 0.2;
+        filter: brightness(0.9);
+    }
+    25% {
+        opacity: 0.3;
+        filter: brightness(1.1);
+    }
+    50% {
+        opacity: 0.25;
+        filter: brightness(1);
+    }
+    75% {
+        opacity: 0.35;
+        filter: brightness(1.15);
+    }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .cartoony-title {
+        font-size: 2rem;
+    }
+    
+    .vote-card {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .vote-emoji {
+        font-size: 2rem;
+    }
+    
+    .vote-card:hover .vote-emoji {
+        font-size: 2.5rem;
+    }
+}
+
+/* ========== ENHANCED CARTOONY & KID-FRIENDLY STYLES ========== */
+
+/* Content card for terms/privacy */
+.content-card {
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.1) 0%, 
+        rgba(85, 255, 85, 0.06) 100%);
+    border: 4px solid var(--mc-gold);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
+                inset 0 0 15px rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+}
+
+.content-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4),
+                inset 0 0 20px rgba(212, 175, 55, 0.15);
+    transform: translateY(-4px);
+}
+
+.content-card h2 {
+    font-family: 'Fredoka', system-ui;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--mc-gold);
+    margin-top: 0;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.content-card h2::before {
+    content: '◆';
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.3));
+}
+
+.content-card h3 {
+    font-family: 'Fredoka', system-ui;
+    font-size: 1.3rem;
+    color: var(--mc-yellow);
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.content-card p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0.8rem 0;
+}
+
+.content-card ul, .content-card ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.content-card li {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.5rem 0;
+}
+
+.content-card li::marker {
+    color: var(--mc-gold);
+    font-weight: bold;
+}
+
+/* Hero section enhanced */
+.hero-section-cartoony {
+    background: linear-gradient(135deg, 
+        rgba(0, 102, 255, 0.15) 0%, 
+        rgba(0, 204, 255, 0.1) 50%,
+        rgba(0, 51, 204, 0.05) 100%);
+    border: 4px solid var(--mc-gold);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 0 30px rgba(212, 175, 55, 0.1);
+    animation: float-animation 3s ease-in-out infinite;
+}
+
+@keyframes float-animation {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.hero-section-cartoony h1 {
+    font-size: 3rem;
+    color: var(--mc-gold);
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.hero-section-cartoony p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 1rem 0 0;
+}
+
+/* Decorative elements */
+.minecraft-decoration {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.minecraft-decoration:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.minecraft-decoration:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Header enhancement */
+header {
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+}
+
+header .nav-link {
+    font-family: 'Fredoka', system-ui;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+header .nav-link:hover {
+    color: var(--mc-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Hero flares more vibrant */
+.hero-flares {
+    filter: brightness(1.2);
+}
+
+/* Glowing text effect */
+.glow-text {
+    color: var(--mc-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6),
+                 0 0 20px rgba(212, 175, 55, 0.4);
+    font-weight: 700;
+}
+
+/* Enhanced section backgrounds */
+.section {
+    background: linear-gradient(180deg, 
+        rgba(10, 10, 20, 0.3) 0%,
+        rgba(20, 15, 30, 0.2) 50%,
+        rgba(10, 10, 20, 0.3) 100%);
+    border-radius: 12px;
+}
+
+/* Footer enhancement */
+.footer-card {
+    background: linear-gradient(135deg, #0a1428 0%, #1a0f2e 100%);
+    border-top: 4px solid var(--mc-gold);
+    box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.2);
+}
+
+.footer-card a {
+    color: var(--mc-gold);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.footer-card a:hover {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
 }

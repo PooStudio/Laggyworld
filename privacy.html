@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy • Laggy World</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="overflow-x-hidden">
@@ -27,13 +29,14 @@
     <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
         <div class="container flex items-center justify-between py-4">
             <a href="index.html" class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-lg font-bold text-slate-900 shadow-lg">??</div>
-                <span class="font-semibold tracking-wide text-white">Laggy World</span>
+                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
+                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
             </a>
 
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="rules.html" class="nav-link">Rules</a>
                 <a href="bug.html" class="nav-link">Bug</a>
                 <a href="staff-agreement.html" class="nav-link">Staff</a>
             </nav>
@@ -51,6 +54,7 @@
             <div class="container flex flex-col gap-1 py-4">
                 <a href="index.html" class="nav-link py-2">Home</a>
                 <a href="about.html" class="nav-link py-2">About</a>
+                <a href="rules.html" class="nav-link py-2">Rules</a>
                 <a href="bug.html" class="nav-link py-2">Bug</a>
                 <a href="staff-agreement.html" class="nav-link py-2">Staff</a>
             </div>
@@ -58,19 +62,60 @@
     </header>
 
     <main class="pt-24">
-        <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover bg-center hero-bg"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black"></div>
+        <section class="section py-16">
+            <div class="container">
+                <div class="card">
+                    <h1>Privacy Policy</h1>
+                    <p>We don't sell your data. We barely even store it!</p>
+                </div>
 
-            <div class="container relative z-10 pt-16">
-                <div class="flex flex-col items-center text-center gap-6">
-                    <p class="text-sm font-semibold tracking-widest text-white/60">LEGAL � CHAOS MODE</p>
-                    <h1 class="glitch text-6xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                        Privacy Policy
-                    </h1>
-                    <p class="max-w-2xl text-lg text-white/70">
-                        We don't sell your data. We barely even store it because our server crashes anyway.
-                    </p>
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="content-card">
+                        <h2>Your Privacy Matters (Kind Of)</h2>
+                        <p>We're serious about keeping your data safe. We don't sell it to advertisers, we don't track you across the internet, and we definitely don't store it longer than we have to (usually until the next server crash).</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>What We Collect</h2>
+                        <ul>
+                            <li><strong>Minecraft Username & UUID:</strong> So we know who to blame for the lag</li>
+                            <li><strong>IP Address:</strong> For anti-grief protection and server security</li>
+                            <li><strong>Playtime & Stats:</strong> For the leaderboard of who died the most</li>
+                            <li><strong>Chat Messages:</strong> Stored temporarily, usually deleted in the next explosion</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>What We Don't Do</h2>
+                        <ul>
+                            <li>❌ Share data with advertisers</li>
+                            <li>❌ Track you across other websites</li>
+                            <li>❌ Sell your information</li>
+                            <li>❌ Keep logs longer than 7 days</li>
+                            <li>❌ Do anything sketchy with your data</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Cookies & Tracking</h2>
+                        <p>We use basic cookies to remember your login and nothing else. No fancy tracking pixels, no advertising networks, just the essentials.</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Third-Party Services</h2>
+                        <p>We use Cloudflare for DDoS protection and Discord for authentication. Both are required for the server to work. Check their privacy policies too!</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Your Rights</h2>
+                        <p>You can request we delete your account and all associated data. Just ask in Discord! We'll do it (eventually).</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Questions or Concerns?</h2>
+                        <p>Join our Discord and yell at us about it: <a href="https://discord.gg/QUThnA4AES" target="_blank" class="glow-text">discord.gg/QUThnA4AES</a></p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Last updated: March 2026</p>
+                    </div>
                 </div>
             </div>
         </section>

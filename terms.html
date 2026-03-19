@@ -4,10 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service • Laggy World</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="overflow-x-hidden">
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-card">
+            <div class="loader" aria-hidden="true"></div>
+            <div class="loading-text">
+                <strong>Checking your browser</strong>
+                <span>Preparing a secure connection to Laggy World…</span>
+            </div>
+            <div class="loading-progress" aria-hidden="true">
+                <div id="loadingProgressBar" class="loading-progress-bar"></div>
+            </div>
+            <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
+            <div class="loading-subtext">This may take a moment. Please do not refresh.</div>
+        </div>
+    </div>
+
+    <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
+        <div class="container flex items-center justify-between py-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
+                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="rules.html" class="nav-link">Rules</a>
+                <a href="bug.html" class="nav-link">Bug</a>
+                <a href="staff-agreement.html" class="nav-link">Staff</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="https://discord.gg/QUThnA4AES" target="_blank" class="btn btn-primary">Join Discord</a>
+                <button id="mobileMenuToggle" class="md:hidden rounded-full bg-white/10 p-3 text-white/80 hover:bg-white/15">
+                    <span class="sr-only">Menu</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden bg-black/70 border-t border-white/10 transition-all duration-300">
+            <div class="container flex flex-col gap-1 py-4">
+                <a href="index.html" class="nav-link py-2">Home</a>
+                <a href="about.html" class="nav-link py-2">About</a>
+                <a href="rules.html" class="nav-link py-2">Rules</a>
+                <a href="bug.html" class="nav-link py-2">Bug</a>
+                <a href="staff-agreement.html" class="nav-link py-2">Staff</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <section class="section py-16">
+            <div class="container">
+                <div class="card">
+                    <h1>Terms of Service</h1>
+                    <p>Last updated: March 2026</p>
+                </div>
+
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="content-card">
+                        <h2>Welcome to Laggy World</h2>
+                        <p>By accessing and playing on Laggy World, you agree to follow these terms and conditions. Read them carefully before playing.</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>User Conduct</h2>
+                        <h3>What You Can Do</h3>
+                        <ul>
+                            <li>Play the game and participate in all activities</li>
+                            <li>Chat with other players responsibly</li>
+                            <li>Build, explore, and enjoy the world</li>
+                            <li>Participate in PvP and griefing (it's allowed!)</li>
+                        </ul>
+                        <h3>What You Cannot Do</h3>
+                        <ul>
+                            <li>Use hacks, cheats, or modified clients</li>
+                            <li>Make real-life threats or doxx players</li>
+                            <li>Post inappropriate or NSFW content</li>
+                            <li>Crash the server intentionally</li>
+                            <li>Promote other servers or Discord communities</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Account Responsibility</h2>
+                        <p>You are responsible for keeping your account secure. We are not liable for unauthorized access to your account. Be careful with your password!</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Server Access</h2>
+                        <p>We reserve the right to ban or kick any player who violates our rules. Bans are permanent unless we decide otherwise. No refunds for in-game items (we don't have any).</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Limitation of Liability</h2>
+                        <p>Laggy World operates as-is. We are not responsible for:</p>
+                        <ul>
+                            <li>Server downtime or lag (it's part of the experience!)</li>
+                            <li>Lost items or progress</li>
+                            <li>Connection issues</li>
+                            <li>Griefing by other players</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Changes to Terms</h2>
+                        <p>We may update these terms at any time. Continued play means you accept the changes.</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Questions?</h2>
+                        <p>Join our Discord to discuss any questions about these terms: <a href="https://discord.gg/QUThnA4AES" target="_blank" class="glow-text">discord.gg/QUThnA4AES</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-card py-10 border-t border-white/10">
+        <div class="container text-center text-sm text-white/60">
+            <div class="flex flex-col items-center gap-3 md:flex-row md:justify-between">
+                <div>© 2026 Laggy World • All chaos reserved</div>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="privacy.html" class="hover:text-white">Privacy</a>
+                    <a href="terms.html" class="hover:text-white">Terms</a>
+                    <a href="bug.html" class="hover:text-white">Bug Reports</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuToggle?.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('max-h-0');
+            mobileMenu.classList.toggle('max-h-0', !isOpen);
+            mobileMenu.classList.toggle('max-h-screen', isOpen);
+        });
+
+        const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
+        const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
+
+        function updateLoaderProgress(percent) {
+            const bar = document.getElementById('loadingProgressBar');
+            if (!bar) return;
+            bar.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+        }
+
+        function updateLoaderStatus(text) {
+            const status = document.getElementById('loadingStatus');
+            if (!status) return;
+            status.textContent = text;
+        }
+
+        function hideLoadingOverlay() {
+            const overlay = document.getElementById('loadingOverlay');
+            if (!overlay) return;
+            overlay.classList.add('hidden');
+            setTimeout(() => overlay.remove(), 900);
+        }
+
+        function runCloudflareCheck() {
+            return fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' });
+        }
+
+        function startLoadingSequence() {
+            updateLoaderStatus('Preparing secure channel…');
+            let progress = 0;
+            const tick = () => {
+                progress = Math.min(98, progress + (Math.random() * 10 + 6));
+                updateLoaderProgress(progress);
+            };
+
+            const progressInterval = setInterval(tick, 180);
+
+            runCloudflareCheck()
+                .catch(() => {
+                    /* still proceed */
+                })
+                .finally(() => {
+                    clearInterval(progressInterval);
+                    updateLoaderProgress(100);
+                    updateLoaderStatus('Verification complete');
+                    setTimeout(hideLoadingOverlay, 420);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('loadingOverlay');
+            const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
+
+            if (!overlay) return;
+
+            if (!isFirstVisit) {
+                overlay.remove();
+                return;
+            }
+
+            startLoadingSequence();
+            localStorage.setItem(FIRST_VISIT_KEY, '1');
+        });
+    </script>
+
+</body>
+</html>
 
     <div id="loadingOverlay" class="loading-overlay">
         <div class="loading-card">

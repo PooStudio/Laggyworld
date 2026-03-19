@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laggy World • Chaos Edition</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -28,13 +29,14 @@
     <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
         <div class="container flex items-center justify-between py-4">
             <a href="index.html" class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-lg font-bold text-slate-900 shadow-lg">⛏️</div>
-                <span class="font-semibold tracking-wide text-white">Laggy World</span>
+                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
+                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
             </a>
 
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="rules.html" class="nav-link">Rules</a>
                 <a href="bug.html" class="nav-link">Bug</a>
                 <a href="staff-agreement.html" class="nav-link">Staff</a>
             </nav>
@@ -52,6 +54,7 @@
             <div class="container flex flex-col gap-1 py-4">
                 <a href="index.html" class="nav-link py-2">Home</a>
                 <a href="about.html" class="nav-link py-2">About</a>
+                <a href="rules.html" class="nav-link py-2">Rules</a>
                 <a href="bug.html" class="nav-link py-2">Bug</a>
                 <a href="staff-agreement.html" class="nav-link py-2">Staff</a>
             </div>
@@ -61,13 +64,12 @@
     <main class="pt-24">
         <section class="relative overflow-hidden pb-16">
             <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover bg-center hero-bg"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black"></div>
             <div class="hero-flares pointer-events-none" aria-hidden="true"></div>
 
             <div class="container relative z-10 pt-16">
                 <div class="flex flex-col items-center text-center gap-6">
                     <p class="text-sm font-semibold tracking-widest text-white/60">PURE MAYHEM SINCE 2024</p>
-                    <h1 class="glitch text-6xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                    <h1 class="minecraft-title">
                         Laggy World
                     </h1>
                     <p class="max-w-2xl text-lg text-white/70">
