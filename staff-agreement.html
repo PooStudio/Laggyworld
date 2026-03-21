@@ -37,7 +37,6 @@
                 <a href="about.html" class="nav-link">About</a>
                 <a href="rules.html" class="nav-link">Rules</a>
                 <a href="bug.html" class="nav-link">Bug</a>
-                <a href="staff-agreement.html" class="nav-link">Staff</a>
             </nav>
 
             <div class="flex items-center gap-3">
@@ -55,7 +54,7 @@
                 <a href="about.html" class="nav-link py-2">About</a>
                 <a href="rules.html" class="nav-link py-2">Rules</a>
                 <a href="bug.html" class="nav-link py-2">Bug</a>
-                <a href="staff-agreement.html" class="nav-link py-2">Staff</a>
+
             </div>
         </div>
     </header>
@@ -89,17 +88,7 @@
                         <li>I understand there are no appeals.</li>
                     </ul>
 
-                    <form class="space-y-4">
-                        <input type="text" placeholder="Minecraft Username" required class="w-full p-3 rounded bg-black/40 border border-white/10 text-white placeholder:text-white/40" />
-                        <input type="text" placeholder="Discord Username" required class="w-full p-3 rounded bg-black/40 border border-white/10 text-white placeholder:text-white/40" />
-
-                        <label class="flex items-center gap-2 text-white/80">
-                            <input type="checkbox" required class="h-4 w-4 rounded border-white/20 bg-black/30" />
-                            <span>I agree to all rules above</span>
-                        </label>
-
-                        <button type="submit" class="w-full btn btn-primary">Submit Agreement</button>
-                    </form>
+                    <p class="text-md mb-4 text-white/80">Staff application is currently closed. Please join our Discord to ask about staff openings.</p>
                 </div>
             </div>
         </section>
@@ -150,7 +139,6 @@
         }
 
         function runCloudflareCheck() {
-            // Silent check: fetch a Cloudflare endpoint without user-visible output.
             return fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' });
         }
 
@@ -166,7 +154,6 @@
 
             runCloudflareCheck()
                 .catch(() => {
-                    /* still proceed */
                 })
                 .finally(() => {
                     clearInterval(progressInterval);
@@ -175,6 +162,20 @@
                     setTimeout(hideLoadingOverlay, 420);
                 });
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('loadingOverlay');
+            const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
+
+            if (!overlay) return;
+
+            if (!isFirstVisit) {
+                overlay.remove();
+                return;
+            }
+
+            startLoadingSequence();
+            localStorage.setItem(FIRST_VISIT_KEY, '1');
 
         document.addEventListener('DOMContentLoaded', () => {
             const overlay = document.getElementById('loadingOverlay');
