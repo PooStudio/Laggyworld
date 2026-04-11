@@ -353,7 +353,7 @@
 
         function startLoadingSequence() {
             updateLoaderStatus('Preparing secure channel…');
-            let progress = 0;
+            let progress = 1;
             const tick = () => {
                 progress = Math.min(98, progress + (Math.random() * 10 + 6));
                 updateLoaderProgress(progress);
