@@ -715,7 +715,6 @@ body::after {
     animation: minecraft-bob 2s ease-in-out infinite;
 }
 
-/* Logo styling */
 .logo-minecraft {
     width: 50px;
     height: 50px;
@@ -836,7 +835,6 @@ body::after {
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* Minecraft fire effect background */
 body::after {
     content: '';
     position: fixed;
@@ -895,9 +893,7 @@ body::after {
     }
 }
 
-/* ========== ENHANCED CARTOONY & KID-FRIENDLY STYLES ========== */
 
-/* Content card for terms/privacy */
 .content-card {
     background: linear-gradient(135deg, 
         rgba(212, 175, 55, 0.1) 0%, 
@@ -967,7 +963,6 @@ body::after {
     font-weight: bold;
 }
 
-/* Hero section enhanced */
 .hero-section-cartoony {
     background: linear-gradient(135deg, 
         rgba(0, 102, 255, 0.15) 0%, 
