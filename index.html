@@ -74,7 +74,7 @@
                         <div class="server-info-values">
                             <div class="server-info-item">
                                 <span class="info-label">IP</span>
-                                <span class="info-value">laggyworld.serveminecraft.net</span>
+                                <span class="info-value">mc.laggy.world:25565</span>
                             </div>
                             <div class="server-info-item">
                                 <span class="info-label">Status</span>
@@ -262,7 +262,7 @@
         });
 
         function copyIP() {
-            navigator.clipboard.writeText('laggyworld.serveminecraft.net').then(() => {
+            navigator.clipboard.writeText('mc.laggy.world:25565').then(() => {
                 const toast = document.createElement('div');
                 toast.textContent = 'IP copied to clipboard!';
                 toast.className = 'fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/10 px-5 py-3 text-sm backdrop-blur-md text-white shadow-lg';
@@ -283,7 +283,7 @@
 
         const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
         const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
-        const SERVER_STATUS_URL = 'https://api.mcsrvstat.us/2/laggyworld.serveminecraft.net';
+        const SERVER_STATUS_URL = 'https://api.mcsrvstat.us/2/mc.laggy.world:25565';
 
         function updateLoaderProgress(percent) {
             const bar = document.getElementById('loadingProgressBar');
