@@ -1,258 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rules • Laggy World</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rules • Laggy World</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-card">
-            <div class="loader" aria-hidden="true"></div>
-            <div class="loading-text">
-                <strong>Checking your browser</strong>
-                <span>Preparing a secure connection to Laggy World…</span>
-            </div>
-            <div class="loading-progress" aria-hidden="true">
-                <div id="loadingProgressBar" class="loading-progress-bar"></div>
-            </div>
-            <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
-            <div class="loading-subtext">This may take a moment. Please do not refresh.</div>
-        </div>
+<div class="noise" aria-hidden="true"></div>
+<div id="progress-line"></div>
+
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-card">
+    <div class="loading-title">LAGGY WORLD</div>
+    <div class="loader" aria-hidden="true"></div>
+    <div class="loading-text">Loading the rules…</div>
+    <div class="loading-progress">
+      <div id="loadingProgressBar" class="loading-progress-bar"></div>
     </div>
+    <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
+    <div class="loading-subtext">Do not refresh.</div>
+  </div>
+</div>
 
-    <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
-        <div class="container flex items-center justify-between py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
-                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
-            </a>
+<header id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Laggy World">
+      <span class="nav-logo-text">LAGGY WORLD</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rules.html">Rules</a></li>
+      <li><a href="vote.html">Vote</a></li>
+      <li><a href="bug.html">Bug</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="rules.html">Rules</a>
+    <a href="vote.html">Vote</a>
+    <a href="bug.html">Bug</a>
+    <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener">Discord</a>
+  </div>
+</header>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="rules.html" class="nav-link">Rules</a>
-                <a href="bug.html" class="nav-link">Bug</a>
-            </nav>
+<main>
 
-            <div class="flex items-center gap-3">
-                <a href="https://discord.gg/45VRt8eXFT" target="_blank" class="btn btn-primary">Join Discord</a>
-                <button id="mobileMenuToggle" class="md:hidden rounded-full bg-white/10 p-3 text-white/80 hover:bg-white/15">
-                    <span class="sr-only">Menu</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
-                </button>
-            </div>
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">⚡ Read Carefully ⚡</div>
+      <h1 class="page-hero-title">SERVER RULES</h1>
+      <p class="page-hero-sub">Keep the chaos alive by following these. Break them and face the consequences - simple as that.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+
+        <div class="grid-cell rule-card">
+          <div class="rule-num">01</div>
+          <div class="rule-title">No Real-Life Threats</div>
+          <p class="rule-body">Keep everything in the game. No doxxing, no IRL threats - ever.</p>
+          <span class="rule-emoji">🎮</span>
         </div>
 
-        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden bg-black/70 border-t border-white/10 transition-all duration-300">
-            <div class="container flex flex-col gap-1 py-4">
-                <a href="index.html" class="nav-link py-2">Home</a>
-                <a href="about.html" class="nav-link py-2">About</a>
-                <a href="rules.html" class="nav-link py-2">Rules</a>
-                <a href="bug.html" class="nav-link py-2">Bug</a>
-
-            </div>
+        <div class="grid-cell rule-card">
+          <div class="rule-num">02</div>
+          <div class="rule-title">No Illegal / NSFW Content</div>
+          <p class="rule-body">Nothing illegal or extremely offensive in chat or Discord. Period.</p>
+          <span class="rule-emoji">✨</span>
         </div>
-    </header>
 
-    <main class="pt-24">
-        <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black"></div>
-
-            <div class="container relative z-10 pt-16">
-                <div class="flex flex-col items-center text-center gap-6">
-                    <p class="text-sm font-semibold tracking-widest text-white/60">⚡ READ CAREFULLY ⚡</p>
-                    <h1 class="section-title">
-                        Server Rules
-                    </h1>
-                    <p class="max-w-2xl text-lg text-white/70">
-                        Keep the chaos alive by following these rules. Break them = consequences. Simple as that.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="rule-card">
-                        <div class="rule-number">1</div>
-                        <h3 class="rule-title">No Real-Life Threats</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">Keep everything in the game. No doxxing or IRL threats.</p>
-                        <div class="rule-emoji">🎮</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">2</div>
-                        <h3 class="rule-title">No Illegal / NSFW</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">Nothing illegal or extremely offensive in chat or Discord.</p>
-                        <div class="rule-emoji">✨</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">3</div>
-                        <h3 class="rule-title">Hacks Are Not Allowed</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">This is a hack free friendly server.</p>
-                        <div class="rule-emoji">🔒</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">4</div>
-                        <h3 class="rule-title">No Server Crashing</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">No lag machines, crash exploits, or world breaking bugs.</p>
-                        <div class="rule-emoji">🛡️</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">5</div>
-                        <h3 class="rule-title">Respect Staff</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">If staff say stop, stop.</p>
-                        <div class="rule-emoji">👑</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">6</div>
-                        <h3 class="rule-title">No Advertising</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">No promoting other servers or Discords.</p>
-                        <div class="rule-emoji">🚫</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">7</div>
-                        <h3 class="rule-title">Griefing Is Allowed</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">Raiding, stealing, and griefing are part of the game.</p>
-                        <div class="rule-emoji">⚔️</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">8</div>
-                        <h3 class="rule-title">Use Common Sense</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">Don't ruin the server for everyone.</p>
-                        <div class="rule-emoji">🧠</div>
-                    </div>
-
-                    <div class="rule-card">
-                        <div class="rule-number">9</div>
-                        <h3 class="rule-title">Expect Lag</h3>
-                        <p class="text-white/75 text-sm leading-relaxed">It's called Laggy World for a reason.</p>
-                        <div class="rule-emoji">⏳</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section-minecraft">
-            <div class="container text-center">
-                <h2 class="section-title">Questions?</h2>
-                <p class="text-white/80 mb-8">Check out our Discord or contact a staff member for clarification.</p>
-                <a href="https://discord.gg/45VRt8eXFT" target="_blank" class="btn btn-primary">
-                    <span>Join Our Discord</span>
-                    <span>💬</span>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-card py-10 border-t border-white/10">
-        <div class="container text-center text-sm text-white/60">
-            <div class="flex flex-col items-center gap-3 md:flex-row md:justify-between">
-                <div>© 2026 Laggy World • All chaos reserved</div>
-                <div class="flex flex-wrap items-center justify-center gap-3">
-                    <a href="privacy.html" class="hover:text-white">Privacy</a>
-                    <a href="terms.html" class="hover:text-white">Terms</a>
-                    <a href="bug.html" class="hover:text-white">Bug Reports</a>
-                </div>
-            </div>
+        <div class="grid-cell rule-card">
+          <div class="rule-num">03</div>
+          <div class="rule-title">No Hacks Allowed</div>
+          <p class="rule-body">This is a hack-free server. Modified clients that give unfair advantages = instant ban.</p>
+          <span class="rule-emoji">🔒</span>
         </div>
-    </footer>
 
-    <script>
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuToggle?.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('max-h-0');
-            mobileMenu.classList.toggle('max-h-0', !isOpen);
-            mobileMenu.classList.toggle('max-h-screen', isOpen);
-        });
+        <div class="grid-cell rule-card">
+          <div class="rule-num">04</div>
+          <div class="rule-title">No Server Crashing</div>
+          <p class="rule-body">No lag machines, crash exploits, or world-breaking bugs. The lag is ours to control.</p>
+          <span class="rule-emoji">🛡️</span>
+        </div>
 
-        function copyIP() {
-            navigator.clipboard.writeText('mc.laggy.world:25565').then(() => {
-                const toast = document.createElement('div');
-                toast.textContent = 'IP copied to clipboard!';
-                toast.className = 'fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/10 px-5 py-3 text-sm backdrop-blur-md text-white shadow-lg';
-                document.body.appendChild(toast);
-                setTimeout(() => toast.remove(), 2200);
-            });
-        }
+        <div class="grid-cell rule-card">
+          <div class="rule-num">05</div>
+          <div class="rule-title">Respect Staff</div>
+          <p class="rule-body">If staff say stop, you stop. No arguments, no appeals.</p>
+          <span class="rule-emoji">👑</span>
+        </div>
 
-        const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
-        const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
+        <div class="grid-cell rule-card">
+          <div class="rule-num">06</div>
+          <div class="rule-title">No Advertising</div>
+          <p class="rule-body">Don't promote other servers or Discord communities here.</p>
+          <span class="rule-emoji">🚫</span>
+        </div>
 
-        function updateLoaderProgress(percent) {
-            const bar = document.getElementById('loadingProgressBar');
-            if (!bar) return;
-            bar.style.width = `${Math.min(100, Math.max(0, percent))}%`;
-        }
+        <div class="grid-cell rule-card">
+          <div class="rule-num">07</div>
+          <div class="rule-title">Griefing Is Allowed</div>
+          <p class="rule-body">Raiding, stealing, and griefing are all part of the game. Protect yourself.</p>
+          <span class="rule-emoji">⚔️</span>
+        </div>
 
-        function updateLoaderStatus(text) {
-            const status = document.getElementById('loadingStatus');
-            if (!status) return;
-            status.textContent = text;
-        }
+        <div class="grid-cell rule-card">
+          <div class="rule-num">08</div>
+          <div class="rule-title">Use Common Sense</div>
+          <p class="rule-body">Don't ruin the server for everyone. You know what you're doing.</p>
+          <span class="rule-emoji">🧠</span>
+        </div>
 
-        function hideLoadingOverlay() {
-            const overlay = document.getElementById('loadingOverlay');
-            if (!overlay) return;
-            overlay.classList.add('hidden');
-            setTimeout(() => overlay.remove(), 900);
-        }
+        <div class="grid-cell rule-card" style="grid-column:1/-1">
+          <div class="rule-num">09</div>
+          <div class="rule-title">Expect Lag</div>
+          <p class="rule-body">It's called Laggy World for a reason. Don't complain about lag — it's the feature.</p>
+          <span class="rule-emoji">⏳</span>
+        </div>
 
-        function runCloudflareCheck() {
-            return fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' });
-        }
+      </div>
+    </div>
+  </section>
 
-        function startLoadingSequence() {
-            updateLoaderStatus('Preparing secure channel…');
-            let progress = 0;
-            const tick = () => {
-                progress = Math.min(98, progress + (Math.random() * 10 + 6));
-                updateLoaderProgress(progress);
-            };
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="section-title">Got <span>Questions?</span></h2>
+      <p class="section-sub" style="margin:0 auto 2rem">Ask a staff member or hit us up in Discord for any clarifications.</p>
+      <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-primary">Join Our Discord 💬</a>
+    </div>
+  </section>
 
-            const progressInterval = setInterval(tick, 180);
+</main>
 
-            runCloudflareCheck()
-                .catch(() => {
-                    /* still proceed */
-                })
-                .finally(() => {
-                    clearInterval(progressInterval);
-                    updateLoaderProgress(100);
-                    updateLoaderStatus('Verification complete');
-                    setTimeout(hideLoadingOverlay, 420);
-                });
-        }
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-logo">LAGGY WORLD</span>
+        <p class="footer-copy">© 2026 Laggy World • All chaos reserved</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="bug.html">Bug Reports</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('loadingOverlay');
-            const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
-
-            if (!overlay) return;
-
-            if (!isFirstVisit) {
-                overlay.remove();
-                return;
-            }
-
-            startLoadingSequence();
-            localStorage.setItem(FIRST_VISIT_KEY, '1');
-        });
-    </script>
+<script>
+  document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  window.addEventListener('scroll',()=>{
+    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    document.getElementById('progress-line').style.width=p+'%';
+    document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+  });
+  const FIRST_KEY='laggyworld.firstVisit';
+  const CF_URL='https://www.cloudflare.com/cdn-cgi/trace';
+  function updateLoaderProgress(p){const b=document.getElementById('loadingProgressBar');if(b)b.style.width=Math.min(100,Math.max(0,p))+'%';}
+  function updateLoaderStatus(t){const s=document.getElementById('loadingStatus');if(s)s.textContent=t;}
+  function hideLoading(){const o=document.getElementById('loadingOverlay');if(!o)return;o.classList.add('hidden');setTimeout(()=>o.remove(),600);}
+  function startLoading(){
+    let p=0;
+    const iv=setInterval(()=>{p=Math.min(98,p+Math.random()*10+6);updateLoaderProgress(p);},180);
+    fetch(CF_URL,{mode:'no-cors',cache:'no-cache'}).catch(()=>{}).finally(()=>{clearInterval(iv);updateLoaderProgress(100);updateLoaderStatus('Done');setTimeout(hideLoading,420);});
+  }
+  document.addEventListener('DOMContentLoaded',()=>{
+    const isFirst=!localStorage.getItem(FIRST_KEY);
+    if(isFirst){startLoading();localStorage.setItem(FIRST_KEY,'1');}
+    else{document.getElementById('loadingOverlay')?.remove();}
+  });
+</script>
 
 </body>
 </html>

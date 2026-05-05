@@ -1,390 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laggy World • Chaos Edition</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laggy World • Chaos Edition</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-card">
-            <div class="loader" aria-hidden="true"></div>
-            <div class="loading-text">
-                <strong>Checking your browser</strong>
-                <span>Preparing a secure connection to Laggy World…</span>
-            </div>
-            <div class="loading-progress" aria-hidden="true">
-                <div id="loadingProgressBar" class="loading-progress-bar"></div>
-            </div>
-            <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
-            <div class="loading-subtext">This may take a moment. Please do not refresh.</div>
-        </div>
+<div class="noise" aria-hidden="true"></div>
+<div id="progress-line"></div>
+
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-card">
+    <div class="loading-title">LAGGY WORLD</div>
+    <div class="loader" aria-hidden="true"></div>
+    <div class="loading-text">Checking your connection…</div>
+    <div class="loading-progress">
+      <div id="loadingProgressBar" class="loading-progress-bar"></div>
     </div>
+    <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
+    <div class="loading-subtext">Do not refresh. Chaos incoming.</div>
+  </div>
+</div>
 
-    <header class="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-xl border-b border-white/10">
-        <div class="container flex items-center justify-between py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
-                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
-            </a>
+<header id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Laggy World">
+      <span class="nav-logo-text">LAGGY WORLD</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rules.html">Rules</a></li>
+      <li><a href="vote.html">Vote</a></li>
+      <li><a href="bug.html">Bug</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="rules.html">Rules</a>
+    <a href="vote.html">Vote</a>
+    <a href="bug.html">Bug</a>
+    <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener">Discord</a>
+  </div>
+</header>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="rules.html" class="nav-link">Rules</a>
-                <a href="vote.html" class="nav-link">Vote</a>
-                <a href="bug.html" class="nav-link">Bug</a>
-            </nav>
+<main>
 
-            <div class="flex items-center gap-3">
-                <a href="https://discord.gg/45VRt8eXFT" target="_blank" class="btn btn-primary">Join Discord</a>
-                <button id="mobileMenuToggle" class="md:hidden rounded-full bg-white/10 p-3 text-white/80 hover:bg-white/15">
-                    <span class="sr-only">Menu</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
-                </button>
-            </div>
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('background.png')"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Pure Mayhem Since 2024</div>
+
+      <div class="server-bar">
+        <div class="server-bar-item">
+          <span class="server-bar-label">IP</span>
+          <span class="server-bar-val">mc.laggy.world:25565</span>
+        </div>
+        <span class="server-bar-sep">|</span>
+        <div class="server-bar-item">
+          <span class="server-bar-label">Status</span>
+          <span id="serverStatus" class="server-bar-val info-offline">Checking…</span>
+        </div>
+        <span class="server-bar-sep">|</span>
+        <div class="server-bar-item">
+          <span class="server-bar-label">Players</span>
+          <span id="playerCount" class="server-bar-val">-</span>
+        </div>
+        <span class="server-bar-sep">|</span>
+        <div class="server-bar-item">
+          <span class="server-bar-label">Version</span>
+          <span id="serverVersion" class="server-bar-val">-</span>
+        </div>
+      </div>
+
+      <h1 class="hero-title">LAGGY<br>WORLD</h1>
+      <p class="hero-sub">The server where chaos is the feature. Built to break. Join the community, embrace the lag, survive the mayhem.</p>
+
+      <div class="hero-actions">
+        <button onclick="copyIP()" class="btn btn-primary">Copy Server IP 📋</button>
+        <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-secondary">Join Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem">
+        <div class="section-label">What makes us different</div>
+        <h2 class="section-title">Built for <span>Chaos</span></h2>
+        <p class="section-sub" style="margin:0 auto">No tutorials. No hand-holding. No rules. Just the unexpected.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="grid-cell card">
+          <span class="card-icon">🪓</span>
+          <div class="card-title">Custom Chaos Map</div>
+          <p class="card-body">Entirely custom world generation with surprise structures and hazards everywhere you step.</p>
+        </div>
+        <div class="grid-cell card">
+          <span class="card-icon">⚔️</span>
+          <div class="card-title">No Rules PvP</div>
+          <p class="card-body">Fight, trap, and troll - everything is fair game. Just be ready for payback.</p>
+        </div>
+        <div class="grid-cell card">
+          <span class="card-icon">🌋</span>
+          <div class="card-title">Random Events</div>
+          <p class="card-body">Expect the unexpected. From meteor showers to sudden mob waves - nothing is safe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem">
+        <div class="section-label">Help us grow</div>
+        <h2 class="section-title">Goal: <span>$250</span></h2>
+        <p class="section-sub" style="margin:0 auto">Help us upgrade the hardware. Better server = more chaos for everyone.</p>
+      </div>
+
+      <div style="max-width:800px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted)">Server Upgrade Fund</span>
+          <span id="goalLabel" style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--green)">$1 / $250</span>
+        </div>
+        <div class="goal-bar-wrap">
+          <div id="goalBar" class="goal-bar"></div>
         </div>
 
-        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden bg-black/70 border-t border-white/10 transition-all duration-300">
-            <div class="container flex flex-col gap-1 py-4">
-                <a href="index.html" class="nav-link py-2">Home</a>
-                <a href="about.html" class="nav-link py-2">About</a>
-                <a href="rules.html" class="nav-link py-2">Rules</a>
-                <a href="vote.html" class="nav-link py-2">Vote</a>
-                <a href="bug.html" class="nav-link py-2">Bug</a>
-            </div>
+        <div class="goal-grid">
+          <div class="goal-cell">
+            <span class="goal-cell-icon">🚀</span>
+            <span class="goal-cell-label">Goal</span>
+            <span class="goal-cell-val">$250</span>
+          </div>
+          <div class="goal-cell">
+            <span class="goal-cell-icon">💰</span>
+            <span class="goal-cell-label">Raised</span>
+            <span class="goal-cell-val">$1</span>
+          </div>
+          <div class="goal-cell">
+            <span class="goal-cell-icon">🌋</span>
+            <span class="goal-cell-label">Unlocks</span>
+            <span class="goal-cell-val" style="font-size:1rem">More Events</span>
+          </div>
+          <div class="goal-cell">
+            <span class="goal-cell-icon">🛡️</span>
+            <span class="goal-cell-label">Result</span>
+            <span class="goal-cell-val" style="font-size:1rem">Stable TPS</span>
+          </div>
         </div>
-    </header>
 
-    <main class="pt-24">
-        <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-cover bg-center hero-bg" style="background-image: url('background.png');"></div>
-            <div class="absolute inset-0 bg-black/40"></div>
-            <div class="hero-flares pointer-events-none" aria-hidden="true"></div>
-
-            <div class="container relative z-10 pt-16">
-                <div class="server-info-panel">
-                    <div class="server-info-row">
-                        <div class="server-info-title">Server Information</div>
-                        <div class="server-info-values">
-                            <div class="server-info-item">
-                                <span class="info-label">IP</span>
-                                <span class="info-value">mc.laggy.world:25565</span>
-                            </div>
-                            <div class="server-info-item">
-                                <span class="info-label">Status</span>
-                                <span id="serverStatus" class="info-value info-offline">Checking…</span>
-                            </div>
-                            <div class="server-info-item">
-                                <span class="info-label">Players</span>
-                                <span id="playerCount" class="info-value">—</span>
-                            </div>
-                            <div class="server-info-item">
-                                <span class="info-label">Version</span>
-                                <span id="serverVersion" class="info-value">—</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center text-center gap-6">
-                    <p class="text-sm font-semibold tracking-widest text-white/60">PURE MAYHEM SINCE 2024</p>
-                    <h1 class="minecraft-title">Laggy World</h1>
-                    <p class="max-w-2xl text-lg text-white/70">
-                        The server where chaos is the feature. Play in a world built specifically to break.
-                        Join the community, embrace lag, and survive the mayhem.
-                    </p>
-
-                    <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                        <button onclick="copyIP()" class="btn btn-primary">
-                            <span>Copy Server IP</span>
-                            <span class="text-xl">📋</span>
-                        </button>
-                        <a href="https://discord.gg/45VRt8eXFT" target="_blank" class="btn btn-secondary">
-                            Join Discord
-                        </a>
-                    </div>
-                </div>
+        <div class="support-grid">
+          <a href="N/A" target="_blank" class="support-card">
+            <span class="support-card-icon">💰</span>
+            <div class="support-card-title">Donate Now</div>
+            <p class="support-card-sub">Any amount helps us upgrade faster</p>
+            <span class="btn btn-primary" style="display:inline-block">Donate</span>
+          </a>
+          <div class="support-card">
+            <span class="support-card-icon">🗳️</span>
+            <div class="support-card-title">Vote Daily</div>
+            <p class="support-card-sub">Free way to support the server - takes 10 seconds</p>
+            <div class="support-vote-grid">
+              <a href="https://minecraft-mp.com/server/355696/vote/" target="_blank" class="support-vote-btn">Minecraft-MP</a>
+              <a href="https://www.planetminecraft.com/server/laggyworld/vote/" target="_blank" class="support-vote-btn">PlanetMC</a>
             </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-title text-4xl md:text-5xl">What makes Laggy World different?</h2>
-                    <p class="section-subtitle mt-4">
-                        You won't find tutorials, hand-holding, or rules. This server is built for players that want the unexpected.
-                    </p>
-                </div>
-
-                <div class="mt-12 grid gap-6 md:grid-cols-3">
-                    <div class="card">
-                        <div class="text-5xl">🪓</div>
-                        <h3 class="mt-5 text-xl font-semibold">Custom Chaos Map</h3>
-                        <p class="mt-3 text-sm text-white/70">Entirely custom world generation with surprise structures and hazards everywhere.</p>
-                    </div>
-                    <div class="card">
-                        <div class="text-5xl">⚔️</div>
-                        <h3 class="mt-5 text-xl font-semibold">No Rules PvP</h3>
-                        <p class="mt-3 text-sm text-white/70">Fight, trap, and troll — everything is fair game. Just be ready for payback.</p>
-                    </div>
-                    <div class="card">
-                        <div class="text-5xl">🌋</div>
-                        <h3 class="mt-5 text-xl font-semibold">Random Events</h3>
-                        <p class="mt-3 text-sm text-white/70">Expect the unexpected. From meteor showers to sudden mobs, nothing is safe.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section bg-white/5">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-title text-4xl md:text-5xl">Ready to join?</h2>
-                    <p class="section-subtitle mt-4">
-                        Connect in Minecraft, copy the IP, and jump into chaos. Need help? Hit us up on Discord.
-                    </p>
-                </div>
-
-                <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                    <button onclick="copyIP()" class="btn btn-primary">Copy Server IP</button>
-                    <a href="https://discord.gg/45VRt8eXFT" target="_blank" class="btn btn-secondary">Open Discord</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section bg-gradient-to-br from-purple-950/50 to-black">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-title text-4xl md:text-5xl">Goal: Upgrade the Server</h2>
-                    <p class="section-subtitle mt-4 max-w-2xl mx-auto">
-                        Help us raise $250 to upgrade Laggy World! Better hardware = less lag and more chaos.
-                    </p>
-                </div>
-
-                <div class="mt-12 max-w-3xl mx-auto">
-                    <div class="bg-black/40 border border-white/10 rounded-2xl p-8">
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="text-lg font-semibold">Current Goal: Dedicated Server Upgrade</div>
-                            <div id="goalProgress" class="text-cyan-400 font-mono text-sm">$0 / $250</div>
-                        </div>
-                        
-                        <div class="h-4 bg-white/10 rounded-full overflow-hidden mb-8">
-                            <div id="progressBar" 
-                                 class="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-full transition-all duration-2000 ease-out"
-                                 style="width: 0%"></div>
-                        </div>
-
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                            <div class="bg-white/5 rounded-xl p-4">
-                                <div class="text-2xl mb-1">🚀</div>
-                                <div class="text-sm text-white/60">Goal</div>
-                                <div class="font-semibold text-cyan-400">$250</div>
-                            </div>
-                            <div class="bg-white/5 rounded-xl p-4">
-                                <div class="text-2xl mb-1">💰</div>
-                                <div class="text-sm text-white/60">Raised So Far</div>
-                                <div class="font-semibold">$1</div>
-                            </div>
-                            <div class="bg-white/5 rounded-xl p-4">
-                                <div class="text-2xl mb-1">🌋</div>
-                                <div class="text-sm text-white/60">Unlocks</div>
-                                <div class="font-semibold text-amber-400">More Events + Slots</div>
-                            </div>
-                            <div class="bg-white/5 rounded-xl p-4">
-                                <div class="text-2xl mb-1">🛡️</div>
-                                <div class="text-sm text-white/60">Anti-Lag</div>
-                                <div class="font-semibold text-emerald-400">Stable TPS</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-12">
-                    <div class="text-center mb-8">
-                        <p class="text-white/70">Help us reach the goal:</p>
-                    </div>
-                    
-                    <div class="grid gap-6 md:grid-cols-2 max-w-2xl mx-auto">
-                        <a href="N/A" target="_blank" 
-                           class="card group flex flex-col items-center justify-center p-8 hover:border-pink-400/50 transition-all text-center">
-                            <div class="text-5xl mb-4">💰</div>
-                            <h3 class="text-2xl font-bold group-hover:text-pink-400">Donate Now</h3>
-                            <p class="mt-3 text-white/70">Any amount helps us upgrade faster</p>
-                            <div class="mt-6 text-sm bg-pink-500/10 text-pink-400 px-6 py-2 rounded-full">Donate</div>
-                        </a>
-
-                        <div class="card group flex flex-col items-center justify-center p-8 hover:border-cyan-400/50 transition-all">
-                            <div class="text-5xl mb-4">🗳️</div>
-                            <h3 class="text-2xl font-bold group-hover:text-cyan-400">Vote Daily</h3>
-                            <p class="mt-3 text-white/70">Free way to support the server</p>
-                            <div class="mt-6 grid grid-cols-2 gap-3 w-full">
-                                <a href="https://minecraft-mp.com/server/355696/vote/" target="_blank" class="text-xs bg-white/10 hover:bg-white/20 px-4 py-3 rounded-xl text-center transition">Minecraft-MP</a>
-                                <a href="https://www.planetminecraft.com/server/laggyworld/vote/" target="_blank" class="text-xs bg-white/10 hover:bg-white/20 px-4 py-3 rounded-xl text-center transition">PlanetMC</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-10">
-                    <p class="text-sm text-white/50">Every donation helps us reach $250 faster ❤️<br>Thank you for supporting Laggy World!</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer-card py-10 border-t border-white/10">
-        <div class="container text-center text-sm text-white/60">
-            <div class="flex flex-col items-center gap-3 md:flex-row md:justify-between">
-                <div>© 2026 Laggy World • All chaos reserved</div>
-                <div class="flex flex-wrap items-center justify-center gap-3">
-                    <a href="privacy.html" class="hover:text-white">Privacy</a>
-                    <a href="terms.html" class="hover:text-white">Terms</a>
-                    <a href="bug.html" class="hover:text-white">Bug Reports</a>
-                </div>
-            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuToggle?.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('max-h-0');
-            mobileMenu.classList.toggle('max-h-0', !isOpen);
-            mobileMenu.classList.toggle('max-h-screen', isOpen);
-        });
+  <section class="section">
+    <div class="container text-center">
+      <div class="section-label">Ready to play?</div>
+      <h2 class="section-title">Join the <span>Mayhem</span></h2>
+      <p class="section-sub" style="margin:0 auto 2rem">Copy the IP, open Minecraft, and jump in. Need help? Hit us up on Discord.</p>
+      <div class="hero-actions">
+        <button onclick="copyIP()" class="btn btn-primary">Copy Server IP</button>
+        <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-secondary">Open Discord</a>
+      </div>
+    </div>
+  </section>
 
-        function copyIP() {
-            navigator.clipboard.writeText('mc.laggy.world:25565').then(() => {
-                const toast = document.createElement('div');
-                toast.textContent = 'IP copied to clipboard!';
-                toast.className = 'fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/10 px-5 py-3 text-sm backdrop-blur-md text-white shadow-lg';
-                document.body.appendChild(toast);
-                setTimeout(() => toast.remove(), 2200);
-            });
-        }
+</main>
 
-        function animateProgressBar() {
-            const progressBar = document.getElementById('progressBar');
-            const goalProgress = document.getElementById('goalProgress');
-            
-            setTimeout(() => {
-                progressBar.style.width = '0%';
-                goalProgress.textContent = '$0 / $250';
-            }, 800);
-        }
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-logo">LAGGY WORLD</span>
+        <p class="footer-copy">© 2026 Laggy World • All chaos reserved</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="bug.html">Bug Reports</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-        const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
-        const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
-        const SERVER_STATUS_URL = 'https://api.mcsrvstat.us/2/mc.laggy.world:25565';
+<script>
+  const FIRST_KEY = 'laggyworld.firstVisit';
+  const CF_URL    = 'https://www.cloudflare.com/cdn-cgi/trace';
+  const MC_API    = 'https://api.mcsrvstat.us/2/mc.laggy.world:25565';
 
-        function updateLoaderProgress(percent) {
-            const bar = document.getElementById('loadingProgressBar');
-            if (!bar) return;
-            bar.style.width = `${Math.min(100, Math.max(0, percent))}%`;
-        }
+  function updateLoaderProgress(p){
+    const b = document.getElementById('loadingProgressBar');
+    if(b) b.style.width = Math.min(100,Math.max(0,p))+'%';
+  }
+  function updateLoaderStatus(t){
+    const s = document.getElementById('loadingStatus');
+    if(s) s.textContent = t;
+  }
+  function hideLoading(){
+    const o = document.getElementById('loadingOverlay');
+    if(!o) return;
+    o.classList.add('hidden');
+    setTimeout(()=>o.remove(),600);
+  }
+  function startLoading(){
+    let p=0;
+    const iv = setInterval(()=>{
+      p = Math.min(98, p + Math.random()*10+6);
+      updateLoaderProgress(p);
+    },180);
+    fetch(CF_URL,{mode:'no-cors',cache:'no-cache'}).catch(()=>{}).finally(()=>{
+      clearInterval(iv);
+      updateLoaderProgress(100);
+      updateLoaderStatus('Verification complete');
+      setTimeout(hideLoading,420);
+    });
+  }
 
-        function updateLoaderStatus(text) {
-            const status = document.getElementById('loadingStatus');
-            if (!status) return;
-            status.textContent = text;
-        }
+  async function fetchServerStatus(){
+    try{
+      const c = new AbortController();
+      const t = setTimeout(()=>c.abort(),8000);
+      const r = await fetch(MC_API,{signal:c.signal});
+      clearTimeout(t);
+      const d = await r.json();
+      const s = document.getElementById('serverStatus');
+      const p = document.getElementById('playerCount');
+      const v = document.getElementById('serverVersion');
+      if(d.online){
+        s.textContent='Online'; s.className='server-bar-val info-online';
+        p.textContent=`${d.players?.online??0}/${d.players?.max??'??'}`;
+        v.textContent=d.version||'Unknown';
+      } else {
+        s.textContent='Offline'; s.className='server-bar-val info-offline';
+        p.textContent='—'; v.textContent='—';
+      }
+    }catch(e){
+      const s=document.getElementById('serverStatus');
+      if(s){s.textContent='Offline';s.className='server-bar-val info-offline';}
+    }
+  }
 
-        function hideLoadingOverlay() {
-            const overlay = document.getElementById('loadingOverlay');
-            if (!overlay) return;
-            overlay.classList.add('hidden');
-            setTimeout(() => overlay.remove(), 900);
-        }
+  function copyIP(){
+    navigator.clipboard.writeText('mc.laggy.world:25565').then(()=>{
+      const t=document.createElement('div');
+      t.textContent='IP copied!'; t.className='toast';
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(),2200);
+    });
+  }
 
-        function runCloudflareCheck() {
-            return fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' });
-        }
+  document.getElementById('menuToggle').addEventListener('click',()=>{
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
 
-        function setServerStatus({ online, players, max, version }) {
-            const statusEl = document.getElementById('serverStatus');
-            const countEl = document.getElementById('playerCount');
-            const versionEl = document.getElementById('serverVersion');
+  window.addEventListener('scroll',()=>{
+    const p = window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    document.getElementById('progress-line').style.width=p+'%';
+    document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+  });
 
-            if (!statusEl || !countEl || !versionEl) return;
+  document.addEventListener('DOMContentLoaded',()=>{
+    const isFirst = !localStorage.getItem(FIRST_KEY);
+    if(isFirst){ startLoading(); localStorage.setItem(FIRST_KEY,'1'); }
+    else { document.getElementById('loadingOverlay')?.remove(); }
+    fetchServerStatus();
+    setTimeout(()=>{ const b=document.getElementById('goalBar'); if(b) b.style.width='0.4%'; },800);
+  });
+</script>
 
-            if (online) {
-                statusEl.textContent = 'Online';
-                statusEl.classList.remove('info-offline');
-                statusEl.classList.add('info-online');
-                countEl.textContent = `${players ?? 0}/${max ?? '??'}`;
-                versionEl.textContent = version || 'Unknown';
-            } else {
-                statusEl.textContent = 'Offline';
-                statusEl.classList.remove('info-online');
-                statusEl.classList.add('info-offline');
-                countEl.textContent = '—';
-                versionEl.textContent = '—';
-            }
-        }
-
-        async function fetchServerStatus() {
-            try {
-                const controller = new AbortController();
-                const timeout = setTimeout(() => controller.abort(), 8000);
-                const res = await fetch(SERVER_STATUS_URL, { signal: controller.signal });
-                clearTimeout(timeout);
-
-                if (!res.ok) throw new Error('Network error');
-                const data = await res.json();
-
-                setServerStatus({
-                    online: data.online,
-                    players: data.players?.online,
-                    max: data.players?.max,
-                    version: data.version,
-                });
-            } catch (error) {
-                setServerStatus({ online: false });
-            }
-        }
-
-        function startLoadingSequence() {
-            updateLoaderStatus('Preparing secure channel…');
-            let progress = 0;
-            const tick = () => {
-                progress = Math.min(98, progress + (Math.random() * 10 + 6));
-                updateLoaderProgress(progress);
-            };
-
-            const progressInterval = setInterval(tick, 180);
-
-            runCloudflareCheck()
-                .catch(() => {})
-                .finally(() => {
-                    clearInterval(progressInterval);
-                    updateLoaderProgress(100);
-                    updateLoaderStatus('Verification complete');
-                    setTimeout(hideLoadingOverlay, 420);
-                });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('loadingOverlay');
-            const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
-
-            if (isFirstVisit) {
-                startLoadingSequence();
-                localStorage.setItem(FIRST_VISIT_KEY, '1');
-            } else {
-                overlay.remove();
-            }
-
-            fetchServerStatus();
-            animateProgressBar();
-        });
-    </script>
 </body>
 </html>

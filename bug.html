@@ -1,196 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bug Reports • Laggy World</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bug Reports • Laggy World</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-card">
-            <div class="loader" aria-hidden="true"></div>
-            <div class="loading-text">
-                <strong>Checking your browser</strong>
-                <span>Preparing a secure connection to Laggy World…</span>
-            </div>
-            <div class="loading-progress" aria-hidden="true">
-                <div id="loadingProgressBar" class="loading-progress-bar"></div>
-            </div>
-            <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
-            <div class="loading-subtext">This may take a moment. Please do not refresh.</div>
-        </div>
+<div class="noise" aria-hidden="true"></div>
+<div id="progress-line"></div>
+
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-card">
+    <div class="loading-title">LAGGY WORLD</div>
+    <div class="loader" aria-hidden="true"></div>
+    <div class="loading-text">Loading bug reports…</div>
+    <div class="loading-progress">
+      <div id="loadingProgressBar" class="loading-progress-bar"></div>
     </div>
+    <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
+    <div class="loading-subtext">Do not refresh.</div>
+  </div>
+</div>
 
-    <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
-        <div class="container flex items-center justify-between py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
-                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
-            </a>
+<header id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Laggy World">
+      <span class="nav-logo-text">LAGGY WORLD</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rules.html">Rules</a></li>
+      <li><a href="vote.html">Vote</a></li>
+      <li><a href="bug.html">Bug</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="rules.html">Rules</a>
+    <a href="vote.html">Vote</a>
+    <a href="bug.html">Bug</a>
+    <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener">Discord</a>
+  </div>
+</header>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="rules.html" class="nav-link">Rules</a>
-                <a href="bug.html" class="nav-link">Bug</a>
-            </nav>
+<main>
 
-            <div class="flex items-center gap-3">
-                <a href="https://discord.gg/45VRt8eXFT" target="_blank" class="btn btn-primary">Join Discord</a>
-                <button id="mobileMenuToggle" class="md:hidden rounded-full bg-white/10 p-3 text-white/80 hover:bg-white/15">
-                    <span class="sr-only">Menu</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
-                </button>
-            </div>
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Report the Chaos</div>
+      <h1 class="page-hero-title">BUG REPORTS</h1>
+      <p class="page-hero-sub">Found a glitch? Perfect - we love those. Send your report to Discord and watch the chaos unfold.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="max-width:640px;margin:0 auto">
+
+        <div class="content-card">
+          <h2>How to Report</h2>
+          <p>Every bug report goes straight to our Discord. The more detailed, the better - but we love chaotic ones too.</p>
+          <p>We read everything. We don't promise fixes. Sometimes we turn your report into a new feature.</p>
         </div>
 
-        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden bg-black/70 border-t border-white/10 transition-all duration-300">
-            <div class="container flex flex-col gap-1 py-4">
-                <a href="index.html" class="nav-link py-2">Home</a>
-                <a href="about.html" class="nav-link py-2">About</a>
-                <a href="rules.html" class="nav-link py-2">Rules</a>
-                <a href="bug.html" class="nav-link py-2">Bug</a>
-
-            </div>
+        <div class="content-card">
+          <h2>What to Include</h2>
+          <ul>
+            <li>Your Minecraft username</li>
+            <li>What happened (the more chaotic the better)</li>
+            <li>Where on the map it happened</li>
+            <li>Screenshots or video if you have it</li>
+          </ul>
         </div>
-    </header>
 
-    <main class="pt-24">
-        <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1015/2000/1200')] bg-cover bg-center hero-bg"></div>
-
-            <div class="container relative z-10 pt-16">
-                <div class="flex flex-col items-center text-center gap-6">
-                    <p class="text-sm font-semibold tracking-widest text-white/60">REPORT THE CHAOS</p>
-                    <h1 class="glitch text-6xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                        Bug Reports
-                    </h1>
-                    <p class="max-w-2xl text-lg text-white/70">
-                        Found a glitch? Perfect. We love those. Send your report to Discord and watch the chaos unfold.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section bg-white/5">
-            <div class="container">
-                <div class="mx-auto max-w-3xl text-white/80 text-lg leading-relaxed">
-                    <p class="mb-6">
-                        Every bug report goes straight to our Discord. The more chaotic, the better.
-                    </p>
-                    <p class="mb-6">
-                        We read everything, but we don't promise fixes. Sometimes we turn your report into a new feature.
-                    </p>
-                    <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                        <a href="https://discord.gg/45VRt8eXFT" target="_blank" class="btn btn-primary">Report in Discord</a>
-                        <button onclick="copyIP()" class="btn btn-secondary">Copy Server IP</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-card py-10 border-t border-white/10">
-        <div class="container text-center text-sm text-white/60">
-            <div class="flex flex-col items-center gap-3 md:flex-row md:justify-between">
-                <div>� 2026 Laggy World � All chaos reserved</div>
-                <div class="flex flex-wrap items-center justify-center gap-3">
-                    <a href="privacy.html" class="hover:text-white">Privacy</a>
-                    <a href="terms.html" class="hover:text-white">Terms</a>
-                    <a href="about.html" class="hover:text-white">About</a>
-                </div>
-            </div>
+        <div class="content-card">
+          <h2>Known "Features"</h2>
+          <ul>
+            <li>Lag - yes, it's intentional</li>
+            <li>Random mob spawns - also intentional</li>
+            <li>The server randomly restarting - it happens</li>
+            <li>Your base exploding for no reason - embrace it</li>
+          </ul>
         </div>
-    </footer>
 
-    <script>
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuToggle?.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('max-h-0');
-            mobileMenu.classList.toggle('max-h-0', !isOpen);
-            mobileMenu.classList.toggle('max-h-screen', isOpen);
-        });
+        <div class="text-center mt-md">
+          <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-primary" style="margin-right:.75rem">Report in Discord</a>
+          <button onclick="copyIP()" class="btn btn-secondary">Copy Server IP</button>
+        </div>
 
-        function copyIP() {
-            navigator.clipboard.writeText('mc.laggy.world:25565').then(() => {
-                const toast = document.createElement('div');
-                toast.textContent = 'IP copied to clipboard!';
-                toast.className = 'fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/10 px-5 py-3 text-sm backdrop-blur-md text-white shadow-lg';
-                document.body.appendChild(toast);
-                setTimeout(() => toast.remove(), 2200);
-            });
-        }
+      </div>
+    </div>
+  </section>
 
-        const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
-        const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
+</main>
 
-        function updateLoaderProgress(percent) {
-            const bar = document.getElementById('loadingProgressBar');
-            if (!bar) return;
-            bar.style.width = `${Math.min(100, Math.max(0, percent))}%`;
-        }
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-logo">LAGGY WORLD</span>
+        <p class="footer-copy">© 2026 Laggy World • All chaos reserved</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-        function updateLoaderStatus(text) {
-            const status = document.getElementById('loadingStatus');
-            if (!status) return;
-            status.textContent = text;
-        }
-
-        function hideLoadingOverlay() {
-            const overlay = document.getElementById('loadingOverlay');
-            if (!overlay) return;
-            overlay.classList.add('hidden');
-            setTimeout(() => overlay.remove(), 900);
-        }
-
-        function runCloudflareCheck() {
-            // Silent check: fetch a Cloudflare endpoint without user-visible output.
-            return fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' });
-        }
-
-        function startLoadingSequence() {
-            updateLoaderStatus('Preparing secure channel…');
-            let progress = 0;
-            const tick = () => {
-                progress = Math.min(98, progress + (Math.random() * 10 + 6));
-                updateLoaderProgress(progress);
-            };
-
-            const progressInterval = setInterval(tick, 180);
-
-            runCloudflareCheck()
-                .catch(() => {
-                    /* still proceed */
-                })
-                .finally(() => {
-                    clearInterval(progressInterval);
-                    updateLoaderProgress(100);
-                    updateLoaderStatus('Verification complete');
-                    setTimeout(hideLoadingOverlay, 420);
-                });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('loadingOverlay');
-            const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
-
-            if (!overlay) return;
-
-            if (!isFirstVisit) {
-                overlay.remove();
-                return;
-            }
-
-            startLoadingSequence();
-            localStorage.setItem(FIRST_VISIT_KEY, '1');
-        });
-    </script>
+<script>
+  function copyIP(){
+    navigator.clipboard.writeText('mc.laggy.world:25565').then(()=>{
+      const t=document.createElement('div');t.textContent='IP copied!';t.className='toast';
+      document.body.appendChild(t);setTimeout(()=>t.remove(),2200);
+    });
+  }
+  document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  window.addEventListener('scroll',()=>{
+    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    document.getElementById('progress-line').style.width=p+'%';
+    document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+  });
+  const FIRST_KEY='laggyworld.firstVisit';
+  const CF_URL='https://www.cloudflare.com/cdn-cgi/trace';
+  function updateLoaderProgress(p){const b=document.getElementById('loadingProgressBar');if(b)b.style.width=Math.min(100,Math.max(0,p))+'%';}
+  function updateLoaderStatus(t){const s=document.getElementById('loadingStatus');if(s)s.textContent=t;}
+  function hideLoading(){const o=document.getElementById('loadingOverlay');if(!o)return;o.classList.add('hidden');setTimeout(()=>o.remove(),600);}
+  function startLoading(){
+    let p=0;
+    const iv=setInterval(()=>{p=Math.min(98,p+Math.random()*10+6);updateLoaderProgress(p);},180);
+    fetch(CF_URL,{mode:'no-cors',cache:'no-cache'}).catch(()=>{}).finally(()=>{clearInterval(iv);updateLoaderProgress(100);updateLoaderStatus('Done');setTimeout(hideLoading,420);});
+  }
+  document.addEventListener('DOMContentLoaded',()=>{
+    const isFirst=!localStorage.getItem(FIRST_KEY);
+    if(isFirst){startLoading();localStorage.setItem(FIRST_KEY,'1');}
+    else{document.getElementById('loadingOverlay')?.remove();}
+  });
+</script>
 
 </body>
 </html>
