@@ -6,22 +6,338 @@
   <title>Laggy World • Chaos Edition</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── CUSTOM CURSOR ── */
+    *, *::before, *::after { cursor: none !important; }
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      background: #22d3ee;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2147483647; /* MAX z-index — always on top */
+      transform: translate(-50%, -50%);
+      transition: background 0.2s ease, width 0.15s ease, height 0.15s ease;
+      box-shadow: 0 0 10px rgba(34,211,238,0.7), 0 0 20px rgba(34,211,238,0.3);
+      will-change: left, top;
+    }
+    #cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      width: 32px; height: 32px;
+      border: 1.5px solid rgba(34,211,238,0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2147483646; /* one below dot */
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+      will-change: left, top;
+    }
+    #cursor.hovered { width: 8px; height: 8px; background: #fff; }
+    #cursor-ring.hovered { width: 44px; height: 44px; border-color: rgba(255,255,255,0.4); }
+    @media (max-width: 768px) {
+      #cursor, #cursor-ring { display: none; }
+      *, *::before, *::after { cursor: auto !important; }
+    }
+
+    #loadingOverlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #060504;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    #loadingOverlay.hidden {
+      opacity: 0; pointer-events: none; transform: scale(1.03);
+    }
+    #loadingOverlay::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 4px
+      );
+      pointer-events: none; z-index: 2;
+    }
+    #loadingOverlay::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 0% 0%,   rgba(139,26,26,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(232,255,60,.07) 0%, transparent 55%);
+      pointer-events: none; z-index: 1;
+    }
+
+    .ls-inner {
+      position: relative; z-index: 3;
+      width: min(90vw, 480px);
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    .ls-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3.5rem, 12vw, 6.5rem);
+      letter-spacing: .06em; text-transform: uppercase;
+      color: #e8ff3c; line-height: .95; text-align: center;
+      margin-bottom: .4rem;
+      animation: ls-flicker 4s ease-in-out infinite;
+      position: relative;
+    }
+    .ls-title::before, .ls-title::after {
+      content: attr(data-text); position: absolute; inset: 0; opacity: 0;
+    }
+    .ls-title::before {
+      color: #ff4444; clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+      animation: ls-glitch-a 5s infinite;
+    }
+    .ls-title::after {
+      color: #00e5ff; clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+      animation: ls-glitch-b 5s infinite;
+    }
+    @keyframes ls-flicker {
+      0%,100% { opacity: 1 } 92% { opacity: 1 } 93% { opacity: .7 }
+      94% { opacity: 1 } 96% { opacity: .85 } 97% { opacity: 1 }
+    }
+    @keyframes ls-glitch-a {
+      0%,89%,100% { opacity: 0; transform: none }
+      90% { opacity: .9; transform: translate(-4px, 2px) } 91% { opacity: 0 }
+      94% { opacity: .7; transform: translate(3px,-1px) } 95% { opacity: 0 }
+    }
+    @keyframes ls-glitch-b {
+      0%,91%,100% { opacity: 0; transform: none }
+      92% { opacity: .8; transform: translate(4px,-2px) } 93% { opacity: 0 }
+      96% { opacity: .6; transform: translate(-3px,1px) } 97% { opacity: 0 }
+    }
+
+    .ls-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem; letter-spacing: .5em; text-transform: uppercase;
+      color: rgba(232,255,60,.4); margin-bottom: 2.8rem;
+    }
+
+    .ls-phases { display: flex; gap: 6px; margin-bottom: 2rem; }
+    .ls-phase-dot {
+      width: 6px; height: 6px;
+      background: rgba(232,255,60,.15);
+      transition: background .3s, transform .3s;
+    }
+    .ls-phase-dot.active {
+      background: #e8ff3c; box-shadow: 0 0 8px rgba(232,255,60,.6); transform: scaleX(3);
+    }
+    .ls-phase-dot.done { background: rgba(232,255,60,.45); }
+
+    .ls-progress-wrap {
+      width: 100%; height: 2px; background: rgba(232,255,60,.08);
+      margin-bottom: 1.2rem; position: relative; overflow: hidden;
+    }
+    .ls-progress-bar {
+      height: 100%; width: 0%; background: #e8ff3c;
+      transition: width .15s ease; box-shadow: 0 0 12px rgba(232,255,60,.7);
+    }
+    .ls-progress-bar::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 60px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+      animation: ls-shimmer 1.2s ease-in-out infinite;
+    }
+    @keyframes ls-shimmer {
+      from { transform: translateX(-120px) } to { transform: translateX(60px) }
+    }
+    .ls-status {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(240,237,230,.55); margin-bottom: .5rem; min-height: 1.2em; text-align: center;
+    }
+    .ls-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem; color: rgba(255,255,255,.2);
+      letter-spacing: .18em; text-transform: uppercase; text-align: center;
+    }
+
+    .ls-ping {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 3;
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+      color: rgba(232,255,60,.3); display: flex; align-items: center; gap: .6rem;
+    }
+    .ls-ping-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(232,255,60,.3); animation: ls-pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes ls-pulse {
+      0%,100% { opacity: .3; transform: scale(1) } 50% { opacity: 1; transform: scale(1.4) }
+    }
+
+    .ls-corner { position: absolute; width: 20px; height: 20px; z-index: 3; }
+    .ls-corner::before, .ls-corner::after {
+      content: ''; position: absolute; background: rgba(232,255,60,.4);
+    }
+    .ls-corner::before { width: 100%; height: 1px; top: 0; left: 0 }
+    .ls-corner::after  { width: 1px; height: 100%; top: 0; left: 0 }
+    .ls-corner-tl { top: 1.5rem; left: 1.5rem }
+    .ls-corner-tr { top: 1.5rem; right: 1.5rem; transform: scaleX(-1) }
+    .ls-corner-bl { bottom: 1.5rem; left: 1.5rem; transform: scaleY(-1) }
+    .ls-corner-br { bottom: 1.5rem; right: 1.5rem; transform: scale(-1) }
+
+    #botCheck {
+      position: fixed; inset: 0; z-index: 10000;
+      background: #060504;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      transition: opacity .5s ease;
+    }
+    #botCheck.hidden { opacity: 0; pointer-events: none; }
+    #botCheck::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 4px
+      );
+      pointer-events: none; z-index: 2;
+    }
+
+    .bc-inner {
+      position: relative; z-index: 3;
+      width: min(92vw, 440px);
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .bc-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem; letter-spacing: .4em; text-transform: uppercase;
+      color: rgba(232,255,60,.5); margin-bottom: 1rem;
+      border: 1px solid rgba(232,255,60,.15); padding: .35rem .8rem;
+    }
+    .bc-question {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      color: #f0ede6; text-align: center; margin-bottom: .5rem;
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+    .bc-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: .65rem; color: rgba(255,255,255,.3);
+      letter-spacing: .2em; text-transform: uppercase;
+      text-align: center; margin-bottom: 2rem;
+    }
+
+    .bc-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 6px; width: 100%; margin-bottom: 1.5rem;
+    }
+    .bc-tile {
+      aspect-ratio: 1; border: 1px solid rgba(232,255,60,.12);
+      background: rgba(232,255,60,.03);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      position: relative; overflow: hidden;
+      transition: border-color .2s, background .2s, transform .1s;
+      user-select: none; -webkit-user-select: none;
+    }
+    .bc-tile:hover { border-color: rgba(232,255,60,.35); background: rgba(232,255,60,.07); }
+    .bc-tile.selected {
+      border-color: #e8ff3c; background: rgba(232,255,60,.15);
+      transform: scale(.96);
+    }
+    .bc-tile.selected::after {
+      content: '✓';
+      position: absolute; top: 4px; right: 6px;
+      font-size: .65rem; color: #e8ff3c; font-family: monospace;
+    }
+    .bc-tile.wrong {
+      border-color: #ff4444; background: rgba(255,68,68,.12);
+      animation: bc-shake .35s ease;
+    }
+    @keyframes bc-shake {
+      0%,100% { transform: translateX(0) }
+      20%     { transform: translateX(-6px) }
+      60%     { transform: translateX(6px) }
+    }
+
+    .bc-confirm-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+      color: #060504; background: #e8ff3c;
+      border: none; padding: .75rem 2.5rem;
+      transition: opacity .2s, transform .1s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .bc-confirm-btn:hover { opacity: .9; }
+    .bc-confirm-btn:active { transform: scale(.97); }
+    .bc-confirm-btn:disabled { opacity: .3; }
+
+    .bc-error {
+      font-family: 'Space Mono', monospace; font-size: .65rem;
+      color: #ff4444; letter-spacing: .12em; text-transform: uppercase;
+      margin-top: .75rem; min-height: 1rem; text-align: center;
+      opacity: 0; transition: opacity .2s;
+    }
+    .bc-error.show { opacity: 1; }
+
+    .bc-attempts {
+      font-family: 'Space Mono', monospace; font-size: .6rem;
+      color: rgba(255,255,255,.18); letter-spacing: .2em;
+      text-transform: uppercase; margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
+
+<!-- Custom cursor — MUST be first in body so they paint above everything -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
 <div class="noise" aria-hidden="true"></div>
 <div id="progress-line"></div>
 
-<div id="loadingOverlay" class="loading-overlay">
-  <div class="loading-card">
-    <div class="loading-title">LAGGY WORLD</div>
-    <div class="loader" aria-hidden="true"></div>
-    <div class="loading-text">Checking your connection…</div>
-    <div class="loading-progress">
-      <div id="loadingProgressBar" class="loading-progress-bar"></div>
+<div id="botCheck" role="dialog" aria-label="Human verification">
+  <div class="ls-corner ls-corner-tl"></div>
+  <div class="ls-corner ls-corner-tr"></div>
+  <div class="ls-corner ls-corner-bl"></div>
+  <div class="ls-corner ls-corner-br"></div>
+
+  <div class="bc-inner">
+    <div class="bc-badge">Security Check · Laggy World</div>
+    <div class="bc-question" id="bcQuestion">Select all: CREEPERS</div>
+    <div class="bc-sub" id="bcSubtitle">Tap every matching tile — then confirm</div>
+
+    <div class="bc-grid" id="bcGrid"></div>
+
+    <button class="bc-confirm-btn" id="bcConfirm" disabled>Confirm Selection</button>
+    <div class="bc-error" id="bcError">Wrong selection — try again</div>
+    <div class="bc-attempts" id="bcAttempts"></div>
+  </div>
+</div>
+
+<div id="loadingOverlay" role="status" aria-label="Loading Laggy World" style="display:none">
+  <div class="ls-corner ls-corner-tl"></div>
+  <div class="ls-corner ls-corner-tr"></div>
+  <div class="ls-corner ls-corner-bl"></div>
+  <div class="ls-corner ls-corner-br"></div>
+
+  <div class="ls-inner">
+    <div class="ls-title" data-text="LAGGY WORLD">LAGGY WORLD</div>
+    <div class="ls-tagline">Season 2 — Chaos Edition</div>
+
+    <div class="ls-phases">
+      <div class="ls-phase-dot active" id="ph0"></div>
+      <div class="ls-phase-dot" id="ph1"></div>
+      <div class="ls-phase-dot" id="ph2"></div>
+      <div class="ls-phase-dot" id="ph3"></div>
+      <div class="ls-phase-dot" id="ph4"></div>
     </div>
-    <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
-    <div class="loading-subtext">Do not refresh. Chaos incoming.</div>
+
+    <div class="ls-progress-wrap">
+      <div id="lsBar" class="ls-progress-bar"></div>
+    </div>
+
+    <div id="lsStatus" class="ls-status">Initializing…</div>
+    <div id="lsSub" class="ls-sub">Do not refresh. Chaos incoming.</div>
+  </div>
+
+  <div class="ls-ping">
+    <div class="ls-ping-dot"></div>
+    <span>mc.laggy.world:25565</span>
   </div>
 </div>
 
@@ -41,7 +357,11 @@
     <div style="display:flex;align-items:center;gap:.75rem">
       <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
       </button>
     </div>
   </div>
@@ -56,16 +376,14 @@
 </header>
 
 <main>
-
   <section class="hero">
     <div class="hero-bg" style="background-image:url('background.png')"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Pure Mayhem Since 2024</div>
-
+      <div class="hero-eyebrow">Season 2 · Pure Mayhem Since 2024</div>
       <div class="server-bar">
         <div class="server-bar-item">
           <span class="server-bar-label">IP</span>
-          <span class="server-bar-val">mc.laggy.world:25565</span>
+          <span class="server-bar-val">mc.laggy.world</span>
         </div>
         <span class="server-bar-sep">|</span>
         <div class="server-bar-item">
@@ -75,18 +393,16 @@
         <span class="server-bar-sep">|</span>
         <div class="server-bar-item">
           <span class="server-bar-label">Players</span>
-          <span id="playerCount" class="server-bar-val">-</span>
+          <span id="playerCount" class="server-bar-val">—</span>
         </div>
         <span class="server-bar-sep">|</span>
         <div class="server-bar-item">
           <span class="server-bar-label">Version</span>
-          <span id="serverVersion" class="server-bar-val">-</span>
+          <span id="serverVersion" class="server-bar-val">—</span>
         </div>
       </div>
-
-      <h1 class="hero-title">LAGGY<br>WORLD</h1>
+      <h1 class="hero-title">LAGGY<br><span>WORLD</span></h1>
       <p class="hero-sub">The server where chaos is the feature. Built to break. Join the community, embrace the lag, survive the mayhem.</p>
-
       <div class="hero-actions">
         <button onclick="copyIP()" class="btn btn-primary">Copy Server IP 📋</button>
         <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-secondary">Join Discord</a>
@@ -99,9 +415,8 @@
       <div class="text-center" style="margin-bottom:3rem">
         <div class="section-label">What makes us different</div>
         <h2 class="section-title">Built for <span>Chaos</span></h2>
-        <p class="section-sub" style="margin:0 auto">No tutorials. No hand-holding. No rules. Just the unexpected.</p>
+        <p class="section-sub" style="margin:0 auto">No tutorials. No hand-holding. No mercy. Just the unexpected.</p>
       </div>
-
       <div class="grid-3">
         <div class="grid-cell card">
           <span class="card-icon">🪓</span>
@@ -111,12 +426,12 @@
         <div class="grid-cell card">
           <span class="card-icon">⚔️</span>
           <div class="card-title">No Rules PvP</div>
-          <p class="card-body">Fight, trap, and troll - everything is fair game. Just be ready for payback.</p>
+          <p class="card-body">Fight, trap, and troll — everything is fair game. Just be ready for payback.</p>
         </div>
         <div class="grid-cell card">
           <span class="card-icon">🌋</span>
           <div class="card-title">Random Events</div>
-          <p class="card-body">Expect the unexpected. From meteor showers to sudden mob waves - nothing is safe.</p>
+          <p class="card-body">Expect the unexpected. Meteor showers, mob waves, world events — nothing is safe.</p>
         </div>
       </div>
     </div>
@@ -133,7 +448,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -141,7 +455,7 @@
     <div class="footer-inner">
       <div>
         <span class="footer-logo">LAGGY WORLD</span>
-        <p class="footer-copy">© 2026 Laggy World • All chaos reserved</p>
+        <p class="footer-copy">© 2026 Laggy World · All chaos reserved</p>
       </div>
       <div class="footer-links">
         <a href="privacy.html">Privacy</a>
@@ -154,88 +468,288 @@
 </footer>
 
 <script>
-  const FIRST_KEY = 'laggyworld.firstVisit';
-  const CF_URL    = 'https://www.cloudflare.com/cdn-cgi/trace';
+
+  // ── CUSTOM CURSOR ──
+  const cursor = document.getElementById('cursor');
+  const ring   = document.getElementById('cursor-ring');
+  let mx = -200, my = -200, rx = -200, ry = -200;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
+
+  (function animateRing() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animateRing);
+  })();
+
+  // Hover states on interactive elements
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest('a, button, .bc-tile, [role="button"]')) {
+      cursor.classList.add('hovered');
+      ring.classList.add('hovered');
+    }
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('a, button, .bc-tile, [role="button"]')) {
+      cursor.classList.remove('hovered');
+      ring.classList.remove('hovered');
+    }
+  });
+
+  // ── REST OF SITE JS ──
   const MC_API    = 'https://api.mcsrvstat.us/2/mc.laggy.world:25565';
+  const HUMAN_KEY = 'laggyworld.s2.humanVerified';
+  const LOAD_KEY  = 'laggyworld.s2.loaderDone';
 
-  function updateLoaderProgress(p){
-    const b = document.getElementById('loadingProgressBar');
-    if(b) b.style.width = Math.min(100,Math.max(0,p))+'%';
+  const CHALLENGES = [
+    {
+      question: 'Select all: CREEPERS',
+      sub: 'Tap every creeper tile — then confirm',
+      targetEmoji: '😈',
+      targetCount: 3,
+      fillerEmojis: ['🐸','💣','🦎','🪲','🌿','😱','🎃','⚡','🤖','🧟','👾','🕷️'],
+    },
+    {
+      question: 'Select all: TNT BLOCKS',
+      sub: 'Find every TNT — then confirm',
+      targetEmoji: '💣',
+      targetCount: 3,
+      fillerEmojis: ['🪨','🪵','⛏️','🧱','🌊','🌿','🔥','⚗️','🎯','🛡️','🗡️','🧲'],
+    },
+    {
+      question: 'Select all: DIAMONDS',
+      sub: 'Click the diamonds — ignore everything else',
+      targetEmoji: '💎',
+      targetCount: 4,
+      fillerEmojis: ['🪨','⛏️','🔮','🧊','💧','🌊','🪩','🫧','🎀','🔷','🔵','🫐'],
+    },
+    {
+      question: 'Select all: SWORDS',
+      sub: 'Choose every sword tile — then confirm',
+      targetEmoji: '⚔️',
+      targetCount: 3,
+      fillerEmojis: ['🪓','🏹','🛡️','🗡️','🔱','🪃','💥','🎯','🧨','⛏️','🔨','🪚'],
+    },
+  ];
+
+  let bcAttempts  = 0;
+  let bcChallenge = null;
+  let bcCorrect   = new Set();
+  let bcSelected  = new Set();
+
+  function buildChallenge() {
+    const ch = CHALLENGES[Math.floor(Math.random() * CHALLENGES.length)];
+    bcChallenge = ch;
+    bcCorrect   = new Set();
+    bcSelected  = new Set();
+
+    document.getElementById('bcQuestion').textContent = ch.question;
+    document.getElementById('bcSubtitle').textContent = ch.sub || 'Tap every matching tile — then confirm';
+
+    const fillers = [...(ch.fillerEmojis || [])];
+    shuffle(fillers);
+
+    const totalTiles = 16;
+    const positions = Array.from({ length: totalTiles }, (_, i) => i);
+    shuffle(positions);
+    const targetPositions = new Set(positions.slice(0, ch.targetCount));
+
+    const grid = document.getElementById('bcGrid');
+    grid.innerHTML = '';
+
+    for (let i = 0; i < totalTiles; i++) {
+      const isTarget = targetPositions.has(i);
+      const emoji = isTarget ? ch.targetEmoji : (fillers[i % fillers.length] || '❓');
+      if (isTarget) bcCorrect.add(i);
+
+      const tile = document.createElement('div');
+      tile.className = 'bc-tile';
+      tile.dataset.index = i;
+      tile.textContent = emoji;
+      tile.addEventListener('click', () => toggleTile(tile, i));
+      grid.appendChild(tile);
+    }
+
+    document.getElementById('bcConfirm').disabled = true;
+    document.getElementById('bcError').classList.remove('show');
   }
-  function updateLoaderStatus(t){
-    const s = document.getElementById('loadingStatus');
-    if(s) s.textContent = t;
+
+  function toggleTile(tile, idx) {
+    if (bcSelected.has(idx)) {
+      bcSelected.delete(idx);
+      tile.classList.remove('selected');
+    } else {
+      bcSelected.add(idx);
+      tile.classList.add('selected');
+    }
+    document.getElementById('bcConfirm').disabled = bcSelected.size === 0;
   }
-  function hideLoading(){
-    const o = document.getElementById('loadingOverlay');
-    if(!o) return;
-    o.classList.add('hidden');
-    setTimeout(()=>o.remove(),600);
+
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
   }
-  function startLoading(){
-    let p=0;
-    const iv = setInterval(()=>{
-      p = Math.min(98, p + Math.random()*10+6);
-      updateLoaderProgress(p);
-    },180);
-    fetch(CF_URL,{mode:'no-cors',cache:'no-cache'}).catch(()=>{}).finally(()=>{
-      clearInterval(iv);
-      updateLoaderProgress(100);
-      updateLoaderStatus('Verification complete');
-      setTimeout(hideLoading,420);
+
+  function checkBotAnswer() {
+    const isCorrect =
+      bcSelected.size === bcCorrect.size &&
+      [...bcSelected].every(i => bcCorrect.has(i));
+
+    if (isCorrect) {
+      localStorage.setItem(HUMAN_KEY, '1');
+      const bc = document.getElementById('botCheck');
+      bc.classList.add('hidden');
+      setTimeout(() => { bc.remove(); startLoader(); }, 500);
+    } else {
+      bcAttempts++;
+      document.getElementById('bcError').classList.add('show');
+      document.getElementById('bcAttempts').textContent =
+        bcAttempts > 1 ? `${bcAttempts} failed attempts` : '';
+
+      document.querySelectorAll('.bc-tile.selected').forEach(t => {
+        t.classList.add('wrong');
+        setTimeout(() => t.classList.remove('wrong', 'selected'), 600);
+      });
+      bcSelected.clear();
+
+      setTimeout(() => {
+        buildChallenge();
+        document.getElementById('bcError').classList.remove('show');
+      }, 900);
+    }
+  }
+
+  const PHASES = [
+    { label: 'Connecting to server…',   sub: 'Establishing secure channel' },
+    { label: 'Loading world data…',     sub: 'Unpacking chaos algorithms' },
+    { label: 'Syncing player records…', sub: 'Do not refresh. Chaos incoming.' },
+    { label: 'Warming up the lag…',     sub: 'Almost there. Brace yourself.' },
+    { label: 'Ready.',                  sub: 'Welcome to Laggy World.' },
+  ];
+
+  function setBar(p) {
+    const b = document.getElementById('lsBar');
+    if (b) b.style.width = Math.min(100, Math.max(0, p)) + '%';
+  }
+  function setPhase(i) {
+    PHASES.forEach((_, idx) => {
+      const d = document.getElementById('ph' + idx);
+      if (!d) return;
+      d.className = 'ls-phase-dot' + (idx < i ? ' done' : idx === i ? ' active' : '');
     });
+    const s = document.getElementById('lsStatus');
+    const u = document.getElementById('lsSub');
+    if (s && PHASES[i]) s.textContent = PHASES[i].label;
+    if (u && PHASES[i]) u.textContent = PHASES[i].sub;
+  }
+  function hideLoading() {
+    const o = document.getElementById('loadingOverlay');
+    if (!o) return;
+    o.classList.add('hidden');
+    setTimeout(() => o.remove(), 750);
+    sessionStorage.setItem(LOAD_KEY, '1');
   }
 
-  async function fetchServerStatus(){
-    try{
+  function startLoader() {
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.style.display = 'flex';
+
+    let prog = 0, fakePhase = 0, apiDone = false;
+    const softTargets = [22, 45, 68, 88];
+
+    const iv = setInterval(() => {
+      const softGoal = softTargets[fakePhase] ?? 88;
+      const goal     = apiDone ? 100 : softGoal;
+      prog = Math.min(goal, prog + Math.random() * 7 + 3);
+      setBar(prog);
+
+      if (prog >= softGoal && fakePhase < softTargets.length - 1) {
+        fakePhase++;
+        setPhase(fakePhase);
+      }
+
+      if (apiDone && prog >= 100) {
+        clearInterval(iv);
+        setPhase(4);
+        setBar(100);
+        setTimeout(hideLoading, 700);
+      }
+    }, 160);
+
+    fetchServerStatus().finally(() => { apiDone = true; });
+  }
+
+  async function fetchServerStatus() {
+    try {
       const c = new AbortController();
-      const t = setTimeout(()=>c.abort(),8000);
-      const r = await fetch(MC_API,{signal:c.signal});
+      const t = setTimeout(() => c.abort(), 8000);
+      const r = await fetch(MC_API, { signal: c.signal });
       clearTimeout(t);
       const d = await r.json();
       const s = document.getElementById('serverStatus');
       const p = document.getElementById('playerCount');
       const v = document.getElementById('serverVersion');
-      if(d.online){
-        s.textContent='Online'; s.className='server-bar-val info-online';
-        p.textContent=`${d.players?.online??0}/${d.players?.max??'??'}`;
-        v.textContent=d.version||'Unknown';
+      if (d.online) {
+        if (s) { s.textContent = 'Online'; s.className = 'server-bar-val info-online'; }
+        if (p) p.textContent = `${d.players?.online ?? 0}/${d.players?.max ?? '??'}`;
+        if (v) v.textContent = d.version || 'Unknown';
       } else {
-        s.textContent='Offline'; s.className='server-bar-val info-offline';
-        p.textContent='—'; v.textContent='—';
+        if (s) { s.textContent = 'Offline'; s.className = 'server-bar-val info-offline'; }
+        if (p) p.textContent = '—';
+        if (v) v.textContent = '—';
       }
-    }catch(e){
-      const s=document.getElementById('serverStatus');
-      if(s){s.textContent='Offline';s.className='server-bar-val info-offline';}
+    } catch(e) {
+      const s = document.getElementById('serverStatus');
+      if (s) { s.textContent = 'Offline'; s.className = 'server-bar-val info-offline'; }
     }
   }
 
-  function copyIP(){
-    navigator.clipboard.writeText('mc.laggy.world:25565').then(()=>{
-      const t=document.createElement('div');
-      t.textContent='IP copied!'; t.className='toast';
+  function copyIP() {
+    navigator.clipboard.writeText('mc.laggy.world:25565').then(() => {
+      const t = document.createElement('div');
+      t.textContent = 'IP Copied!'; t.className = 'toast';
       document.body.appendChild(t);
-      setTimeout(()=>t.remove(),2200);
+      setTimeout(() => t.remove(), 2200);
     });
   }
 
-  document.getElementById('menuToggle').addEventListener('click',()=>{
+  document.getElementById('menuToggle').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('open');
   });
-
-  window.addEventListener('scroll',()=>{
-    const p = window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
-    document.getElementById('progress-line').style.width=p+'%';
-    document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+  window.addEventListener('scroll', () => {
+    const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('progress-line').style.width = p + '%';
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  document.addEventListener('DOMContentLoaded',()=>{
-    const isFirst = !localStorage.getItem(FIRST_KEY);
-    if(isFirst){ startLoading(); localStorage.setItem(FIRST_KEY,'1'); }
-    else { document.getElementById('loadingOverlay')?.remove(); }
-    fetchServerStatus();
-    setTimeout(()=>{ const b=document.getElementById('goalBar'); if(b) b.style.width='0.4%'; },800);
+  document.addEventListener('DOMContentLoaded', () => {
+    const isHuman    = !!localStorage.getItem(HUMAN_KEY);
+    const loaderDone = !!sessionStorage.getItem(LOAD_KEY);
+
+    if (loaderDone) {
+      document.getElementById('botCheck').remove();
+      document.getElementById('loadingOverlay').remove();
+      fetchServerStatus();
+      return;
+    }
+
+    if (!isHuman) {
+      buildChallenge();
+      document.getElementById('bcConfirm').addEventListener('click', checkBotAnswer);
+    } else {
+      document.getElementById('botCheck').remove();
+      startLoader();
+    }
   });
+
 </script>
 
 </body>
