@@ -107,17 +107,17 @@
 
       <div class="grid-4" style="margin-bottom:1px">
         <a href="https://www.planetminecraft.com/server/laggyworld/" target="_blank" rel="noopener" class="grid-cell vote-card">
-          <span class="vote-emoji">🌍</span>
+          <span class="vote-emoji" aria-hidden="true"></span>
           <div class="vote-name">Planet Minecraft</div>
           <div class="vote-cta">Vote Now →</div>
         </a>
         <a href="https://minecraftservers.org/server/671544" target="_blank" rel="noopener" class="grid-cell vote-card">
-          <span class="vote-emoji">🌍</span>
+          <span class="vote-emoji" aria-hidden="true"></span>
           <div class="vote-name">MinecraftServers.org</div>
           <div class="vote-cta">Vote Now →</div>
         </a>
         <a href="https://minecraft-mp.com/server/355696/vote/" target="_blank" rel="noopener" class="grid-cell vote-card">
-          <span class="vote-emoji">🗳️</span>
+          <span class="vote-emoji" aria-hidden="true"></span>
           <div class="vote-name">Minecraft-MP</div>
           <div class="vote-cta">Vote Now →</div>
         </a>
@@ -156,7 +156,6 @@
 </footer>
 
 <script>
-  // ── CUSTOM CURSOR ──
   const cursor = document.getElementById('cursor');
   const ring   = document.getElementById('cursor-ring');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -173,7 +172,6 @@
     requestAnimationFrame(animateRing);
   })();
 
-  // ── SITE JS ──
   document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
   window.addEventListener('scroll',()=>{
     const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
