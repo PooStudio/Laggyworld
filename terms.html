@@ -175,7 +175,7 @@
     }
   </style>
 </head>
-<body>
+<body class="offline-mode">
 
 <!-- Custom cursor elements (MUST be in the DOM) -->
 <div id="cursor"></div>
@@ -183,6 +183,21 @@
 
 <div class="noise" aria-hidden="true"></div>
 <div id="progress-line"></div>
+
+<div id="loadingOverlay" class="offline-overlay" role="status" aria-label="Offline — Laggy World">
+  <div class="offline-card">
+    <div class="offline-crosshair" aria-hidden="true"><span class="dot"></span></div>
+    <pre class="offline-art">  ____   ______  ______ _       ______  ______
+ / __ \ |  ____|/ ____| |     |  ____||  ____|
+| |  | || |__  | (___ | |     | |__   | |__   
+| |  | ||  __|  \___ \| |     |  __|  |  __|  
+| |__| || |____ ____) | |____ | |____ | |____ 
+ \____/ |______|_____/|______||______||______|
+    </pre>
+    <h1 class="offline-title">OFFLINE</h1>
+    <p class="offline-sub">It's super dope.</p>
+  </div>
+</div>
 
 <div id="botCheck" role="dialog" aria-label="Human verification">
   <div class="ls-corner ls-corner-tl"></div>
@@ -200,28 +215,7 @@
   </div>
 </div>
 
-<!-- LOADING SCREEN -->
-<div id="loadingOverlay" role="status" aria-label="Loading Terms of Service" style="display:none">
-  <div class="ls-corner ls-corner-tl"></div>
-  <div class="ls-corner ls-corner-tr"></div>
-  <div class="ls-corner ls-corner-bl"></div>
-  <div class="ls-corner ls-corner-br"></div>
-  <div class="ls-inner">
-    <div class="ls-title" data-text="LAGGY WORLD">LAGGY WORLD</div>
-    <div class="ls-tagline">Terms of Service</div>
-    <div class="ls-phases">
-      <div class="ls-phase-dot active" id="ph0"></div>
-      <div class="ls-phase-dot" id="ph1"></div>
-      <div class="ls-phase-dot" id="ph2"></div>
-      <div class="ls-phase-dot" id="ph3"></div>
-      <div class="ls-phase-dot" id="ph4"></div>
-    </div>
-    <div class="ls-progress-wrap"><div id="lsBar" class="ls-progress-bar"></div></div>
-    <div id="lsStatus" class="ls-status">Initializing…</div>
-    <div id="lsSub" class="ls-sub">Do not refresh. Chaos incoming.</div>
-  </div>
-  <div class="ls-ping"><div class="ls-ping-dot"></div><span>mc.laggy.world:25565</span></div>
-</div>
+ 
 
 <header id="nav">
   <div class="container">
@@ -380,9 +374,10 @@
     document.addEventListener('mouseout', (e) => {
       if (e.target.closest(hoverTargets)) {
         dot.classList.remove('hovered');
-        ring.classList.remove('hovered');
-      }
-    });
+        // Keep offline overlay visible — do not remove it
+        const o = document.getElementById('loadingOverlay'); if (!o) return; o.classList.remove('hidden'); o.style.display='flex';
+        try{ sessionStorage.setItem(LOAD_KEY, '1'); }catch(e){}
+        return;
 
     document.addEventListener('mouseleave', () => {
       dot.style.opacity  = '0';
@@ -493,9 +488,10 @@
     if (u && PHASES[i]) u.textContent = PHASES[i].sub;
   }
   function hideLoading() {
-    const o = document.getElementById('loadingOverlay'); if (!o) return;
-    o.classList.add('hidden'); setTimeout(() => o.remove(), 750);
-    sessionStorage.setItem(LOAD_KEY, '1');
+    // Keep offline overlay visible — do not remove it
+    const o = document.getElementById('loadingOverlay'); if (!o) return; o.classList.remove('hidden'); o.style.display='flex';
+    try{ sessionStorage.setItem(LOAD_KEY, '1'); }catch(e){}
+    return;
   }
 
   function startLoader() {
@@ -530,8 +526,9 @@
     const loaderDone = !!sessionStorage.getItem(LOAD_KEY);
 
     if (loaderDone) {
-      document.getElementById('botCheck').remove();
-      document.getElementById('loadingOverlay').remove();
+      document.getElementById('botCheck')?.remove();
+      // keep the loadingOverlay present for offline-mode; do not remove it
+      // document.getElementById('loadingOverlay')?.remove();
       return;
     }
 

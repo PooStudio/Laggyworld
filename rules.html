@@ -41,7 +41,7 @@
     }
   </style>
 </head>
-<body>
+<body class="offline-mode">
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
@@ -49,18 +49,21 @@
 <div class="noise" aria-hidden="true"></div>
 <div id="progress-line"></div>
 
-<div id="loadingOverlay" class="loading-overlay">
-  <div class="loading-card">
-    <div class="loading-title">LAGGY WORLD</div>
-    <div class="loader" aria-hidden="true"></div>
-    <div class="loading-text">Loading the rules…</div>
-    <div class="loading-progress">
-      <div id="loadingProgressBar" class="loading-progress-bar"></div>
-    </div>
-    <div id="loadingStatus" class="loading-status">Preparing secure channel…</div>
-    <div class="loading-subtext">Do not refresh.</div>
+<div id="loadingOverlay" class="offline-overlay" role="status" aria-label="Offline — Laggy World">
+  <div class="offline-card">
+    <div class="offline-crosshair" aria-hidden="true"><span class="dot"></span></div>
+    <pre class="offline-art">  ____   ______  ______ _       ______  ______
+ / __ \ |  ____|/ ____| |     |  ____||  ____|
+| |  | || |__  | (___ | |     | |__   | |__   
+| |  | ||  __|  \___ \| |     |  __|  |  __|  
+| |__| || |____ ____) | |____ | |____ | |____ 
+ \____/ |______|_____/|______||______||______|
+    </pre>
+    <h1 class="offline-title">OFFLINE</h1>
+    <p class="offline-sub">It's super dope.</p>
   </div>
 </div>
+
 
 <header id="nav">
   <div class="container">
@@ -226,7 +229,10 @@
   const CF_URL='https://www.cloudflare.com/cdn-cgi/trace';
   function updateLoaderProgress(p){const b=document.getElementById('loadingProgressBar');if(b)b.style.width=Math.min(100,Math.max(0,p))+'%';}
   function updateLoaderStatus(t){const s=document.getElementById('loadingStatus');if(s)s.textContent=t;}
-  function hideLoading(){const o=document.getElementById('loadingOverlay');if(!o)return;o.classList.add('hidden');setTimeout(()=>o.remove(),600);}
+  function hideLoading(){
+    // Keep offline overlay visible — do not remove it
+    const o = document.getElementById('loadingOverlay'); if(!o) return; o.classList.remove('hidden'); o.style.display='flex';
+  }
   function startLoading(){
     let p=0;
     const iv=setInterval(()=>{p=Math.min(98,p+Math.random()*10+6);updateLoaderProgress(p);},180);
@@ -235,7 +241,7 @@
   document.addEventListener('DOMContentLoaded',()=>{
     const isFirst=!localStorage.getItem(FIRST_KEY);
     if(isFirst){startLoading();localStorage.setItem(FIRST_KEY,'1');}
-    else{document.getElementById('loadingOverlay')?.remove();}
+    else{ /* keep offline overlay; do not remove */ }
   });
 </script>
 

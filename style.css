@@ -288,6 +288,93 @@ header .container {
   98%       { opacity: 1 }
 }
 
+/* Improved offline/loading overlay */
+.offline-overlay {
+  position: fixed; inset: 0; z-index: 12000;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at 50% 10%, rgba(232,255,60,0.06), transparent 30%), rgba(2,2,2,0.96);
+  color: var(--text);
+  transition: opacity .45s ease, transform .45s ease;
+  pointer-events: auto;
+}
+.offline-overlay::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 6px);
+  mix-blend-mode: screen;
+  opacity: .08;
+  pointer-events: none;
+}
+.offline-card {
+  position: relative; z-index: 2;
+  min-width: 280px; max-width: 720px;
+  padding: 2.2rem 2.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(232,255,60,0.12);
+  background: linear-gradient(180deg, rgba(12,10,8,0.92), rgba(6,5,4,0.84));
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  text-align: center;
+}
+.offline-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: var(--green);
+  margin: 0 0 .5rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-shadow: 0 8px 30px rgba(232,255,60,0.12);
+}
+.offline-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: .9rem;
+  color: rgba(255,255,255,.78);
+  margin: 0;
+  letter-spacing: .08em;
+}
+.offline-crosshair {
+  position: absolute; left: 50%; top: 8%; width: 88px; height: 88px; transform: translate(-50%, -50%); z-index: 3; pointer-events: none;
+}
+.offline-crosshair::before, .offline-crosshair::after {
+  content: '';
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  background: rgba(232,255,60,0.6);
+  box-shadow: 0 0 18px rgba(232,255,60,0.18);
+}
+.offline-crosshair::before { width: 2px; height: 88px; }
+.offline-crosshair::after  { height: 2px; width: 88px; }
+.offline-crosshair .dot { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 18px rgba(232,255,60,0.6); }
+
+@keyframes offlinePulse { 0% { transform: scale(1); opacity: 1 } 50% { transform: scale(1.06); opacity: .9 } 100% { transform: scale(1); opacity: 1 } }
+.offline-card { animation: offlinePulse 3s ease-in-out infinite; }
+
+/* Hide everything except offline overlay, cursor, and cursor-ring when enabled */
+body.offline-mode { overflow: hidden !important; }
+body.offline-mode > :not(#loadingOverlay):not(#cursor):not(#cursor-ring) { display: none !important; }
+body.offline-mode #loadingOverlay { display: flex !important; }
+
+/* ASCII art spinner */
+.offline-art {
+  font-family: 'Courier New', monospace;
+  white-space: pre;
+  font-size: 10px;
+  line-height: 10px;
+  color: var(--green);
+  display: inline-block;
+  margin-bottom: .6rem;
+  transform-origin: center center;
+  animation: offlineSpin 6s linear infinite;
+  text-shadow: 0 6px 20px rgba(232,255,60,0.08);
+  backface-visibility: hidden;
+}
+
+@keyframes offlineSpin {
+  0% { transform: rotate3d(0,1,0,0) rotate(0deg); }
+  50% { transform: rotate3d(0,1,0,180deg) rotate(180deg); }
+  100% { transform: rotate3d(0,1,0,360deg) rotate(360deg); }
+}
+
+
+
 .hero-sub {
   font-size: clamp(.95rem, 1.8vw, 1.1rem);
   font-weight: 300; color: var(--muted);

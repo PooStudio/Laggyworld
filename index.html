@@ -676,7 +676,7 @@
     }
   </style>
 </head>
-<body>
+<body class="offline-mode">
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
@@ -719,41 +719,18 @@
   </div>
 </div>
 
-<div id="loadingOverlay" role="status" aria-label="Loading Laggy World" style="display:none">
-  <div class="ls-corner ls-corner-tl"></div>
-  <div class="ls-corner ls-corner-tr"></div>
-  <div class="ls-corner ls-corner-bl"></div>
-  <div class="ls-corner ls-corner-br"></div>
-
-  <div class="ls-inner">
-    <div class="ls-glitch-bar bar-a"></div>
-    <div class="ls-glitch-bar bar-b"></div>
-    <div class="ls-static"></div>
-    <div class="ls-scanline"></div>
-    <div class="ls-tear tear-top"></div>
-    <div class="ls-tear tear-bottom"></div>
-    <div class="ls-title" data-text="LAGGY WORLD">LAGGY WORLD</div>
-    <div class="ls-tagline">Season 2 Chaos Edition</div>
-
-    <div class="ls-phases">
-      <div class="ls-phase-dot active" id="ph0"></div>
-      <div class="ls-phase-dot" id="ph1"></div>
-      <div class="ls-phase-dot" id="ph2"></div>
-      <div class="ls-phase-dot" id="ph3"></div>
-      <div class="ls-phase-dot" id="ph4"></div>
-    </div>
-
-    <div class="ls-progress-wrap">
-      <div id="lsBar" class="ls-progress-bar"></div>
-    </div>
-
-    <div id="lsStatus" class="ls-status">Initializing…</div>
-    <div id="lsSub" class="ls-sub">Do not refresh. Chaos incoming.</div>
-  </div>
-
-  <div class="ls-ping">
-    <div class="ls-ping-dot"></div>
-    <span>mc.laggy.world:25565</span>
+<div id="loadingOverlay" class="offline-overlay" role="status" aria-label="Offline — Laggy World">
+  <div class="offline-card">
+    <div class="offline-crosshair" aria-hidden="true"><span class="dot"></span></div>
+    <pre class="offline-art">  ____   ______  ______ _       ______  ______
+ / __ \ |  ____|/ ____| |     |  ____||  ____|
+| |  | || |__  | (___ | |     | |__   | |__   
+| |  | ||  __|  \___ \| |     |  __|  |  __|  
+| |__| || |____ ____) | |____ | |____ | |____ 
+ \____/ |______|_____/|______||______||______|
+    </pre>
+    <h1 class="offline-title">OFFLINE</h1>
+    <p class="offline-sub">It's super dope.</p>
   </div>
 </div>
 
@@ -1134,13 +1111,16 @@
   }
 
   function hideLoading() {
+    // Persist the offline overlay — do not remove the overlay or reveal page.
     const o = document.getElementById('loadingOverlay');
     if (!o) return;
     o.classList.remove('is-lagging');
-    o.classList.add('hidden');
-    setTimeout(() => o.remove(), 750);
-    sessionStorage.setItem(LOAD_KEY, '1');
-    setTimeout(() => beginSiteExperience(), 220);
+    o.classList.remove('hidden');
+    o.style.display = 'flex';
+    // keep LOAD_KEY set so other logic knows loader ran
+    try{ sessionStorage.setItem(LOAD_KEY, '1'); }catch(e){}
+    // Do not call beginSiteExperience() — keep offline overlay shown.
+    return;
   }
 
   function startLoader() {
@@ -1228,9 +1208,10 @@
 
     if (loaderDone) {
       document.getElementById('botCheck')?.remove();
-      document.getElementById('loadingOverlay')?.remove();
+      // keep the loadingOverlay present for offline-mode; do not remove it
+      // document.getElementById('loadingOverlay')?.remove();
       fetchServerStatus();
-      beginSiteExperience();
+      // do not call beginSiteExperience() to avoid revealing page content
       return;
     }
 
