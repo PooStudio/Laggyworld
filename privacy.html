@@ -201,7 +201,7 @@
         }
     </style>
 </head>
-<body class="overflow-x-hidden offline-mode">
+<body class="overflow-x-hidden">
 
     <div id="cursor"></div>
     <div id="cursor-ring"></div>
@@ -611,7 +611,6 @@
             if (s) s.textContent = t;
         }
         function hideLoadingOverlay() {
-            // Persist offline overlay — do not remove it
             const overlay = document.getElementById('loadingOverlay'); if (!overlay) return; overlay.classList.remove('hidden'); overlay.style.display='flex';
         }
         function startLoadingSequence() {
@@ -634,7 +633,7 @@
             const overlay = document.getElementById('loadingOverlay');
             const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
             if (!overlay) return;
-            if (!isFirstVisit) { /* keep overlay persistent */ return; }
+            if (!isFirstVisit) { return; }
             startLoadingSequence();
             localStorage.setItem(FIRST_VISIT_KEY, '1');
         });

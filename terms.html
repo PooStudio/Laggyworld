@@ -175,9 +175,8 @@
     }
   </style>
 </head>
-<body class="offline-mode">
+<body>
 
-<!-- Custom cursor elements (MUST be in the DOM) -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
@@ -374,10 +373,9 @@
     document.addEventListener('mouseout', (e) => {
       if (e.target.closest(hoverTargets)) {
         dot.classList.remove('hovered');
-        // Keep offline overlay visible — do not remove it
-        const o = document.getElementById('loadingOverlay'); if (!o) return; o.classList.remove('hidden'); o.style.display='flex';
-        try{ sessionStorage.setItem(LOAD_KEY, '1'); }catch(e){}
-        return;
+        ring.classList.remove('hovered');
+      }
+    });
 
     document.addEventListener('mouseleave', () => {
       dot.style.opacity  = '0';
@@ -488,7 +486,6 @@
     if (u && PHASES[i]) u.textContent = PHASES[i].sub;
   }
   function hideLoading() {
-    // Keep offline overlay visible — do not remove it
     const o = document.getElementById('loadingOverlay'); if (!o) return; o.classList.remove('hidden'); o.style.display='flex';
     try{ sessionStorage.setItem(LOAD_KEY, '1'); }catch(e){}
     return;
@@ -514,31 +511,15 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('menuToggle')?.addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('mobileMenu')?.classList.toggle('open');
     });
     window.addEventListener('scroll', () => {
-      const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-      document.getElementById('progress-line').style.width = p + '%';
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? window.scrollY / maxScroll * 100 : 0;
+      const progressLine = document.getElementById('progress-line');
+      if (progressLine) progressLine.style.width = progress + '%';
+      document.getElementById('nav')?.classList.toggle('scrolled', window.scrollY > 40);
     });
-
-    const isHuman    = !!localStorage.getItem(HUMAN_KEY);
-    const loaderDone = !!sessionStorage.getItem(LOAD_KEY);
-
-    if (loaderDone) {
-      document.getElementById('botCheck')?.remove();
-      // keep the loadingOverlay present for offline-mode; do not remove it
-      // document.getElementById('loadingOverlay')?.remove();
-      return;
-    }
-
-    if (!isHuman) {
-      buildChallenge();
-      document.getElementById('bcConfirm').addEventListener('click', checkBotAnswer);
-    } else {
-      document.getElementById('botCheck').remove();
-      startLoader();
-    }
   });
 </script>
 

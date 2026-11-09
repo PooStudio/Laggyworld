@@ -676,7 +676,7 @@
     }
   </style>
 </head>
-<body class="offline-mode">
+<body>
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
@@ -684,18 +684,24 @@
 <div class="noise" aria-hidden="true"></div>
 <div id="progress-line"></div>
 
-<div id="introOverlay" class="intro-overlay" aria-hidden="true">
-  <div class="intro-backdrop">
-    <div class="intro-sun"></div>
-    <div class="intro-hill hill-a"></div>
-    <div class="intro-hill hill-b"></div>
-    <div class="intro-particles"></div>
-    <div class="intro-grid" id="introGrid"></div>
-    <div class="intro-logo-build" id="introLogoBuild"></div>
-    <div class="intro-title-wrap">
-      <div class="intro-title">LAGGY WORLD</div>
-      <div class="intro-sub">Season 2 Chaos Edition</div>
-    </div>
+<div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeDescription" aria-hidden="true">
+  <div class="welcome-scene" aria-hidden="true"></div>
+  <div class="welcome-content">
+    <a class="welcome-brand" href="index.html" aria-label="Laggy World home">
+      <img src="logo.png" alt="">
+      <span>LAGGY WORLD</span>
+    </a>
+    <p class="welcome-kicker">SURVIVAL · COMMUNITY · NO PAY-TO-WIN</p>
+    <h1 id="welcomeTitle">Welcome to<br><span>Laggy World.</span></h1>
+    <p id="welcomeDescription" class="welcome-description">A survival world for player-made stories, unexpected turns, and progress earned by playing.</p>
+    <form id="welcomeForm" class="welcome-form">
+      <label class="welcome-consent" for="welcomeConsent">
+        <input id="welcomeConsent" type="checkbox" required>
+        <span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and acknowledge the <a href="privacy.html#cookies" target="_blank" rel="noopener">Privacy &amp; Cookie Policy</a>.</span>
+      </label>
+      <button id="enterSite" class="btn btn-primary welcome-enter" type="submit" disabled>Enter the world <span aria-hidden="true">→</span></button>
+    </form>
+    <p class="welcome-cookie-note">Only essential cookies are used. <a href="privacy.html#cookies" target="_blank" rel="noopener">Read the details</a>.</p>
   </div>
 </div>
 
@@ -773,7 +779,7 @@
   <section class="hero">
     <div class="hero-bg" style="background-image:url('background.png')"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Season 2 Pure Mayhem Since 2024</div>
+      <div class="hero-eyebrow">Community-run Minecraft server · No pay-to-win</div>
       <div class="server-bar">
         <div class="server-bar-item">
           <span class="server-bar-label">IP</span>
@@ -796,7 +802,7 @@
         </div>
       </div>
       <h1 class="hero-title">LAGGY<br><span>WORLD</span></h1>
-      <p class="hero-sub">The server where chaos is the feature. Built to break. Join the community, embrace the lag, survive the mayhem.</p>
+      <p class="hero-sub">A survival server for players who want the stories, the scrapes, and the unexpected. Join in, make your mark, and earn everything you use.</p>
       <div class="hero-actions">
         <button onclick="copyIP()" class="btn btn-primary">Copy Server IP</button>
         <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-secondary">Join Discord</a>
@@ -819,8 +825,8 @@
         </div>
         <div class="grid-cell card">
           <span class="card-icon icon-sword"></span>
-          <div class="card-title">No Rules PvP</div>
-          <p class="card-body">Fight, trap, and troll, everything is fair game. Just be ready for payback.</p>
+          <div class="card-title">Survival with stakes</div>
+          <p class="card-body">Explore, build, compete, and defend what you make. The world is unpredictable, but the rules are clear.</p>
         </div>
         <div class="grid-cell card">
           <span class="card-icon icon-fire"></span>
@@ -831,11 +837,36 @@
     </div>
   </section>
 
+  <section class="section" id="fair-play">
+    <div class="container">
+      <div class="content-card" style="max-width:760px;margin:0 auto">
+        <div class="section-label">Fair play, always</div>
+        <h2>No pay-to-win. Ever.</h2>
+        <p>Playing is free. No paid ranks, kits, loot, or purchases that give someone an advantage in-game. Voting is optional, and it does not buy power. Your progress comes from playing.</p>
+        <a href="rules.html">Read the server rules</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="join">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:2.5rem">
+        <div class="section-label">Your next session</div>
+        <h2 class="section-title">Three steps. <span>You're in.</span></h2>
+      </div>
+      <div class="grid-3">
+        <div class="grid-cell card"><div class="rule-num">01</div><div class="card-title">Open multiplayer</div><p class="card-body">Launch Minecraft and choose Multiplayer.</p></div>
+        <div class="grid-cell card"><div class="rule-num">02</div><div class="card-title">Add our server</div><p class="card-body">Use the address <strong>mc.laggy.world</strong>.</p></div>
+        <div class="grid-cell card"><div class="rule-num">03</div><div class="card-title">Join the world</div><p class="card-body">Check the current server version above and connect.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container text-center">
       <div class="section-label">Ready to play?</div>
       <h2 class="section-title">Join the <span>Mayhem</span></h2>
-      <p class="section-sub" style="margin:0 auto 2rem">Copy the IP, open Minecraft, and jump in. Need help? Hit us up on Discord.</p>
+      <p class="section-sub" style="margin:0 auto 2rem">Copy the address, open Minecraft, and jump in. Need a hand? Our community is on Discord.</p>
       <div class="hero-actions">
         <button onclick="copyIP()" class="btn btn-primary">Copy Server IP</button>
         <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-secondary">Open Discord</a>
@@ -1111,15 +1142,12 @@
   }
 
   function hideLoading() {
-    // Persist the offline overlay — do not remove the overlay or reveal page.
     const o = document.getElementById('loadingOverlay');
     if (!o) return;
     o.classList.remove('is-lagging');
     o.classList.remove('hidden');
     o.style.display = 'flex';
-    // keep LOAD_KEY set so other logic knows loader ran
     try{ sessionStorage.setItem(LOAD_KEY, '1'); }catch(e){}
-    // Do not call beginSiteExperience() — keep offline overlay shown.
     return;
   }
 
@@ -1197,33 +1225,125 @@
     document.getElementById('mobileMenu').classList.toggle('open');
   });
   window.addEventListener('scroll', () => {
-    const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-    document.getElementById('progress-line').style.width = p + '%';
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? window.scrollY / maxScroll * 100 : 0;
+    const progressLine = document.getElementById('progress-line');
+    if (progressLine) progressLine.style.width = progress + '%';
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const isHuman    = !!localStorage.getItem(HUMAN_KEY);
-    const loaderDone = !!sessionStorage.getItem(LOAD_KEY);
+  document.addEventListener('DOMContentLoaded', revealMainContent);
 
-    if (loaderDone) {
-      document.getElementById('botCheck')?.remove();
-      // keep the loadingOverlay present for offline-mode; do not remove it
-      // document.getElementById('loadingOverlay')?.remove();
-      fetchServerStatus();
-      // do not call beginSiteExperience() to avoid revealing page content
-      return;
+</script>
+<script>
+  (() => {
+    const address = 'mc.laggy.world';
+    const status = document.getElementById('serverStatus');
+    const players = document.getElementById('playerCount');
+    const version = document.getElementById('serverVersion');
+
+    window.copyIP = async () => {
+      try {
+        await navigator.clipboard.writeText(address);
+      } catch {
+        const field = document.createElement('textarea');
+        field.value = address;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      }
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = 'Server address copied';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2200);
+    };
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000);
+    fetch('https://api.mcsrvstat.us/3/mc.laggy.world', { signal: controller.signal, cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error('Status request failed');
+        return response.json();
+      })
+      .then(data => {
+        if (data.online) {
+          status.textContent = 'Online';
+          status.className = 'server-bar-val info-online';
+          players.textContent = `${data.players?.online ?? 0}/${data.players?.max ?? '?'}`;
+          version.textContent = data.version || 'Unknown';
+        } else {
+          status.textContent = 'Offline';
+          status.className = 'server-bar-val info-offline';
+          players.textContent = '0';
+          version.textContent = 'Unknown';
+        }
+      })
+      .catch(() => {
+        status.textContent = 'Unavailable';
+        status.className = 'server-bar-val';
+        players.textContent = 'Unknown';
+        version.textContent = 'Unknown';
+      })
+      .finally(() => clearTimeout(timeout));
+  })();
+</script>
+<script>
+  (() => {
+    const overlay = document.getElementById('introOverlay');
+    const form = document.getElementById('welcomeForm');
+    const consent = document.getElementById('welcomeConsent');
+    const enter = document.getElementById('enterSite');
+    const consentKey = 'laggyworld.welcomeConsent.v1';
+
+    if (!overlay || !form || !consent || !enter) return;
+
+    let hasConsented = false;
+    try {
+      hasConsented = localStorage.getItem(consentKey) === 'accepted';
+    } catch {}
+
+    if (!hasConsented) {
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('intro-open');
+      consent.focus();
     }
 
-    if (!isHuman) {
-      buildChallenge();
-      document.getElementById('bcConfirm').addEventListener('click', checkBotAnswer);
-    } else {
-      document.getElementById('botCheck').remove();
-      startLoader();
-    }
-  });
+    consent.addEventListener('change', () => {
+      enter.disabled = !consent.checked;
+    });
 
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!consent.checked) return;
+
+      try {
+        localStorage.setItem(consentKey, 'accepted');
+      } catch {}
+
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('intro-open');
+    });
+
+    overlay.addEventListener('keydown', event => {
+      if (event.key !== 'Tab') return;
+      const focusable = [...overlay.querySelectorAll('a[href], input, button:not(:disabled)')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+  })();
 </script>
 
 </body>

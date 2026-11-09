@@ -42,7 +42,7 @@
         }
     </style>
 </head>
-<body class="overflow-x-hidden offline-mode">
+<body class="staff-page">
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
@@ -78,7 +78,7 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="https://discord.gg/QUThnA4AES" target="_blank" class="btn btn-primary">Join Discord</a>
+                <a href="https://discord.gg/45VRt8eXFT" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
                 <button id="mobileMenuToggle" class="md:hidden rounded-full bg-white/10 p-3 text-white/80 hover:bg-white/15">
                     <span class="sr-only">Menu</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
@@ -96,9 +96,9 @@
         </div>
     </header>
 
-    <main class="pt-24">
+    <main>
         <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1018/2000/1200')] bg-cover bg-center hero-bg"></div>
+            <div class="absolute inset-0 bg-cover bg-center hero-bg" style="background-image:url('background.png')"></div>
 
             <div class="container relative z-10 pt-16">
                 <div class="flex flex-col items-center text-center gap-6">
@@ -145,7 +145,6 @@
     </footer>
 
     <script>
-        // ── CUSTOM CURSOR ──
         const cursor = document.getElementById('cursor');
         const ring   = document.getElementById('cursor-ring');
         let mx = 0, my = 0, rx = 0, ry = 0;
@@ -162,7 +161,6 @@
             requestAnimationFrame(animateRing);
         })();
 
-        // ── SITE JS ──
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         mobileMenuToggle?.addEventListener('click', () => {
@@ -187,7 +185,6 @@
         }
 
         function hideLoadingOverlay() {
-            // Persist offline overlay — do not remove it
             const overlay = document.getElementById('loadingOverlay'); if (!overlay) return; overlay.classList.remove('hidden'); overlay.style.display='flex';
         }
 
@@ -222,8 +219,6 @@
             if (!overlay) return;
 
             if (!isFirstVisit) {
-                // keep offline overlay persistent
-                // overlay.remove();
                 return;
             }
 
