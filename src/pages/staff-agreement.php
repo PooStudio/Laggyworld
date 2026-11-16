@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Agreement • Laggy World</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="page-utilities.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="staff-page">
@@ -29,61 +28,58 @@
     </div>
 
 
-    <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
-        <div class="container flex items-center justify-between py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
-                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
+    <header>
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.png" alt="Laggy World" class="logo-minecraft">
+                <span class="nav-logo-text">Laggy World</span>
             </a>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="rules.html" class="nav-link">Rules</a>
-                <a href="bug.html" class="nav-link">Bug</a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="rules.html">Rules</a>
+                <a href="bug.html">Bug</a>
             </nav>
 
-            <div class="flex items-center gap-3">
+            <div class="nav-actions">
                 <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
-                <button id="mobileMenuToggle" class="md:hidden rounded-full bg-white/10 p-3 text-white/80 hover:bg-white/15">
-                    <span class="sr-only">Menu</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
+                <button id="mobileMenuToggle" class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
                 </button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden bg-black/70 border-t border-white/10 transition-all duration-300">
-            <div class="container flex flex-col gap-1 py-4">
-                <a href="index.html" class="nav-link py-2">Home</a>
-                <a href="about.html" class="nav-link py-2">About</a>
-                <a href="rules.html" class="nav-link py-2">Rules</a>
-                <a href="bug.html" class="nav-link py-2">Bug</a>
-            </div>
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="rules.html">Rules</a>
+            <a href="bug.html">Bug</a>
         </div>
     </header>
 
     <main>
-        <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-cover bg-center hero-bg"></div>
+        <section class="staff-hero">
+            <div class="staff-hero-bg hero-bg"></div>
 
-            <div class="container relative z-10 pt-16">
-                <div class="flex flex-col items-center text-center gap-6">
-                    <p class="text-sm font-semibold tracking-widest text-white/60">STAFF AGREEMENT</p>
-                    <h1 class="glitch text-6xl md:text-7xl font-extrabold tracking-tight leading-tight">
+            <div class="container staff-hero-content">
+                <div class="staff-hero-copy">
+                    <p class="staff-hero-label">STAFF AGREEMENT</p>
+                    <h1 class="glitch staff-hero-title">
                         Join the Chaos Team
                     </h1>
-                    <p class="max-w-2xl text-lg text-white/70">
+                    <p class="staff-hero-description">
                         Becoming staff means responsibility. Read the rules carefully; there are no appeals.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="section bg-white/5">
+        <section class="section staff-rules-section">
             <div class="container">
-                <div class="mx-auto max-w-3xl bg-black/50 border border-white/10 rounded-2xl p-8 shadow-lg">
-                    <h2 class="text-2xl font-semibold text-white mb-4">Staff Rules</h2>
-                    <ul class="list-disc ml-6 text-white/75 space-y-2 mb-6">
+                <div class="staff-rules-card">
+                    <h2 class="staff-rules-title">Staff Rules</h2>
+                    <ul class="staff-rules-list">
                         <li>I will not abuse commands.</li>
                         <li>I will not give items to players.</li>
                         <li>I will not use creative for survival advantage.</li>
@@ -91,20 +87,20 @@
                         <li>I understand there are no appeals.</li>
                     </ul>
 
-                    <p class="text-md mb-4 text-white/80">Staff application is currently closed. Please join our Discord to ask about staff openings.</p>
+                    <p class="staff-rules-note">Staff application is currently closed. Please join our Discord to ask about staff openings.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer-card py-10 border-t border-white/10">
-        <div class="container text-center text-sm text-white/60">
-            <div class="flex flex-col items-center gap-3 md:flex-row md:justify-between">
+    <footer class="staff-footer">
+        <div class="container">
+            <div class="staff-footer-content">
                 <div>© 2026 Laggy World · All chaos reserved</div>
-                <div class="flex flex-wrap items-center justify-center gap-3">
-                    <a href="privacy.html" class="hover:text-white">Privacy</a>
-                    <a href="terms.html" class="hover:text-white">Terms</a>
-                    <a href="bug.html" class="hover:text-white">Bug Reports</a>
+                <div class="staff-footer-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="bug.html">Bug Reports</a>
                 </div>
             </div>
         </div>
@@ -129,11 +125,12 @@
 
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuToggle?.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('max-h-0');
-            mobileMenu.classList.toggle('max-h-0', !isOpen);
-            mobileMenu.classList.toggle('max-h-screen', isOpen);
-        });
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('open');
+                mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        }
 
         const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
         const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';

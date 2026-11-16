@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy • Laggy World</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="page-utilities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="privacy.css">
 </head>
-<body class="overflow-x-hidden">
+<body>
 
     <div id="cursor"></div>
     <div id="cursor-ring"></div>
@@ -31,45 +30,42 @@
     </div>
 
 
-    <header class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
-        <div class="container flex items-center justify-between py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo.png" alt="Laggy World" class="w-12 h-12 logo-minecraft">
-                <span class="font-semibold tracking-wide text-white font-bold">Laggy World</span>
+    <header>
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.png" alt="Laggy World" class="logo-minecraft">
+                <span class="nav-logo-text">Laggy World</span>
             </a>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="rules.html" class="nav-link">Rules</a>
-                <a href="bug.html" class="nav-link">Bug</a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="rules.html">Rules</a>
+                <a href="bug.html">Bug</a>
             </nav>
-            <div class="flex items-center gap-3">
-                <a href="https://discord.gg/dzPXJgNTsV" target="_blank" class="btn btn-primary">Join Discord</a>
-                <button id="mobileMenuToggle" class="md:hidden rounded-full bg-white/10 p-3 text-white/80 hover:bg-white/15">
-                    <span class="sr-only">Menu</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
+            <div class="nav-actions">
+                <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
+                <button id="mobileMenuToggle" class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 000 2h14a1 1 0 100-2H3zM3 9a1 1 0 000 2h14a1 1 0 100-2H3zM3 13a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" /></svg>
                 </button>
             </div>
         </div>
-        <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden bg-black/70 border-t border-white/10 transition-all duration-300">
-            <div class="container flex flex-col gap-1 py-4">
-                <a href="index.html" class="nav-link py-2">Home</a>
-                <a href="about.html" class="nav-link py-2">About</a>
-                <a href="rules.html" class="nav-link py-2">Rules</a>
-                <a href="bug.html" class="nav-link py-2">Bug</a>
-            </div>
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="rules.html">Rules</a>
+            <a href="bug.html">Bug</a>
         </div>
     </header>
 
-    <main class="pt-24">
-        <section class="section py-16">
+    <main class="privacy-main">
+        <section class="section">
             <div class="container">
                 <div class="card">
                     <h1>Privacy Policy</h1>
                     <p>We take your privacy seriously. Here's exactly what we collect, why, and what your rights are.</p>
                 </div>
 
-                <div class="mt-12 max-w-4xl mx-auto">
+                <div class="policy-content">
 
                     <div class="notice-box">
                         <svg class="notice-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>
@@ -394,11 +390,12 @@
 
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuToggle?.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('max-h-0');
-            mobileMenu.classList.toggle('max-h-0', !isOpen);
-            mobileMenu.classList.toggle('max-h-screen', isOpen);
-        });
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('open');
+                mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        }
 
         document.querySelectorAll('.toc a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {

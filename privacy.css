@@ -195,3 +195,6 @@ body:has(button:hover) #cursor-ring { width: 44px; height: 44px; border-color: r
 .policy-spacing-top { margin-top: 1rem; }
 .policy-spacing-top-small { margin-top: 0.75rem; }
 .policy-spacing-bottom { margin-bottom: 0.75rem; }
+
+.privacy-main { padding-top: 6rem; }
+.policy-content { max-width: 56rem; margin: 3rem auto 0; }
