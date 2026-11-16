@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Agreement • Laggy World</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="page-utilities.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="staff-page">

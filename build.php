@@ -20,6 +20,7 @@ $assets = [
     'index.css',
     'logo.png',
     'logo.svg',
+    'page-utilities.css',
     'privacy.css',
     'style.css',
     'terms.css',
