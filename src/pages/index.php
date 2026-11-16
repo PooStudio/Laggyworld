@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laggy World • Chaos Edition</title>
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
 <body>
 
@@ -15,27 +15,6 @@
 
 <div class="noise" aria-hidden="true"></div>
 <div id="progress-line"></div>
-
-<div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeDescription" aria-hidden="true">
-  <div class="welcome-scene" aria-hidden="true"></div>
-  <div class="welcome-content">
-    <a class="welcome-brand" href="index.html" aria-label="Laggy World home">
-      <img src="logo.png" alt="">
-      <span>LAGGY WORLD</span>
-    </a>
-    <p class="welcome-kicker">SURVIVAL · COMMUNITY · NO PAY-TO-WIN</p>
-    <h1 id="welcomeTitle">Welcome to<br><span>Laggy World.</span></h1>
-    <p id="welcomeDescription" class="welcome-description">A survival world for player-made stories, unexpected turns, and progress earned by playing.</p>
-    <form id="welcomeForm" class="welcome-form">
-      <label class="welcome-consent" for="welcomeConsent">
-        <input id="welcomeConsent" type="checkbox" required>
-        <span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and acknowledge the <a href="privacy.html#cookies" target="_blank" rel="noopener">Privacy &amp; Cookie Policy</a>.</span>
-      </label>
-      <button id="enterSite" class="btn btn-primary welcome-enter" type="submit" disabled>Enter the world <span aria-hidden="true">→</span></button>
-    </form>
-    <p class="welcome-cookie-note">Only essential cookies are used. <a href="privacy.html#cookies" target="_blank" rel="noopener">Read the details</a>.</p>
-  </div>
-</div>
 
 <div id="botCheck" role="dialog" aria-label="Human verification">
   <div class="ls-corner ls-corner-tl"></div>
@@ -75,7 +54,7 @@
 <div id="pageShell" class="page-shell">
   <?php require __DIR__ . '/../partials/site-header.php'; ?>
 
-  <main>
+  <main id="main-content" tabindex="-1">
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
@@ -143,7 +122,7 @@
         <div class="section-label">Fair play, always</div>
         <h2>No pay-to-win. Ever.</h2>
         <p>Playing is free. No paid ranks, kits, loot, or purchases that give someone an advantage in-game. Voting is optional, and it does not buy power. Your progress comes from playing.</p>
-        <a href="rules.html">Read the server rules</a>
+        <a href="/rules/">Read the server rules</a>
       </div>
     </div>
   </section>
@@ -178,10 +157,10 @@
   <?php
 $footerCopy = "\u{00A9} 2026 Laggy World. All chaos reserved";
 $footerLinks = [
-    ['privacy.html', 'Privacy'],
-    ['terms.html', 'Terms'],
-    ['bug.html', 'Bug Reports'],
-    ['about.html', 'About'],
+    ['/privacy/', 'Privacy'],
+    ['/terms/', 'Terms'],
+    ['/bug/', 'Bug Reports'],
+    ['/about/', 'About'],
 ];
 require __DIR__ . '/../partials/site-footer.php';
 ?>
@@ -516,7 +495,9 @@ require __DIR__ . '/../partials/site-footer.php';
   }
 
   document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('open');
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    document.getElementById('menuToggle').setAttribute('aria-expanded', String(isOpen));
   });
   window.addEventListener('scroll', () => {
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -585,60 +566,5 @@ require __DIR__ . '/../partials/site-footer.php';
       .finally(() => clearTimeout(timeout));
   })();
 </script>
-<script>
-  (() => {
-    const overlay = document.getElementById('introOverlay');
-    const form = document.getElementById('welcomeForm');
-    const consent = document.getElementById('welcomeConsent');
-    const enter = document.getElementById('enterSite');
-    const consentKey = 'laggyworld.welcomeConsent.v1';
-
-    if (!overlay || !form || !consent || !enter) return;
-
-    let hasConsented = false;
-    try {
-      hasConsented = localStorage.getItem(consentKey) === 'accepted';
-    } catch {}
-
-    if (!hasConsented) {
-      overlay.classList.add('active');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('intro-open');
-      consent.focus();
-    }
-
-    consent.addEventListener('change', () => {
-      enter.disabled = !consent.checked;
-    });
-
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      if (!consent.checked) return;
-
-      try {
-        localStorage.setItem(consentKey, 'accepted');
-      } catch {}
-
-      overlay.classList.remove('active');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('intro-open');
-    });
-
-    overlay.addEventListener('keydown', event => {
-      if (event.key !== 'Tab') return;
-      const focusable = [...overlay.querySelectorAll('a[href], input, button:not(:disabled)')];
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    });
-  })();
-</script>
-
 </body>
 </html>

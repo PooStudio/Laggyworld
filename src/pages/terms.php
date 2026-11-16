@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Service • Laggy World</title>
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="terms.css">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/terms.css">
 </head>
 <body>
 
@@ -52,7 +51,7 @@
 
 <?php require __DIR__ . '/../partials/site-header.php'; ?>
 
-<main>
+<main id="main-content" tabindex="-1">
   <section class="section">
     <div class="container">
       <div class="card">
@@ -125,10 +124,10 @@
 <?php
 $footerCopy = "\u{00A9} 2026 Laggy World \u{2022} All chaos reserved";
 $footerLinks = [
-    ['privacy.html', 'Privacy'],
-    ['terms.html', 'Terms'],
-    ['bug.html', 'Bug Reports'],
-    ['about.html', 'About'],
+    ['/privacy/', 'Privacy'],
+    ['/terms/', 'Terms'],
+    ['/bug/', 'Bug Reports'],
+    ['/about/', 'About'],
 ];
 require __DIR__ . '/../partials/site-footer.php';
 ?>
@@ -307,7 +306,9 @@ require __DIR__ . '/../partials/site-footer.php';
 
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('menuToggle')?.addEventListener('click', () => {
-      document.getElementById('mobileMenu')?.classList.toggle('open');
+      const menu = document.getElementById('mobileMenu');
+      const isOpen = menu?.classList.toggle('open') ?? false;
+      document.getElementById('menuToggle')?.setAttribute('aria-expanded', String(isOpen));
     });
     window.addEventListener('scroll', () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;

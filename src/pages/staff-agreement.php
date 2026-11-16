@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Agreement • Laggy World</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body class="staff-page">
 
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
@@ -30,16 +31,17 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="nav-logo">
-                <img src="logo.png" alt="Laggy World" class="logo-minecraft">
+            <a href="/" class="nav-logo">
+                <img src="/logo.png" alt="" class="logo-minecraft">
                 <span class="nav-logo-text">Laggy World</span>
             </a>
 
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="rules.html">Rules</a>
-                <a href="bug.html">Bug</a>
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="/">Home</a>
+                <a href="/about/">About</a>
+                <a href="/rules/">Rules</a>
+                <a href="/vote/">Vote</a>
+                <a href="/bug/">Bug</a>
             </nav>
 
             <div class="nav-actions">
@@ -50,15 +52,17 @@
             </div>
         </div>
 
-        <div id="mobileMenu" class="mobile-menu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="rules.html">Rules</a>
-            <a href="bug.html">Bug</a>
-        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/rules/">Rules</a>
+            <a href="/vote/">Vote</a>
+            <a href="/bug/">Bug</a>
+            <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener">Discord</a>
+        </nav>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         <section class="staff-hero">
             <div class="staff-hero-bg hero-bg"></div>
 
@@ -98,9 +102,9 @@
             <div class="staff-footer-content">
                 <div>© 2026 Laggy World · All chaos reserved</div>
                 <div class="staff-footer-links">
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                    <a href="bug.html">Bug Reports</a>
+                    <a href="/privacy/">Privacy</a>
+                    <a href="/terms/">Terms</a>
+                    <a href="/bug/">Bug Reports</a>
                 </div>
             </div>
         </div>

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vote • Laggy World</title>
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
 
 <?php require __DIR__ . '/../partials/site-header.php'; ?>
 
-<main>
+<main id="main-content" tabindex="-1">
 
   <section class="page-hero">
     <div class="page-hero-content">
@@ -72,7 +72,7 @@
       <p class="section-sub section-sub--centered-gap">Voting and joining the community are both free and optional. We do not sell ranks, kits, or gameplay advantages.</p>
       <div class="hero-actions">
         <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
-        <a href="rules.html" class="btn btn-secondary">Read the Rules</a>
+        <a href="/rules/" class="btn btn-secondary">Read the Rules</a>
       </div>
     </div>
   </section>
@@ -82,9 +82,9 @@
 <?php
 $footerCopy = "\u{00A9} 2026 Laggy World \u{2022} All chaos reserved";
 $footerLinks = [
-    ['privacy.html', 'Privacy'],
-    ['terms.html', 'Terms'],
-    ['bug.html', 'Bug Reports'],
+    ['/privacy/', 'Privacy'],
+    ['/terms/', 'Terms'],
+    ['/bug/', 'Bug Reports'],
 ];
 require __DIR__ . '/../partials/site-footer.php';
 ?>
@@ -106,7 +106,11 @@ require __DIR__ . '/../partials/site-footer.php';
     requestAnimationFrame(animateRing);
   })();
 
-  document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  document.getElementById('menuToggle').addEventListener('click',()=>{
+    const menu=document.getElementById('mobileMenu');
+    const isOpen=menu.classList.toggle('open');
+    document.getElementById('menuToggle').setAttribute('aria-expanded',String(isOpen));
+  });
   window.addEventListener('scroll',()=>{
     const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
     document.getElementById('progress-line').style.width=p+'%';

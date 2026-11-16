@@ -42,7 +42,14 @@ foreach ($pages as $page) {
         throw new RuntimeException("Unable to render page: {$sourcePath}");
     }
 
-    $outputPath = $outputDirectory . '/' . $page . '.html';
+    $outputPath = $page === 'index'
+        ? $outputDirectory . '/index.html'
+        : $outputDirectory . '/' . $page . '/index.html';
+    $pageOutputDirectory = dirname($outputPath);
+    if (!is_dir($pageOutputDirectory) && !mkdir($pageOutputDirectory, 0775, true) && !is_dir($pageOutputDirectory)) {
+        throw new RuntimeException("Unable to create page directory: {$pageOutputDirectory}");
+    }
+
     if (file_put_contents($outputPath, $html, LOCK_EX) === false) {
         throw new RuntimeException("Unable to write page: {$outputPath}");
     }
@@ -52,6 +59,17 @@ foreach ($assets as $asset) {
     $sourcePath = $root . '/' . $asset;
     if (!is_file($sourcePath) || !copy($sourcePath, $outputDirectory . '/' . $asset)) {
         throw new RuntimeException("Unable to copy site asset: {$sourcePath}");
+    }
+}
+
+foreach ($pages as $page) {
+    if ($page === 'index') {
+        continue;
+    }
+
+    $legacyPath = $outputDirectory . '/' . $page . '.html';
+    if (is_file($legacyPath) && !unlink($legacyPath)) {
+        throw new RuntimeException("Unable to remove legacy page: {$legacyPath}");
     }
 }
 

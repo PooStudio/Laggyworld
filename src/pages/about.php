@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About • Laggy World</title>
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -33,7 +33,7 @@
 
 <?php require __DIR__ . '/../partials/site-header.php'; ?>
 
-<main>
+<main id="main-content" tabindex="-1">
 
   <section class="page-hero">
     <div class="page-hero-bg"></div>
@@ -99,9 +99,9 @@
 <?php
 $footerCopy = "\u{00A9} 2026 Laggy World \u{2022} All chaos reserved";
 $footerLinks = [
-    ['privacy.html', 'Privacy'],
-    ['terms.html', 'Terms'],
-    ['bug.html', 'Bug Reports'],
+    ['/privacy/', 'Privacy'],
+    ['/terms/', 'Terms'],
+    ['/bug/', 'Bug Reports'],
 ];
 require __DIR__ . '/../partials/site-footer.php';
 ?>
@@ -143,7 +143,11 @@ require __DIR__ . '/../partials/site-footer.php';
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 2200);
   }
-  document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  document.getElementById('menuToggle').addEventListener('click',()=>{
+    const menu=document.getElementById('mobileMenu');
+    const isOpen=menu.classList.toggle('open');
+    document.getElementById('menuToggle').setAttribute('aria-expanded',String(isOpen));
+  });
   window.addEventListener('scroll',()=>{
     const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
     document.getElementById('progress-line').style.width=p+'%';
