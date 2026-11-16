@@ -6,40 +6,6 @@
   <title>Bug Reports • Laggy World</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
-  <style>
-    *, *::before, *::after { cursor: none !important; }
-    #cursor {
-      position: fixed;
-      top: 0; left: 0;
-      width: 12px; height: 12px;
-      background: #22d3ee;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: background 0.2s ease, width 0.15s ease, height 0.15s ease;
-      box-shadow: 0 0 10px rgba(34,211,238,0.7), 0 0 20px rgba(34,211,238,0.3);
-    }
-    #cursor-ring {
-      position: fixed;
-      top: 0; left: 0;
-      width: 32px; height: 32px;
-      border: 1.5px solid rgba(34,211,238,0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
-    }
-    body:has(a:hover) #cursor,
-    body:has(button:hover) #cursor { width: 8px; height: 8px; background: #fff; }
-    body:has(a:hover) #cursor-ring,
-    body:has(button:hover) #cursor-ring { width: 44px; height: 44px; border-color: rgba(255,255,255,0.4); }
-    @media (max-width: 768px) {
-      #cursor, #cursor-ring { display: none; }
-      *, *::before, *::after { cursor: auto !important; }
-    }
-  </style>
 </head>
 <body>
 
@@ -64,35 +30,7 @@
   </div>
 </div>
 
-<header id="nav">
-  <div class="container">
-    <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="Laggy World">
-      <span class="nav-logo-text">LAGGY WORLD</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="rules.html">Rules</a></li>
-      <li><a href="vote.html">Vote</a></li>
-      <li><a href="bug.html">Bug</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:.75rem">
-      <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener" class="btn btn-primary">Join Discord</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="rules.html">Rules</a>
-    <a href="vote.html">Vote</a>
-    <a href="bug.html">Bug</a>
-    <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener">Discord</a>
-  </div>
-</header>
+<?php require __DIR__ . '/../partials/site-header.php'; ?>
 
 <main>
 
@@ -106,7 +44,7 @@
 
   <section class="section">
     <div class="container">
-      <div style="max-width:640px;margin:0 auto">
+      <div class="content-width-sm">
 
         <div class="content-card">
           <h2>How to Report</h2>
@@ -135,7 +73,7 @@
         </div>
 
         <div class="text-center mt-md">
-          <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener" class="btn btn-primary" style="margin-right:.75rem">Report in Discord</a>
+          <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener" class="btn btn-primary button-gap">Report in Discord</a>
           <button onclick="copyIP()" class="btn btn-secondary">Copy Server IP</button>
         </div>
 
@@ -145,21 +83,15 @@
 
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <span class="footer-logo">LAGGY WORLD</span>
-        <p class="footer-copy">© 2026 Laggy World • All chaos reserved</p>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="about.html">About</a>
-      </div>
-    </div>
-  </div>
-</footer>
+<?php
+$footerCopy = "\u{00A9} 2026 Laggy World \u{2022} All chaos reserved";
+$footerLinks = [
+    ['privacy.html', 'Privacy'],
+    ['terms.html', 'Terms'],
+    ['about.html', 'About'],
+];
+require __DIR__ . '/../partials/site-footer.php';
+?>
 
 <script>
   const cursor = document.getElementById('cursor');

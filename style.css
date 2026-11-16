@@ -56,6 +56,21 @@ a { color: inherit; text-decoration: none; cursor: none; }
 button { cursor: none; }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem }
+.nav-actions { display: flex; align-items: center; gap: .75rem; }
+.hero-bg, .page-hero-bg { background-image: url("background.png"); }
+.content-width-sm, .content-width-md, .content-width-lg { margin-inline: auto; }
+.content-width-sm { max-width: 640px; }
+.content-width-md { max-width: 720px; }
+.content-width-lg { max-width: 760px; }
+.section-spaced { margin-bottom: 3rem; }
+.section-spaced--compact { margin-bottom: 2.5rem; }
+.section-sub--centered { margin: 0 auto; }
+.section-sub--centered-gap { margin: 0 auto 2rem; }
+.section-sub--centered-wide-gap { margin: 0 auto 3rem; }
+.vote-grid { margin-bottom: 1px; }
+.rule-card--full { grid-column: 1 / -1; }
+.button-gap { margin-right: .75rem; }
+.terms-content { max-width: 56rem; margin: 3rem auto 0; }
 
 #cursor {
   position: fixed;

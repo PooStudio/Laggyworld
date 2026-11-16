@@ -7,40 +7,6 @@
     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <style>
-        *, *::before, *::after { cursor: none !important; }
-        #cursor {
-            position: fixed;
-            top: 0; left: 0;
-            width: 12px; height: 12px;
-            background: #22d3ee;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            transition: background 0.2s ease, width 0.15s ease, height 0.15s ease;
-            box-shadow: 0 0 10px rgba(34,211,238,0.7), 0 0 20px rgba(34,211,238,0.3);
-        }
-        #cursor-ring {
-            position: fixed;
-            top: 0; left: 0;
-            width: 32px; height: 32px;
-            border: 1.5px solid rgba(34,211,238,0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
-        }
-        body:has(a:hover) #cursor,
-        body:has(button:hover) #cursor { width: 8px; height: 8px; background: #fff; }
-        body:has(a:hover) #cursor-ring,
-        body:has(button:hover) #cursor-ring { width: 44px; height: 44px; border-color: rgba(255,255,255,0.4); }
-        @media (max-width: 768px) {
-            #cursor, #cursor-ring { display: none; }
-            *, *::before, *::after { cursor: auto !important; }
-        }
-    </style>
 </head>
 <body class="staff-page">
 
@@ -98,7 +64,7 @@
 
     <main>
         <section class="relative overflow-hidden pb-16">
-            <div class="absolute inset-0 bg-cover bg-center hero-bg" style="background-image:url('background.png')"></div>
+            <div class="absolute inset-0 bg-cover bg-center hero-bg"></div>
 
             <div class="container relative z-10 pt-16">
                 <div class="flex flex-col items-center text-center gap-6">
