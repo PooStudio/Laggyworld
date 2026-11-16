@@ -13,22 +13,6 @@
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-    <div id="loadingOverlay" class="offline-overlay" role="status" aria-label="Offline — Laggy World">
-        <div class="offline-card">
-            <div class="offline-crosshair" aria-hidden="true"><span class="dot"></span></div>
-            <pre class="offline-art">  ____   ______  ______ _       ______  ______
- / __ \ |  ____|/ ____| |     |  ____||  ____|
-| |  | || |__  | (___ | |     | |__   | |__   
-| |  | ||  __|  \___ \| |     |  __|  |  __|  
-| |__| || |____ ____) | |____ | |____ | |____ 
- \____/ |______|_____/|______||______||______|
-            </pre>
-            <h1 class="offline-title">OFFLINE</h1>
-            <p class="offline-sub">It's super dope.</p>
-        </div>
-    </div>
-
-
     <header>
         <div class="container">
             <a href="/" class="nav-logo">
@@ -136,63 +120,8 @@
             });
         }
 
-        const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
-        const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
-
-        function updateLoaderProgress(percent) {
-            const bar = document.getElementById('loadingProgressBar');
-            if (!bar) return;
-            bar.style.width = `${Math.min(100, Math.max(0, percent))}%`;
-        }
-
-        function updateLoaderStatus(text) {
-            const status = document.getElementById('loadingStatus');
-            if (!status) return;
-            status.textContent = text;
-        }
-
-        function hideLoadingOverlay() {
-            const overlay = document.getElementById('loadingOverlay'); if (!overlay) return; overlay.classList.remove('hidden'); overlay.style.display='flex';
-        }
-
-        function runCloudflareCheck() {
-            return fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' });
-        }
-
-        function startLoadingSequence() {
-            updateLoaderStatus('Preparing secure channel…');
-            let progress = 0;
-            const tick = () => {
-                progress = Math.min(98, progress + (Math.random() * 10 + 6));
-                updateLoaderProgress(progress);
-            };
-
-            const progressInterval = setInterval(tick, 180);
-
-            runCloudflareCheck()
-                .catch(() => {})
-                .finally(() => {
-                    clearInterval(progressInterval);
-                    updateLoaderProgress(100);
-                    updateLoaderStatus('Verification complete');
-                    setTimeout(hideLoadingOverlay, 420);
-                });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('loadingOverlay');
-            const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
-
-            if (!overlay) return;
-
-            if (!isFirstVisit) {
-                return;
-            }
-
-            startLoadingSequence();
-            localStorage.setItem(FIRST_VISIT_KEY, '1');
-        });
     </script>
+    <script src="/site-status.js" defer></script>
 
 </body>
 </html>

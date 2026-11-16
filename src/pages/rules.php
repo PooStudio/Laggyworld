@@ -15,22 +15,6 @@
 <div class="noise" aria-hidden="true"></div>
 <div id="progress-line"></div>
 
-<div id="loadingOverlay" class="offline-overlay" role="status" aria-label="Offline — Laggy World">
-  <div class="offline-card">
-    <div class="offline-crosshair" aria-hidden="true"><span class="dot"></span></div>
-    <pre class="offline-art">  ____   ______  ______ _       ______  ______
- / __ \ |  ____|/ ____| |     |  ____||  ____|
-| |  | || |__  | (___ | |     | |__   | |__   
-| |  | ||  __|  \___ \| |     |  __|  |  __|  
-| |__| || |____ ____) | |____ | |____ | |____ 
- \____/ |______|_____/|______||______||______|
-    </pre>
-    <h1 class="offline-title">OFFLINE</h1>
-    <p class="offline-sub">It's super dope.</p>
-  </div>
-</div>
-
-
 <?php require __DIR__ . '/../partials/site-header.php'; ?>
 
 <main id="main-content" tabindex="-1">
@@ -167,23 +151,6 @@ require __DIR__ . '/../partials/site-footer.php';
     const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
     document.getElementById('progress-line').style.width=p+'%';
     document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
-  });
-  const FIRST_KEY='laggyworld.firstVisit';
-  const CF_URL='https://www.cloudflare.com/cdn-cgi/trace';
-  function updateLoaderProgress(p){const b=document.getElementById('loadingProgressBar');if(b)b.style.width=Math.min(100,Math.max(0,p))+'%';}
-  function updateLoaderStatus(t){const s=document.getElementById('loadingStatus');if(s)s.textContent=t;}
-  function hideLoading(){
-    const o = document.getElementById('loadingOverlay'); if(!o) return; o.classList.remove('hidden'); o.style.display='flex';
-  }
-  function startLoading(){
-    let p=0;
-    const iv=setInterval(()=>{p=Math.min(98,p+Math.random()*10+6);updateLoaderProgress(p);},180);
-    fetch(CF_URL,{mode:'no-cors',cache:'no-cache'}).catch(()=>{}).finally(()=>{clearInterval(iv);updateLoaderProgress(100);updateLoaderStatus('Done');setTimeout(hideLoading,420);});
-  }
-  document.addEventListener('DOMContentLoaded',()=>{
-    const isFirst=!localStorage.getItem(FIRST_KEY);
-    if(isFirst){startLoading();localStorage.setItem(FIRST_KEY,'1');}
-    else{}
   });
 </script>
 

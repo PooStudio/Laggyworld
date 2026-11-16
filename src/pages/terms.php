@@ -16,21 +16,6 @@
 <div class="noise" aria-hidden="true"></div>
 <div id="progress-line"></div>
 
-<div id="loadingOverlay" class="offline-overlay" role="status" aria-label="Offline — Laggy World">
-  <div class="offline-card">
-    <div class="offline-crosshair" aria-hidden="true"><span class="dot"></span></div>
-    <pre class="offline-art">  ____   ______  ______ _       ______  ______
- / __ \ |  ____|/ ____| |     |  ____||  ____|
-| |  | || |__  | (___ | |     | |__   | |__   
-| |  | ||  __|  \___ \| |     |  __|  |  __|  
-| |__| || |____ ____) | |____ | |____ | |____ 
- \____/ |______|_____/|______||______||______|
-    </pre>
-    <h1 class="offline-title">OFFLINE</h1>
-    <p class="offline-sub">It's super dope.</p>
-  </div>
-</div>
-
 <div id="botCheck" role="dialog" aria-label="Human verification">
   <div class="ls-corner ls-corner-tl"></div>
   <div class="ls-corner ls-corner-tr"></div>
@@ -248,7 +233,7 @@ require __DIR__ . '/../partials/site-footer.php';
       localStorage.setItem(HUMAN_KEY, '1');
       const bc = document.getElementById('botCheck');
       bc.classList.add('hidden');
-      setTimeout(() => { bc.remove(); startLoader(); }, 500);
+      setTimeout(() => bc.remove(), 500);
     } else {
       bcAttempts++;
       document.getElementById('bcError').classList.add('show');
@@ -260,48 +245,6 @@ require __DIR__ . '/../partials/site-footer.php';
       bcSelected.clear();
       setTimeout(() => { buildChallenge(); document.getElementById('bcError').classList.remove('show'); }, 900);
     }
-  }
-
-  const PHASES = [
-    { label: 'Connecting to server…',   sub: 'Establishing secure channel' },
-    { label: 'Loading terms data…',     sub: 'Preparing legal chaos' },
-    { label: 'Verifying session…',      sub: 'Do not refresh. Chaos incoming.' },
-    { label: 'Almost ready…',           sub: 'Brace yourself.' },
-    { label: 'Ready.',                  sub: 'Welcome to Laggy World.' },
-  ];
-
-  function setBar(p) { const b = document.getElementById('lsBar'); if (b) b.style.width = Math.min(100, Math.max(0, p)) + '%'; }
-  function setPhase(i) {
-    PHASES.forEach((_, idx) => {
-      const d = document.getElementById('ph' + idx); if (!d) return;
-      d.className = 'ls-phase-dot' + (idx < i ? ' done' : idx === i ? ' active' : '');
-    });
-    const s = document.getElementById('lsStatus'), u = document.getElementById('lsSub');
-    if (s && PHASES[i]) s.textContent = PHASES[i].label;
-    if (u && PHASES[i]) u.textContent = PHASES[i].sub;
-  }
-  function hideLoading() {
-    const o = document.getElementById('loadingOverlay'); if (!o) return; o.classList.remove('hidden'); o.style.display='flex';
-    try{ sessionStorage.setItem(LOAD_KEY, '1'); }catch(e){}
-    return;
-  }
-
-  function startLoader() {
-    const overlay = document.getElementById('loadingOverlay'); overlay.style.display = 'flex';
-    let phase = 0, prog = 0, fakePhase = 0, apiDone = false;
-    const softTargets = [22, 45, 68, 88];
-    const iv = setInterval(() => {
-      const softGoal = softTargets[fakePhase] ?? 88;
-      const goal = apiDone ? 100 : softGoal;
-      prog = Math.min(goal, prog + Math.random() * 7 + 3);
-      setBar(prog);
-      if (prog >= softGoal && fakePhase < softTargets.length - 1) { fakePhase++; phase = fakePhase; setPhase(phase); }
-      if (apiDone && prog >= 100) { clearInterval(iv); setPhase(4); setBar(100); setTimeout(hideLoading, 700); }
-    }, 160);
-
-    fetch('https://api.mcsrvstat.us/2/mc.laggy.world:25565', {
-      signal: AbortSignal.timeout ? AbortSignal.timeout(8000) : (() => { const c = new AbortController(); setTimeout(() => c.abort(), 8000); return c.signal; })()
-    }).catch(() => {}).finally(() => { apiDone = true; });
   }
 
   document.addEventListener('DOMContentLoaded', () => {

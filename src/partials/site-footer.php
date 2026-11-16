@@ -13,3 +13,4 @@
     </div>
   </div>
 </footer>
+<script src="/site-status.js" defer></script>

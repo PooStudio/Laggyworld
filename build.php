@@ -21,6 +21,7 @@ $assets = [
     'logo.png',
     'logo.svg',
     'privacy.css',
+    'site-status.js',
     'style.css',
     'terms.css',
 ];

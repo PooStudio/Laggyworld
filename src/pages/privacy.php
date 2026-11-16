@@ -14,22 +14,6 @@
     <div id="cursor"></div>
     <div id="cursor-ring"></div>
 
-    <div id="loadingOverlay" class="offline-overlay" role="status" aria-label="Offline — Laggy World">
-        <div class="offline-card">
-            <div class="offline-crosshair" aria-hidden="true"><span class="dot"></span></div>
-            <pre class="offline-art">  ____   ______  ______ _       ______  ______
- / __ \ |  ____|/ ____| |     |  ____||  ____|
-| |  | || |__  | (___ | |     | |__   | |__   
-| |  | ||  __|  \___ \| |     |  __|  |  __|  
-| |__| || |____ ____) | |____ | |____ | |____ 
- \____/ |______|_____/|______||______||______|
-            </pre>
-            <h1 class="offline-title">OFFLINE</h1>
-            <p class="offline-sub">It's super dope.</p>
-        </div>
-    </div>
-
-
     <header>
         <div class="container">
             <a href="/" class="nav-logo">
@@ -408,45 +392,8 @@
             });
         });
 
-        const FIRST_VISIT_KEY = 'laggyworld.firstVisit';
-        const CLOUDFLARE_CHECK_URL = 'https://www.cloudflare.com/cdn-cgi/trace';
-
-        function updateLoaderProgress(p) {
-            const bar = document.getElementById('loadingProgressBar');
-            if (bar) bar.style.width = Math.min(100, Math.max(0, p)) + '%';
-        }
-        function updateLoaderStatus(t) {
-            const s = document.getElementById('loadingStatus');
-            if (s) s.textContent = t;
-        }
-        function hideLoadingOverlay() {
-            const overlay = document.getElementById('loadingOverlay'); if (!overlay) return; overlay.classList.remove('hidden'); overlay.style.display='flex';
-        }
-        function startLoadingSequence() {
-            updateLoaderStatus('Loading content…');
-            let progress = 0;
-            const progressInterval = setInterval(() => {
-                progress = Math.min(98, progress + (Math.random() * 10 + 6));
-                updateLoaderProgress(progress);
-            }, 180);
-            fetch(CLOUDFLARE_CHECK_URL, { mode: 'no-cors', cache: 'no-cache' })
-                .catch(() => {})
-                .finally(() => {
-                    clearInterval(progressInterval);
-                    updateLoaderProgress(100);
-                    updateLoaderStatus('Privacy Policy loaded');
-                    setTimeout(hideLoadingOverlay, 420);
-                });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('loadingOverlay');
-            const isFirstVisit = !localStorage.getItem(FIRST_VISIT_KEY);
-            if (!overlay) return;
-            if (!isFirstVisit) { return; }
-            startLoadingSequence();
-            localStorage.setItem(FIRST_VISIT_KEY, '1');
-        });
     </script>
+    <script src="/site-status.js" defer></script>
 
 </body>
 </html>

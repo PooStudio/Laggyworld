@@ -46,7 +46,7 @@
 #loadingOverlay {
   position: fixed; inset: 0; z-index: 9999;
   background: radial-gradient(circle at 50% 15%, rgba(232,255,60,0.12), transparent 26%), #060504;
-  display: flex; align-items: center; justify-content: center;
+  display: none; align-items: center; justify-content: center;
   flex-direction: column;
   transition: opacity .7s ease, transform .7s ease;
   overflow: hidden;
