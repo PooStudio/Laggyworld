@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/index.css">
 </head>
-<body>
+<body class="home-page">
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
@@ -43,11 +43,10 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Community-run Minecraft server · No pay-to-win</div>
       <div class="server-bar">
         <div class="server-bar-item">
-          <span class="server-bar-label">IP</span>
-          <span class="server-bar-val">mc.laggy.world</span>
+          <span class="server-bar-label">Server</span>
+          <button class="server-address-button" type="button" onclick="copyIP()" aria-label="Copy server address mc.laggy.world">mc.laggy.world</button>
         </div>
         <span class="server-bar-sep">|</span>
         <div class="server-bar-item">
@@ -65,12 +64,32 @@
           <span id="serverVersion" class="server-bar-val">Unknown</span>
         </div>
       </div>
-      <h1 class="hero-title">LAGGY<br><span>WORLD</span></h1>
+      <img class="hero-logo" src="/logo.png" alt="Laggy World">
+      <div class="hero-eyebrow">Community-run Minecraft server · No pay-to-win</div>
+      <h1 class="hero-title">Your next story <br><span>starts here.</span></h1>
       <p class="hero-sub">A survival server for players who want the stories, the scrapes, and the unexpected. Join in, make your mark, and earn everything you use.</p>
       <div class="hero-actions">
         <button onclick="copyIP()" class="btn btn-primary">Copy Server IP</button>
         <a href="https://discord.gg/dzPXJgNTsV" target="_blank" rel="noopener" class="btn btn-secondary">Join Discord</a>
       </div>
+      <nav class="hero-links" aria-label="Explore Laggy World">
+        <a class="hero-link" href="/about/">
+          <span class="hero-link-number">01</span>
+          <span class="hero-link-copy"><strong>Our world</strong><small>Get to know us</small></span>
+        </a>
+        <a class="hero-link" href="/rules/">
+          <span class="hero-link-number">02</span>
+          <span class="hero-link-copy"><strong>Play fair</strong><small>Read the rules</small></span>
+        </a>
+        <a class="hero-link" href="/vote/">
+          <span class="hero-link-number">03</span>
+          <span class="hero-link-copy"><strong>Back the server</strong><small>Cast a vote</small></span>
+        </a>
+        <a class="hero-link" href="/bug/">
+          <span class="hero-link-number">04</span>
+          <span class="hero-link-copy"><strong>Found a glitch?</strong><small>Send a report</small></span>
+        </a>
+      </nav>
     </div>
   </section>
 
