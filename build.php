@@ -19,6 +19,7 @@ $assets = [
     'background.png',
     'index.css',
     'logo.png',
+    'logo.svg',
     'privacy.css',
     'site-status.js',
     'style.css',
